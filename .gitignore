@@ -1,0 +1,38 @@
+/node_modules
+/public/hot
+/public/css/*
+/public/js/*
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vscode
+/.vagrant
+composer.lock
+package-lock.json
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+
+# Project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using Sublime Text
+*.sublime-project
+
+# Vim files
+*.swp
+*.swo
+*~
+
+# Front-end versions file
+public/mix-manifest.json
+
+# JS Translations files
+public/vendor/js-localization/messages.js
+public/vendor/js-localization/js-localization.min.js
+
+.DS_Store
+
+.env.test
+/public/info.php
