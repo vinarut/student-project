@@ -17,7 +17,8 @@
     <div class="form-group row">
         <label for="street_address" class="col-lg-4 col-sm-2 col-form-label">Street Address</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="street_address" placeholder="Street Address" name="street_address">
+            <input type="text" class="form-control" id="street_address" placeholder="Street Address"
+                   name="street_address">
         </div>
     </div>
     <div class="form-group row">
@@ -47,13 +48,15 @@
     <div class="form-group row">
         <label for="mother_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone">
+            <input type="text" class="form-control" id="mother_cell_phone" placeholder="Cell Phone"
+                   name="mother_cell_phone">
         </div>
     </div>
     <div class="form-group row">
         <label for="mother_employer" class="col-lg-4 col-sm-2 col-form-label">Mother’s Employer</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="mother_employer" placeholder="Mother’s Employer" name="mother_employer">
+            <input type="text" class="form-control" id="mother_employer" placeholder="Mother’s Employer"
+                   name="mother_employer">
         </div>
     </div>
     <div class="form-group row">
@@ -71,7 +74,8 @@
     <div class="form-group row">
         <label for="mother_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone">
+            <input type="text" class="form-control" id="mother_work_phone" placeholder="Work Phone"
+                   name="mother_work_phone">
         </div>
     </div>
     <div class="form-group row">
@@ -83,13 +87,15 @@
     <div class="form-group row">
         <label for="father_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone">
+            <input type="text" class="form-control" id="father_cell_phone" placeholder="Cell Phone"
+                   name="father_cell_phone">
         </div>
     </div>
     <div class="form-group row">
         <label for="father_employer" class="col-lg-4 col-sm-2 col-form-label">Father’s Employer</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="father_employer" placeholder="Father’s Employer" name="father_employer">
+            <input type="text" class="form-control" id="father_employer" placeholder="Father’s Employer"
+                   name="father_employer">
         </div>
     </div>
     <div class="form-group row">
@@ -107,13 +113,15 @@
     <div class="form-group row">
         <label for="father_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="father_work_phone" placeholder="Work Phone" name="father_work_phone">
+            <input type="text" class="form-control" id="father_work_phone" placeholder="Work Phone"
+                   name="father_work_phone">
         </div>
     </div>
     <div class="form-group row">
         <label for="primary_email_address" class="col-lg-4 col-sm-2 col-form-label">Primary email address</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="primary_email_address" placeholder="Primary email address" name="primary_email_address">
+            <input type="text" class="form-control" id="primary_email_address" placeholder="Primary email address"
+                   name="primary_email_address">
         </div>
     </div>
     <fieldset class="form-group">
@@ -125,7 +133,8 @@
                     <label class="form-check-label" for="yesAllergies">
                         Yes
                     </label>
-                    <textarea class="form-control" type="text" name="allergies_describe" id="allergies_describe"></textarea>
+                    <textarea class="form-control" type="text" name="allergies_describe" id="allergies_describe"
+                              placeholder="Allergies Describe"></textarea>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="allergies" id="noAllergies" value="no">
@@ -145,7 +154,8 @@
                     <label class="form-check-label" for="yesHistory">
                         Yes
                     </label>
-                    <textarea class="form-control" type="text" name="medical_history_describe" id="medical_history_describe"></textarea>
+                    <textarea class="form-control" type="text" name="medical_history_describe"
+                              id="medical_history_describe" placeholder="Medical History Describe"></textarea>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="medical_history" id="noHistory" value="no">
@@ -181,37 +191,43 @@
     <div class="form-group row">
         <label for="first_contact_name" class="col-lg-4 col-sm-2 col-form-label">First contacts name</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="first_contact_name" placeholder="First contacts name" name="first_contact_name">
+            <input type="text" class="form-control" id="first_contact_name" placeholder="First contacts name"
+                   name="first_contact_name">
         </div>
     </div>
     <div class="form-group row">
         <label for="first_contact_phone" class="col-lg-4 col-sm-2 col-form-label">First contacts phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="first_contact_phone" placeholder="First contacts phone" name="first_contact_phone">
+            <input type="text" class="form-control" id="first_contact_phone" placeholder="First contacts phone"
+                   name="first_contact_phone">
         </div>
     </div>
     <div class="form-group row">
         <label for="first_contact_address" class="col-lg-4 col-sm-2 col-form-label">First contacts address</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="first_contact_address" placeholder="First contacts address" name="first_contact_address">
+            <input type="text" class="form-control" id="first_contact_address" placeholder="First contacts address"
+                   name="first_contact_address">
         </div>
     </div>
     <div class="form-group row">
         <label for="second_contact_name" class="col-lg-4 col-sm-2 col-form-label">Second contacts name</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="second_contact_name" placeholder="Second contacts name" name="second_contact_name">
+            <input type="text" class="form-control" id="second_contact_name" placeholder="Second contacts name"
+                   name="second_contact_name">
         </div>
     </div>
     <div class="form-group row">
         <label for="second_contact_phone" class="col-lg-4 col-sm-2 col-form-label">Second contacts phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="second_contact_phone" placeholder="Second contacts phone" name="second_contact_phone">
+            <input type="text" class="form-control" id="second_contact_phone" placeholder="Second contacts phone"
+                   name="second_contact_phone">
         </div>
     </div>
     <div class="form-group row">
         <label for="second_contact_address" class="col-lg-4 col-sm-2 col-form-label">Second contacts address</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="second_contact_address" placeholder="Second contacts address" name="second_contact_address">
+            <input type="text" class="form-control" id="second_contact_address" placeholder="Second contacts address"
+                   name="second_contact_address">
         </div>
     </div>
     <div class="form-group text-center mt-4">
@@ -220,13 +236,15 @@
     <div class="form-group row">
         <label for="physician_name" class="col-lg-4 col-sm-2 col-form-label">Physician name</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="physician_name" placeholder="Physician name" name="physician_name">
+            <input type="text" class="form-control" id="physician_name" placeholder="Physician name"
+                   name="physician_name">
         </div>
     </div>
     <div class="form-group row">
         <label for="physician_phone" class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="physician_phone" placeholder="Physician phone" name="physician_phone">
+            <input type="text" class="form-control" id="physician_phone" placeholder="Physician phone"
+                   name="physician_phone">
         </div>
     </div>
     <div class="form-group text-center mt-4">
@@ -235,45 +253,49 @@
     <div class="form-group row">
         <label for="first_additional_name" class="col-lg-4 col-sm-2 col-form-label">First name</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="first_additional_name" placeholder="First name" name="first_additional_name">
+            <input type="text" class="form-control" id="first_additional_name" placeholder="First name"
+                   name="first_additional_name">
         </div>
     </div>
     <div class="form-group row">
         <label for="first_additional_phone" class="col-lg-4 col-sm-2 col-form-label">First phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="first_additional_phone" placeholder="First  phone" name="first_additional_phone">
+            <input type="text" class="form-control" id="first_additional_phone" placeholder="First  phone"
+                   name="first_additional_phone">
         </div>
     </div>
 
     <div class="form-group row">
         <label for="second_additional_name" class="col-lg-4 col-sm-2 col-form-label">Second name</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="second_additional_name" placeholder="Second name" name="second_additional_name">
+            <input type="text" class="form-control" id="second_additional_name" placeholder="Second name"
+                   name="second_additional_name">
         </div>
     </div>
     <div class="form-group row">
         <label for="second_additional_phone" class="col-lg-4 col-sm-2 col-form-label">Second phone</label>
         <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control" id="second_additional_phone" placeholder="Second phone" name="second_additional_phone">
+            <input type="text" class="form-control" id="second_additional_phone" placeholder="Second phone"
+                   name="second_additional_phone">
         </div>
     </div>
 </form>
 
 <script>
-	$(document).ready(function () {
-		let yesAllergies = $('yesAllergies');
-		console.log(yesAllergies);
-		$('yesAllergies').change(function () {
-			if (this.value == 'yes') {
-				$('allergies_describe').addClass('d-none');
-			}
-		});
-		$('noAllergies').change(function () {
-			if (this.value == 'no') {
-				$('allergies_describe').removeClass('d-none');
-			}
-		});
-	});
+    $(document).ready(function () {
+        $('#yesAllergies').click(function () {
+            $('#allergies_describe').removeClass("d-none");
+        });
+        $('#noAllergies').click(function () {
+            $('#allergies_describe').addClass("d-none");
+        });
+        $('#yesHistory').click(function () {
+            $('#medical_history_describe').removeClass("d-none");
+        });
+        $('#noHistory').click(function () {
+            $('#medical_history_describe').addClass("d-none");
+        });
+    });
 </script>
 
 @endsection
