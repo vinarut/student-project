@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdditionalIndividuals;
 use App\ContactList;
 use App\Http\Requests\RegistrationRequest;
 use App\Info;
@@ -27,13 +28,13 @@ class InfoController extends Controller
      */
     public function create()
     {
-        return view('welcome');
+        return view('form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param RegistrationRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(RegistrationRequest $request)
@@ -68,15 +69,31 @@ class InfoController extends Controller
                 'special_medical_history_describe' => $validated['medical_history_describe'] ?? '',
                 'epi_pen' => $validated['epi_pen'] ?? '',
             ]);
-
             $info->save();
+
+            $sql = 'SELECT `id` FROM `info` ORDER BY `id` DESC LIMIT 1';
+            $id = \DB::select($sql)[0]->id;
 
             $physician = new Physicians([
                 'name' => $validated['physician_name'] ?? '',
                 'phone' => $validated['physician_phone'] ?? ''
             ]);
-
             $physician->save();
+
+            $contactList = new ContactList([
+                'child_id' => $id ?? '',
+                'name' => $validated['first_contact_name'] ?? '',
+                'phone' => $validated['first_contact_phone'] ?? '',
+                'address' => $validated['first_contact_address'] ?? '',
+            ]);
+            $contactList->save();
+
+            $additionalIndividuals = new AdditionalIndividuals([
+                'child_id' => $id ?? '',
+                'name' => $validated['first_additional_name'] ?? '',
+                'phone' => $validated['first_additional_phone'] ?? '',
+            ]);
+            $additionalIndividuals->save();
         });
 
         return back()->withInput();
