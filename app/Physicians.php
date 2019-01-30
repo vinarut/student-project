@@ -9,7 +9,7 @@ class Physicians extends Model
     protected $table = 'physicians';
 
     protected $fillable = [
-        'name', 'phone'
+        'child_id', 'name', 'phone'
     ];
 
     public $timestamps = false;

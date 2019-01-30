@@ -75,6 +75,7 @@ class InfoController extends Controller
             $id = \DB::select($sql)[0]->id;
 
             $physician = new Physicians([
+                'child_id' => $id ?? '',
                 'name' => $validated['physician_name'] ?? '',
                 'phone' => $validated['physician_phone'] ?? ''
             ]);
