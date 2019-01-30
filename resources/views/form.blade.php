@@ -290,6 +290,11 @@
                     <label class="form-check-label" for="yesEpiPen">
                         Yes
                     </label>
+                    <p id="link">Parent and physician must complete the Food Allergy & Anaphylaxis Emergency Care Plan
+                        Form and return to Compass. Form can be found
+                        <a href="https://compassschoolhouse.com/wp-content/uploads/2018/08/allergy-emergency-care-form.pdf">
+                            here</a>.
+                    </p>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="epi_pen" id="noEpiPen" value="0" checked>
@@ -472,27 +477,40 @@
 
 <script>
     $(document).ready(function () {
-        $('#yesAllergies').click(function () {
-            $('#allergies_describe').removeClass('d-none');
-        });
-        $('#noAllergies').click(function () {
-            $('#allergies_describe').addClass('d-none');
-        });
-        $('#yesHistory').click(function () {
-            $('#medical_history_describe').removeClass('d-none');
-        });
-        $('#noHistory').click(function () {
-            $('#medical_history_describe').addClass('d-none');
+        let elements = [
+            $('#allergies_describe'),
+            $('#medical_history_describe'),
+            $('#link')
+        ];
+
+        [
+            $('#yesAllergies'),
+            $('#yesHistory'),
+            $('#yesEpiPen')
+        ].map((item, index) => {
+            item.click(function () {
+                elements[index].removeClass('d-none');
+            })
         });
 
-        if ($('#noAllergies:checked').val() === '0') {
-            $('#allergies_describe').addClass('d-none');
-        }
+        [
+            $('#noAllergies'),
+            $('#noHistory'),
+            $('#noEpiPen')
+        ].map((item, index) => {
+            item.click(function () {
+                elements[index].addClass('d-none')
+            })
+        });
 
-        if ($('#noHistory:checked').val() === '0') {
-            $('#medical_history_describe').addClass('d-none');
-        }
-
+        [
+            $('#noAllergies:checked').val(),
+            $('#noHistory:checked').val(),
+            $('#noEpiPen:checked').val()
+        ].map((item, index) => {
+            if (item === '0')
+                elements[index].addClass('d-none');
+        });
     });
 </script>
 
