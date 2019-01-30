@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('info', 'InfoController');
+
+//Route::get('info', 'InfoController@index');
+//Route::post('info', 'InfoController@store');
