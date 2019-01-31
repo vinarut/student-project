@@ -8,6 +8,7 @@ use App\Http\Requests\RegistrationRequest;
 use App\Info;
 use App\Physicians;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class InfoController extends Controller
 {
@@ -71,29 +72,33 @@ class InfoController extends Controller
             ]);
             $info->save();
 
-            $sql = 'SELECT `id` FROM `info` ORDER BY `id` DESC LIMIT 1';
-            $id = \DB::select($sql)[0]->id;
+			$physicians = $validated['physician'];
+			$contacts = $validated['contact'];
+			$additions = $validated['additional'];
 
-            $physician = new Physicians([
+			$mappedPhysicians = collect($physicians)->mapInto(Physicians::class);
+			$mappedContacts = collect($contacts)->mapInto(ContactList::class);
+			$mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
+			/*
+			$physician = new Physicians([
                 'name' => $validated['physician_name'] ?? '',
                 'phone' => $validated['physician_phone'] ?? ''
             ]);
 
-            $contactList = new ContactList([
-                'name' => $validated['first_contact_name'] ?? '',
-                'phone' => $validated['first_contact_phone'] ?? '',
-                'address' => $validated['first_contact_address'] ?? '',
+			$contactList = new ContactList([
+                'name' => $validated['contact_name'] ?? '',
+                'phone' => $validated['contact_phone'] ?? '',
+                'address' => $validated['contact_address'] ?? '',
             ]);
 
             $additionalIndividuals = new AdditionalIndividuals([
-                'name' => $validated['first_additional_name'] ?? '',
-                'phone' => $validated['first_additional_phone'] ?? '',
+                'name' => $validated['additional_name'] ?? '',
+                'phone' => $validated['additional_phone'] ?? '',
             ]);
-
-            $info = Info::find($id);
-            $info->physicians()->save($physician);
-            $info->contactList()->save($contactList);
-            $info->additionalIndividuals()->save($additionalIndividuals);
+			*/
+            $info->physicians()->saveMany($mappedPhysicians);
+            $info->contactList()->saveMany($mappedContacts);
+            $info->additionalIndividuals()->saveMany($mappedAdditions);
         });
 
         return back()->withInput();

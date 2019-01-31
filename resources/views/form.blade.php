@@ -308,164 +308,204 @@
     <div class="form-group text-center mt-4">
         EMERGENCY CONTACTS LIST AT LEAST 2 LOCAL NAMES OTHER THAN PARENTS
     </div>
-    <div class="form-group row">
-        <label for="first_contact_name" class="col-lg-4 col-sm-2 col-form-label">First contacts name</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('first_contact_name')? "is-invalid": ""}}"
-                   id="first_contact_name" placeholder="First contacts name" name="first_contact_name"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('first_contact_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('first_contact_name') }}</strong>
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Contacts name</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('contact_name')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Contacts name" name="contact[][name]"--}}
+                   {{--autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('contact_name'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('contact_name') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('contact_phone')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Contact phone" name="contact[][phone]"--}}
+                   {{--autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('contact_phone'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('contact_phone') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Contacts address</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('contact_address')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Contacts address" name="contact[][address]"--}}
+                   {{--autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('contact_address'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('contact_address') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    <div id="contact-list">
+        <div class="first">
+            <div class="recordset">
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Contacts name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('contact_name')? "is-invalid": ""}}"
+                               placeholder="Contacts name" name="contact[0][name]"
+                               autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('contact_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('contact_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('contact_phone')? "is-invalid": ""}}"
+                               placeholder="Contact phone" name="contact[0][phone]"
+                               autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('contact_phone'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('contact_phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Contacts address</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('contact_address')? "is-invalid": ""}}"
+                               placeholder="First contacts address" name="contact[0][address]"
+                               autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('contact_address'))
+                            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('contact_address') }}</strong>
                 </span>
-            @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="first_contact_phone" class="col-lg-4 col-sm-2 col-form-label">First contacts phone</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('first_contact_phone')? "is-invalid": ""}}"
-                   id="first_contact_phone" placeholder="First contacts phone" name="first_contact_phone"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('first_contact_phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('first_contact_phone') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="first_contact_address" class="col-lg-4 col-sm-2 col-form-label">First contacts address</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('first_contact_address')? "is-invalid": ""}}"
-                   id="first_contact_address" placeholder="First contacts address" name="first_contact_address"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('first_contact_address'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('first_contact_address') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="second_contact_name" class="col-lg-4 col-sm-2 col-form-label">Second contacts name</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('second_contact_name')? "is-invalid": ""}}"
-                   id="second_contact_name" placeholder="Second contacts name" name="second_contact_name"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('second_contact_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('second_contact_name') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="second_contact_phone" class="col-lg-4 col-sm-2 col-form-label">Second contacts phone</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('second_contact_phone')? "is-invalid": ""}}"
-                   id="second_contact_phone" placeholder="Second contacts phone" name="second_contact_phone"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('second_contact_phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('second_contact_phone') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="second_contact_address" class="col-lg-4 col-sm-2 col-form-label">Second contacts address</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('second_contact_address')? "is-invalid": ""}}"
-                   id="second_contact_address" placeholder="Second contacts address" name="second_contact_address"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('second_contact_address'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('second_contact_address') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group text-center mt-4">
+    <div class="form-group text-center mt-lg-5">
         PHYSICIAN
     </div>
-    <div class="form-group row">
-        <label for="physician_name" class="col-lg-4 col-sm-2 col-form-label">Physician name</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('physician_name')? "is-invalid": ""}}"
-                   id="physician_name" placeholder="Physician name" name="physician_name" autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('physician_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('physician_name') }}</strong>
-                </span>
-            @endif
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Physician name</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('physician_name')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Physician name" name="physician_name[]" autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('physician_name'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('physician_name') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('physician_phone')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Physician phone" name="physician_phone[]" autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('physician_phone'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('physician_phone') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    <div id="physicians">
+        <div class="first">
+            <div class="recordset">
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Physician name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('physician_name')? "is-invalid": ""}}"
+                               placeholder="Physician name" name="physician[0][name]" autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('physician_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('physician_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('physician_phone')? "is-invalid": ""}}"
+                               placeholder="Physician phone" name="physician[0][phone]" autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('physician_phone'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('physician_phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="physician_phone" class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('physician_phone')? "is-invalid": ""}}"
-                   id="physician_phone" placeholder="Physician phone" name="physician_phone" autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('physician_phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('physician_phone') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group text-center mt-4">
+    <div class="form-group text-center mt-lg-5">
         ADDITIONAL INDIVIDUALS THAT MAY PICK UP YOUR CHILD
     </div>
-    <div class="form-group row">
-        <label for="first_additional_name" class="col-lg-4 col-sm-2 col-form-label">First name</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('first_additional_name')? "is-invalid": ""}}"
-                   id="first_additional_name" placeholder="First name" name="first_additional_name" autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('first_additional_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('first_additional_name') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="first_additional_phone" class="col-lg-4 col-sm-2 col-form-label">First phone</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('first_additional_phone')? "is-invalid": ""}}"
-                   id="first_additional_phone" placeholder="First  phone" name="first_additional_phone"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('first_additional_phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('first_additional_phone') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="second_additional_name" class="col-lg-4 col-sm-2 col-form-label">Second name</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('second_additional_name')? "is-invalid": ""}}"
-                   id="second_additional_name" placeholder="Second name" name="second_additional_name"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('second_additional_name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('second_additional_name') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="second_additional_phone" class="col-lg-4 col-sm-2 col-form-label">Second phone</label>
-        <div class="col-lg-8 col-sm-10">
-            <input type="text" class="form-control {{$errors->has('second_additional_phone')? "is-invalid": ""}}"
-                   id="second_additional_phone" placeholder="Second phone" name="second_additional_phone"
-                   autocomplete="off" value="sdfklsjdf">
-            @if ($errors->has('second_additional_phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('second_additional_phone') }}</strong>
-                </span>
-            @endif
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('additional_name')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Additional name" name="additional_name[]" autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('additional_name'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('additional_name') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="form-group row">--}}
+        {{--<label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>--}}
+        {{--<div class="col-lg-8 col-sm-10">--}}
+            {{--<input type="text" class="form-control {{$errors->has('additional_phone')? "is-invalid": ""}}"--}}
+                   {{--placeholder="Additional phone" name="additional_phone[]"--}}
+                   {{--autocomplete="off" value="sdfklsjdf">--}}
+            {{--@if ($errors->has('additional_phone'))--}}
+                {{--<span class="invalid-feedback" role="alert">--}}
+                    {{--<strong>{{ $errors->first('additional_phone') }}</strong>--}}
+                {{--</span>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    <div id="additional-individuals">
+        <div class="first">
+            <div class="recordset">
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('additional_name')? "is-invalid": ""}}"
+                               placeholder="Additional name" name="additional[0][name]" autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('additional_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('additional_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('additional_phone')? "is-invalid": ""}}"
+                               placeholder="Additional phone" name="additional[0][phone]"
+                               autocomplete="off" value="sdfklsjdf">
+                        @if ($errors->has('additional_phone'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('additional_phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-group row">
@@ -511,6 +551,10 @@
             if (item === '0')
                 elements[index].addClass('d-none');
         });
+
+        $('#contact-list').czMore();
+        $('#physicians').czMore();
+        $('#additional-individuals').czMore();
     });
 </script>
 

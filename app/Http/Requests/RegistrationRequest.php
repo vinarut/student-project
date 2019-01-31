@@ -49,20 +49,18 @@ class RegistrationRequest extends FormRequest
             'medical_history_describe' => 'required_if:medical_history,1',
             'epi_pen' => 'required|boolean',
 
-            'first_contact_name' => 'required|max:255',
-            'first_contact_phone' => 'required|max:255',
-            'first_contact_address' => 'required|max:255',
-            'second_contact_name' => 'required|max:255',
-            'second_contact_phone' => 'required|max:255',
-            'second_contact_address' => 'required|max:255',
+            'contact' => 'required|array|min:2',
+            'contact.*.name' => 'required|string|max:255',
+            'contact.*.phone' => 'required|string|max:255',
+            'contact.*.address' => 'required|string|max:255',
 
-            'physician_name' => 'required|max:255',
-            'physician_phone' => 'required|max:255',
+            'physician' => 'required|array|min:1',
+            'physician.*.name' => 'required|string|max:255',
+            'physician.*.phone' => 'required|string|max:255',
 
-            'first_additional_name' => 'required|max:255',
-            'first_additional_phone' => 'required|max:255',
-            'second_additional_name' => 'required|max:255',
-            'second_additional_phone' => 'required|max:255',
+            'additional' => 'required|array|min:2',
+            'additional.*.name' => 'required|string|max:255',
+            'additional.*.phone' => 'required|string|max:255',
         ];
     }
 }
