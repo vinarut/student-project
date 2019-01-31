@@ -16,4 +16,19 @@ class Info extends Model
     ];
 
     public $timestamps = false;
+
+    public function physicians()
+    {
+        return $this->hasMany(Physicians::class);
+    }
+
+    public function contactList()
+    {
+        return $this->hasMany(ContactList::class);
+    }
+
+    public function additionalIndividuals()
+    {
+        return $this->hasMany(AdditionalIndividuals::class);
+    }
 }

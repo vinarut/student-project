@@ -75,26 +75,25 @@ class InfoController extends Controller
             $id = \DB::select($sql)[0]->id;
 
             $physician = new Physicians([
-                'child_id' => $id ?? '',
                 'name' => $validated['physician_name'] ?? '',
                 'phone' => $validated['physician_phone'] ?? ''
             ]);
-            $physician->save();
 
             $contactList = new ContactList([
-                'child_id' => $id ?? '',
                 'name' => $validated['first_contact_name'] ?? '',
                 'phone' => $validated['first_contact_phone'] ?? '',
                 'address' => $validated['first_contact_address'] ?? '',
             ]);
-            $contactList->save();
 
             $additionalIndividuals = new AdditionalIndividuals([
-                'child_id' => $id ?? '',
                 'name' => $validated['first_additional_name'] ?? '',
                 'phone' => $validated['first_additional_phone'] ?? '',
             ]);
-            $additionalIndividuals->save();
+
+            $info = Info::find($id);
+            $info->physicians()->save($physician);
+            $info->contactList()->save($contactList);
+            $info->additionalIndividuals()->save($additionalIndividuals);
         });
 
         return back()->withInput();

@@ -15,10 +15,10 @@ class CreatePhysiciansTable extends Migration
     {
         Schema::create('physicians', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('child_id');
+            $table->unsignedBigInteger('info_id');
             $table->string('name');
             $table->string('phone');
-            $table->foreign('child_id')->references('id')->on('info')->onDelete('cascade');
+            $table->foreign('info_id')->references('id')->on('info')->onDelete('cascade');
         });
     }
 

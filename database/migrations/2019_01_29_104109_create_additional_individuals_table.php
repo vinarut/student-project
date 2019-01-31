@@ -14,11 +14,11 @@ class CreateAdditionalIndividualsTable extends Migration
     public function up()
     {
         Schema::create('additional_individuals', function (Blueprint $table) {
-        	$table->bigIncrements('id');
-            $table->unsignedBigInteger('child_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('info_id');
             $table->string('name');
             $table->string('phone');
-			$table->foreign('child_id')->references('id')->on('info')->onDelete('cascade');
+            $table->foreign('info_id')->references('id')->on('info')->onDelete('cascade');
         });
     }
 

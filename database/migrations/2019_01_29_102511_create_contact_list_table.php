@@ -15,11 +15,11 @@ class CreateContactListTable extends Migration
     {
         Schema::create('contact_list', function (Blueprint $table) {
         	$table->bigIncrements('id');
-            $table->unsignedBigInteger('child_id');
+            $table->unsignedBigInteger('info_id');
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->foreign('child_id')->references('id')->on('info')->onDelete('cascade');
+            $table->foreign('info_id')->references('id')->on('info')->onDelete('cascade');
         });
     }
 
