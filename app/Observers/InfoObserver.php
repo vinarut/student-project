@@ -15,7 +15,7 @@ class InfoObserver
      */
     public function created(Info $info)
     {
-        event(new InfoCreated($info));
+        //event(new InfoCreated($info));
     }
 
     /**

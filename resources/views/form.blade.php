@@ -4,6 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
+            @include('flash::message')
             @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
                     <ul class="list-unstyled">
@@ -13,7 +14,7 @@
                     </ul>
                 </div>
             @endif
-            <h4 class="card-title">Main Info</h4>
+            <h4 class="card-title">Student Information</h4>
             <form method="post" action="{{ route('info.store') }}" id="infoForm">
                 @csrf
                 <div class="form-group row">
