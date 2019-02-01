@@ -20,8 +20,8 @@
             <tbody>
             @foreach($clients as $client)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>{{$client->childs_name}}</td>
+                    <th scope="row">{{$client->id}}</th>
+                    <td><a href="{{route('info.show', ['info' => $client->id])}}">{{$client->childs_name}}</a></td>
                     <td>{{$client->DOB}}</td>
                     <td>{{$client->street_address}}</td>
                     <td>{{$client->town}}</td>

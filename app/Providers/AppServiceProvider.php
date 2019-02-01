@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Blade::directive('description', function ($expression) {
+            return "<?php echo ucwords(str_replace('_', ' ', {$expression})); ?>";
+        });
     }
 
     /**

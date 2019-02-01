@@ -8,16 +8,18 @@ use App\Http\Requests\RegistrationRequest;
 use App\Info;
 use App\Physicians;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
 use League\Csv\Writer;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class InfoController extends Controller
 {
+    /**
+     * InfoController constructor.
+     */
     public function __construct()
     {
-        $this->middleware('auth.basic', ['only' => ['index', 'export']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'export', 'show']]);
     }
 
     /**
@@ -27,28 +29,8 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $searchLinks = [];
         $query = Info::orderBy('id', 'desc');
-        /*
-        if($fromDate = request()->get('from_date')) {
-            $query->whereDate('created_at', '>=', Carbon::createFromFormat(config('settings.dateFormat'), $fromDate)->toDateString());
-            array_push($searchLinks, 'started_at');
-        }
-        if($toDate = request()->get('to_date')) {
-            $query->whereDate('created_at', '<=', Carbon::createFromFormat(config('settings.dateFormat'), $toDate)->toDateString());
-            array_push($searchLinks, 'to_date');
-        }
-        if($promoCode = request()->get('promo_code')) {
-            $query->where('promo_code', $promoCode);
-            array_push($searchLinks, 'promo_code');
-        }
-        */
         $clients = $query->paginate(20);
-
-        /// * apply search params to pagination links
-        if(count($searchLinks)) {
-            $clients->appends(\Input::only($searchLinks));
-        }
 
         return view('info.index', ['clients'=>$clients]);
     }
@@ -70,16 +52,6 @@ class InfoController extends Controller
 
         $filters = [];
         $vars = [];
-        if($fromDate = request()->get('from_date')) {
-            $filters[] = "`created_at` >= :from_date";
-            $vars['from_date'] = Carbon::createFromFormat(config('settings.dateFormat'), $fromDate)
-                ->startOfDay()->toDateTimeString();
-        }
-        if($toDate = request()->get('to_date')) {
-            $filters[] = "`created_at` <= :to_date";
-            $vars['to_date'] = Carbon::createFromFormat(config('settings.dateFormat'), $toDate)
-                ->endOfDay()->toDateTimeString();
-        }
 
         $sql = "select * from `info`".
             (count($filters)? " where ".implode(" and ", $filters): "").
@@ -191,14 +163,15 @@ class InfoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @param $info
      *
-     * @param  \App\Info  $info
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Info $info)
+    public function show($info)
     {
-        //
+        $info = Info::with(['physicians', 'contactList', 'additionalIndividuals'])->findOrFail($info);
+
+        return view('info.show', ['info' => $info]);
     }
 
     /**
