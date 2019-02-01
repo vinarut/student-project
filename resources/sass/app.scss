@@ -8,9 +8,17 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: rgba(50,82,186, 1);
+}
+
 .navbar-laravel {
-  background-color: #fff;
+  background-color: #337ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-laravel .logo {
+  max-height: 40px;
 }
 
 .form-control.error {
@@ -27,4 +35,9 @@
   margin-top: .25rem;
   font-size: 80%;
   color: #dc3545;
+}
+
+footer {
+  background-color: #fff;
+  color: #808080;
 }
