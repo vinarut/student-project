@@ -7,13 +7,13 @@
     @endforeach
 </ul>
 
-<form class="mt-4" method="post" action="{{ route('info.store') }}">
+<form class="mt-4" method="post" action="{{ route('info.store') }}" id="infoForm">
     @csrf
     <div class="form-group row">
         <label for="child_name" class="col-lg-4 col-sm-2 col-form-label">Child’s Name</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('child_name')? "is-invalid": ""}}" id="child_name"
-                   placeholder="Child’s Name" name="child_name" autofocus autocomplete="off" value="sdfklsjdf"
+                   placeholder="Child’s Name" name="child_name" autofocus autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('child_name'))
                 <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
         <label for="street_address" class="col-lg-4 col-sm-2 col-form-label">Street Address</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('street_address')? "is-invalid": ""}}"
-                   id="street_address" placeholder="Street Address" name="street_address" autocomplete="off" value="sdfklsjdf"
+                   id="street_address" placeholder="Street Address" name="street_address" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('street_address'))
                 <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
         <label for="town" class="col-lg-4 col-sm-2 col-form-label">Town</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('town')? "is-invalid": ""}}" id="town"
-                   placeholder="Town" name="town" autocomplete="off" value="sdfklsjdf" minlength="2" maxlength="255"
+                   placeholder="Town" name="town" autocomplete="off"  minlength="2" maxlength="255"
                    required>
             @if ($errors->has('town'))
                 <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
         <label for="zip" class="col-lg-4 col-sm-2 col-form-label">Zip</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('zip')? "is-invalid": ""}}" id="zip" placeholder="Zip"
-                   name="zip" autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>
+                   name="zip" autocomplete="off"  minlength="3" maxlength="255" required>
             @if ($errors->has('zip'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('zip') }}</strong>
@@ -76,7 +76,7 @@
         <label for="mother_name" class="col-lg-4 col-sm-2 col-form-label">Mother’s Name</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('mother_name')? "is-invalid": ""}}" id="mother_name"
-                   placeholder="Mother’s Name" name="mother_name" autocomplete="off" value="sdfklsjdf" minlength="3"
+                   placeholder="Mother’s Name" name="mother_name" autocomplete="off"  minlength="3"
                    maxlength="255" required>
             @if ($errors->has('mother_name'))
                 <span class="invalid-feedback" role="alert">
@@ -89,7 +89,7 @@
         <label for="home_phone" class="col-lg-4 col-sm-2 col-form-label">Home Phone</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('home_phone')? "is-invalid": ""}}" id="home_phone"
-                   placeholder="Home Phone" name="home_phone" autocomplete="off" value="sdfklsjdf" minlength="3"
+                   placeholder="Home Phone" name="home_phone" autocomplete="off"  minlength="3"
                    maxlength="255" required>
             @if ($errors->has('home_phone'))
                 <span class="invalid-feedback" role="alert">
@@ -102,7 +102,7 @@
         <label for="mother_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
-                   id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off" value="sdfklsjdf"
+                   id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('mother_cell_phone'))
                 <span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
         <label for="mother_employer" class="col-lg-4 col-sm-2 col-form-label">Mother’s Employer</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('mother_employer')? "is-invalid": ""}}"
-                   id="mother_employer" placeholder="Mother’s Employer" name="mother_employer" autocomplete="off" value="sdfklsjdf"
+                   id="mother_employer" placeholder="Mother’s Employer" name="mother_employer" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('mother_employer'))
                 <span class="invalid-feedback" role="alert">
@@ -128,7 +128,7 @@
         <label for="mother_city" class="col-lg-4 col-sm-2 col-form-label">City</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('mother_city')? "is-invalid": ""}}" id="mother_city"
-                   placeholder="City" name="mother_city" autocomplete="off" value="sdfklsjdf" minlength="2" maxlength="255" required>
+                   placeholder="City" name="mother_city" autocomplete="off"  minlength="2" maxlength="255" required>
             @if ($errors->has('mother_city'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('mother_city') }}</strong>
@@ -140,7 +140,7 @@
         <label for="mother_state" class="col-lg-4 col-sm-2 col-form-label">State</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('mother_state')? "is-invalid": ""}}" id="mother_state"
-                   placeholder="State" name="mother_state" autocomplete="off" value="sdfklsjdf" minlength="3"
+                   placeholder="State" name="mother_state" autocomplete="off"  minlength="3"
                    maxlength="255" required>
             @if ($errors->has('mother_state'))
                 <span class="invalid-feedback" role="alert">
@@ -153,7 +153,7 @@
         <label for="mother_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
-                   id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off" value="sdfklsjdf"
+                   id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('mother_work_phone'))
                 <span class="invalid-feedback" role="alert">
@@ -166,7 +166,7 @@
         <label for="father_name" class="col-lg-4 col-sm-2 col-form-label">Father’s Name</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}" id="father_name"
-                   placeholder="Father’s Name" name="father_name" autocomplete="off" value="sdfklsjdf"
+                   placeholder="Father’s Name" name="father_name" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('father_name'))
                 <span class="invalid-feedback" role="alert">
@@ -179,7 +179,7 @@
         <label for="father_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}"
-                   id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off" value="sdfklsjdf"
+                   id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('father_name'))
                 <span class="invalid-feedback" role="alert">
@@ -192,7 +192,7 @@
         <label for="father_employer" class="col-lg-4 col-sm-2 col-form-label">Father’s Employer</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('father_employer')? "is-invalid": ""}}"
-                   id="father_employer" placeholder="Father’s Employer" name="father_employer" autocomplete="off" value="sdfklsjdf"
+                   id="father_employer" placeholder="Father’s Employer" name="father_employer" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('father_employer'))
                 <span class="invalid-feedback" role="alert">
@@ -205,7 +205,7 @@
         <label for="father_city" class="col-lg-4 col-sm-2 col-form-label">City</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('father_city')? "is-invalid": ""}}" id="father_city"
-                   placeholder="City" name="father_city" autocomplete="off" value="sdfklsjdf" minlength="2" maxlength="255" required>
+                   placeholder="City" name="father_city" autocomplete="off"  minlength="2" maxlength="255" required>
             @if ($errors->has('father_city'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('father_city') }}</strong>
@@ -217,7 +217,7 @@
         <label for="father_state" class="col-lg-4 col-sm-2 col-form-label">State</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('father_state')? "is-invalid": ""}}" id="father_state"
-                   placeholder="State" name="father_state" autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>
+                   placeholder="State" name="father_state" autocomplete="off"  minlength="3" maxlength="255" required>
             @if ($errors->has('father_state'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('father_state') }}</strong>
@@ -229,7 +229,7 @@
         <label for="father_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
         <div class="col-lg-8 col-sm-10">
             <input type="text" class="form-control {{$errors->has('father_work_phone')? "is-invalid": ""}}"
-                   id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off" value="sdfklsjdf"
+                   id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off" 
                    minlength="3" maxlength="255" required>
             @if ($errors->has('father_work_phone'))
                 <span class="invalid-feedback" role="alert">
@@ -243,7 +243,7 @@
         <div class="col-lg-8 col-sm-10">
             <input type="email" class="form-control {{$errors->has('primary_email_address')? "is-invalid": ""}}"
                    id="primary_email_address" placeholder="Primary email address" name="primary_email_address"
-                   autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>
+                   autocomplete="off"  minlength="3" maxlength="255" required>
             @if ($errors->has('primary_email_address'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('primary_email_address') }}</strong>
@@ -327,7 +327,7 @@
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('contact_name')? "is-invalid": ""}}"--}}
                    {{--placeholder="Contacts name" name="contact[][name]"--}}
-                   {{--autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('contact_name'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('contact_name') }}</strong>--}}
@@ -340,7 +340,7 @@
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('contact_phone')? "is-invalid": ""}}"--}}
                    {{--placeholder="Contact phone" name="contact[][phone]"--}}
-                   {{--autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('contact_phone'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('contact_phone') }}</strong>--}}
@@ -353,7 +353,7 @@
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('contact_address')? "is-invalid": ""}}"--}}
                    {{--placeholder="Contacts address" name="contact[][address]"--}}
-                   {{--autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('contact_address'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('contact_address') }}</strong>--}}
@@ -368,7 +368,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Contacts name</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('contact_name')? "is-invalid": ""}}"
-                               placeholder="Contacts name" name="contact[0][name]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="Contacts name" name="contact[0][name]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('contact_name'))
                             <span class="invalid-feedback" role="alert">
@@ -381,7 +381,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('contact_phone')? "is-invalid": ""}}"
-                               placeholder="Contact phone" name="contact[0][phone]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="Contact phone" name="contact[0][phone]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('contact_phone'))
                             <span class="invalid-feedback" role="alert">
@@ -394,7 +394,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Contacts address</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('contact_address')? "is-invalid": ""}}"
-                               placeholder="First contacts address" name="contact[0][address]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="First contacts address" name="contact[0][address]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('contact_address'))
                             <span class="invalid-feedback" role="alert">
@@ -413,7 +413,7 @@
         {{--<label class="col-lg-4 col-sm-2 col-form-label">Physician name</label>--}}
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('physician_name')? "is-invalid": ""}}"--}}
-                   {{--placeholder="Physician name" name="physician_name[]" autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--placeholder="Physician name" name="physician_name[]" autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('physician_name'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('physician_name') }}</strong>--}}
@@ -425,7 +425,7 @@
         {{--<label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>--}}
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('physician_phone')? "is-invalid": ""}}"--}}
-                   {{--placeholder="Physician phone" name="physician_phone[]" autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--placeholder="Physician phone" name="physician_phone[]" autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('physician_phone'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('physician_phone') }}</strong>--}}
@@ -440,7 +440,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Physician name</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('physician_name')? "is-invalid": ""}}"
-                               placeholder="Physician name" name="physician[0][name]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="Physician name" name="physician[0][name]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('physician_name'))
                             <span class="invalid-feedback" role="alert">
@@ -453,7 +453,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('physician_phone')? "is-invalid": ""}}"
-                               placeholder="Physician phone" name="physician[0][phone]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="Physician phone" name="physician[0][phone]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('physician_phone'))
                             <span class="invalid-feedback" role="alert">
@@ -472,7 +472,7 @@
         {{--<label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>--}}
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('additional_name')? "is-invalid": ""}}"--}}
-                   {{--placeholder="Additional name" name="additional_name[]" autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--placeholder="Additional name" name="additional_name[]" autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('additional_name'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('additional_name') }}</strong>--}}
@@ -485,7 +485,7 @@
         {{--<div class="col-lg-8 col-sm-10">--}}
             {{--<input type="text" class="form-control {{$errors->has('additional_phone')? "is-invalid": ""}}"--}}
                    {{--placeholder="Additional phone" name="additional_phone[]"--}}
-                   {{--autocomplete="off" value="sdfklsjdf" minlength="3" maxlength="255" required>--}}
+                   {{--autocomplete="off"  minlength="3" maxlength="255" required>--}}
             {{--@if ($errors->has('additional_phone'))--}}
                 {{--<span class="invalid-feedback" role="alert">--}}
                     {{--<strong>{{ $errors->first('additional_phone') }}</strong>--}}
@@ -500,7 +500,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('additional_name')? "is-invalid": ""}}"
-                               placeholder="Additional name" name="additional[0][name]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="Additional name" name="additional[0][name]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('additional_name'))
                             <span class="invalid-feedback" role="alert">
@@ -513,7 +513,7 @@
                     <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('additional_phone')? "is-invalid": ""}}"
-                               placeholder="Additional phone" name="additional[0][phone]" autocomplete="off" value="sdfklsjdf"
+                               placeholder="Additional phone" name="additional[0][phone]" autocomplete="off" 
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('additional_phone'))
                             <span class="invalid-feedback" role="alert">
@@ -572,16 +572,91 @@
         $('#contact-list').czMore();
         $('#physicians').czMore();
         $('#additional-individuals').czMore();
-    });
 
-    function countChar (el) {
-        let len = el.value.trim().length;
-        if (len < el.minLength) {
-            $(el).addClass('is-invalid');
-        } else {
-            $(el).removeClass('is-invalid');
-        }
-    }
+		// let validator = $('#infoForm').validate();
+		// validator.form();
+        $('#infoForm').validate({
+            submitHandler: function(form) {
+
+            },
+            rules: {
+                child_name: 'required',
+                DOB: 'required',
+                town: 'required',
+                zip: 'required',
+                mother_name: 'required',
+                home_phone: 'required',
+                mother_cell_phone: 'required',
+                mother_employer: 'required',
+                mother_city: 'required',
+                mother_state: 'required',
+                mother_work_phone: 'required',
+                father_name: 'required',
+                father_cell_phone: 'required',
+                father_employer: 'required',
+                father_city: 'required',
+                father_state: 'required',
+                father_work_phone: 'required',
+                primary_email_address: 'required'
+            },
+            messages: {
+                child_name: {
+                    required: 'Please enter child name'
+                },
+                DOB: {
+                    required: 'Please enter date of birth'
+                },
+                town: {
+                    required: 'Please enter town',
+                },
+                zip: {
+                    required: 'Please enter zip',
+                },
+                mother_name: {
+                    required: 'Please enter mother name',
+                },
+                home_phone: {
+                    required: 'Please enter home phone',
+                },
+                mother_cell_phone: {
+                    required: 'Please enter mother cell phone',
+                },
+                mother_employer: {
+                    required: 'Please enter mother employer',
+                },
+                mother_city: {
+                    required: 'Please enter mother city',
+                },
+                mother_state: {
+                    required: 'Please enter mother state',
+                },
+                mother_work_phone: {
+                    required: 'Please enter mother work phone',
+                },
+                father_name: {
+                    required: 'Please enter father name',
+                },
+                father_cell_phone: {
+                    required: 'Please enter father cell phone',
+                },
+                father_employer: {
+                    required: 'Please enter father employer',
+                },
+                father_city: {
+                    required: 'Please enter father city',
+                },
+                father_state: {
+                    required: 'Please enter father state',
+                },
+                father_work_phone: {
+                    required: 'Please enter father work phone',
+                },
+                primary_email_address: {
+                    required: 'We need your email address to contact you'
+                },
+            }
+        });
+    });
 </script>
 
 @endsection
