@@ -35,9 +35,9 @@ class CreateInfoTable extends Migration
             $table->string('fathers_work_phone');
             $table->string('primary_email_address');
             $table->boolean('allergies');
-            $table->longText('allergies_describe')->nullable();
+            $table->text('allergies_describe')->nullable();
             $table->boolean('special_medical_history');
-            $table->longText('special_medical_history_describe')->nullable();
+            $table->text('special_medical_history_describe')->nullable();
             $table->boolean('epi_pen');
         });
     }

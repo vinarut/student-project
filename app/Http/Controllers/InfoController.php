@@ -72,30 +72,14 @@ class InfoController extends Controller
             ]);
             $info->save();
 
-			$physicians = $validated['physician'];
-			$contacts = $validated['contact'];
-			$additions = $validated['additional'];
+            $physicians = $validated['physician'];
+            $contacts = $validated['contact'];
+            $additions = $validated['additional'];
 
-			$mappedPhysicians = collect($physicians)->mapInto(Physicians::class);
-			$mappedContacts = collect($contacts)->mapInto(ContactList::class);
-			$mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
-			/*
-			$physician = new Physicians([
-                'name' => $validated['physician_name'] ?? '',
-                'phone' => $validated['physician_phone'] ?? ''
-            ]);
+            $mappedPhysicians = collect($physicians)->mapInto(Physicians::class);
+            $mappedContacts = collect($contacts)->mapInto(ContactList::class);
+            $mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
 
-			$contactList = new ContactList([
-                'name' => $validated['contact_name'] ?? '',
-                'phone' => $validated['contact_phone'] ?? '',
-                'address' => $validated['contact_address'] ?? '',
-            ]);
-
-            $additionalIndividuals = new AdditionalIndividuals([
-                'name' => $validated['additional_name'] ?? '',
-                'phone' => $validated['additional_phone'] ?? '',
-            ]);
-			*/
             $info->physicians()->saveMany($mappedPhysicians);
             $info->contactList()->saveMany($mappedContacts);
             $info->additionalIndividuals()->saveMany($mappedAdditions);
