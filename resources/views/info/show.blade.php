@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Main Info</h5>
+                <h5 class="card-title">Student Information</h5>
                 <dl class="row">
                     @foreach($info->getAttributes() as $k => $v)
                         <dt class="col-sm-3">@description($k)</dt>
