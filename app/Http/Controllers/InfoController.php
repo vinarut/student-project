@@ -47,8 +47,62 @@ class InfoController extends Controller
         $sql = "show columns from `info`";
         $stmt = $pdo->query($sql);
         while ($row = $stmt->fetch()) {
-            $header[] = ucwords(str_replace("_", " ", $row['Field']));
+            $header[] = $row['Field'];
         }
+
+        $collContacts = $collPhysicians = $collIndividuals = collect();
+
+        $sql = "select count(*) as `cnt` from `contact_list` group by `info_id` order by `cnt` desc limit 1";
+        $maxContacts = 2;
+        $row = $pdo->query($sql)->fetch(\PDO::FETCH_ASSOC);
+        if (isset($row['cnt']) && $row['cnt'] > $maxContacts) {
+            $maxContacts = $row['cnt'];
+        }
+        $collContacts = $collContacts->pad($maxContacts, ['name', 'phone', 'address'])->map(function ($item, $key) {
+            array_walk($item, function (& $i) use ($key) {
+                $i = 'contact_'.$i.'_'.($key + 1);
+            });
+            return $item;
+        });
+        $collContacts->each(function ($item, $key) use (& $header) {
+            $header = array_merge($header, $item);
+        });
+
+        $sql = "select count(*) as `cnt` from `physicians` group by `info_id` order by `cnt` desc limit 1";
+        $maxPhysicians = 1;
+        $row = $pdo->query($sql)->fetch(\PDO::FETCH_ASSOC);
+        if (isset($row['cnt']) && $row['cnt'] > $maxPhysicians) {
+            $maxPhysicians = $row['cnt'];
+        }
+        $collPhysicians = $collPhysicians->pad($maxPhysicians, ['name', 'phone'])->map(function ($item, $key) {
+            array_walk($item, function (& $i) use ($key) {
+                $i = 'physician_'.$i.'_'.($key + 1);
+            });
+            return $item;
+        });
+        $collPhysicians->each(function ($item, $key) use (& $header) {
+            $header = array_merge($header, $item);
+        });
+
+        $sql = "select count(*) as `cnt` from `additional_individuals` group by `info_id` order by `cnt` desc limit 1";
+        $maxIndividuals = 2;
+        $row = $pdo->query($sql)->fetch(\PDO::FETCH_ASSOC);
+        if (isset($row['cnt']) && $row['cnt'] > $maxIndividuals) {
+            $maxIndividuals = $row['cnt'];
+        }
+        $collIndividuals = $collIndividuals->pad($maxIndividuals, ['name', 'phone'])->map(function ($item, $key) {
+            array_walk($item, function (& $i) use ($key) {
+                $i = 'additional_individuals_'.$i.'_'.($key + 1);
+            });
+            return $item;
+        });
+        $collIndividuals->each(function ($item, $key) use (& $header) {
+            $header = array_merge($header, $item);
+        });
+
+        array_walk($header, function (& $item) {
+            $item = ucwords(str_replace("_", " ", $item));
+        });
 
         $filters = [];
         $vars = [];
@@ -65,7 +119,55 @@ class InfoController extends Controller
         $stmt->execute();
         $csv = Writer::createFromPath('php://temp', 'r+');
         $csv->insertOne($header);
-        $csv->insertAll($stmt);
+
+        while ($row = $stmt->fetch()) {
+            $i = 0;
+            $sql = "select `name`, `phone`, `address` from `contact_list` where `info_id`=:info_id";
+            $stmt1 = $pdo->prepare($sql);
+            $stmt1->bindValue(":info_id", $row['id'], \PDO::PARAM_INT);
+            $stmt1->execute();
+            while ($row1 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
+                $row = array_merge($row, array_combine($collContacts->get($i), $row1));
+                $i ++;
+            }
+            while($i < $maxContacts) {
+                $row = array_merge($row, array_combine($collContacts->get($i), ['','','']));
+                $i ++;
+            }
+            $stmt1->closeCursor();
+
+            $i = 0;
+            $sql = "select `name`, `phone` from `physicians` where `info_id`=:info_id";
+            $stmt1 = $pdo->prepare($sql);
+            $stmt1->bindValue(":info_id", $row['id'], \PDO::PARAM_INT);
+            $stmt1->execute();
+            while ($row1 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
+                $row = array_merge($row, array_combine($collPhysicians->get($i), $row1));
+                $i ++;
+            }
+            while ($i < $maxPhysicians) {
+                $row = array_merge($row, array_combine($collPhysicians->get($i), ['','']));
+                $i ++;
+            }
+            $stmt1->closeCursor();
+
+            $i = 0;
+            $sql = "select `name`, `phone` from `additional_individuals` where `info_id`=:info_id";
+            $stmt1 = $pdo->prepare($sql);
+            $stmt1->bindValue(":info_id", $row['id'], \PDO::PARAM_INT);
+            $stmt1->execute();
+            while ($row1 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
+                $row = array_merge($row, array_combine($collIndividuals->get($i), $row1));
+                $i ++;
+            }
+            while ($i < $maxIndividuals) {
+                $row = array_merge($row, array_combine($collIndividuals->get($i), ['', '']));
+                $i ++;
+            }
+            $stmt1->closeCursor();
+
+            $csv->insertOne($row);
+        }
 
         //we create a callable to output the CSV in chunk
         //with Symfony StreamResponse you can flush the body content if necessary
