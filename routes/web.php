@@ -16,6 +16,11 @@ Route::get('/', function () {
 });
 
 Route::resource('info', 'InfoController');
+Route::get('export', 'InfoController@export')->name('info.export');
 
 //Route::get('info', 'InfoController@index');
 //Route::post('info', 'InfoController@store');
+
+Auth::routes();
+
+

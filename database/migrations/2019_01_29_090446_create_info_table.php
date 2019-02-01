@@ -39,6 +39,7 @@ class CreateInfoTable extends Migration
             $table->boolean('special_medical_history');
             $table->text('special_medical_history_describe')->nullable();
             $table->boolean('epi_pen');
+            $table->timestamps();
         });
     }
 
