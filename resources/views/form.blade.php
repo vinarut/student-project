@@ -592,6 +592,49 @@
                     </div>
                 </div>
 
+                <h4 class="card-title mt-5">PHOTO</h4>
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        CSH takes photos and videos at various events for its daily class emails, website, social media,
+                        and printed promotional purposes. CSH policy states that we will not identify children by name
+                        or address in any photographs, videos, or publications unless written permission is obtained from parents.
+                    </div>
+                </div>
+
+                <fieldset class="form-group mt-3">
+                    <div class="row">
+                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Please choose <b>ONE OPTION ONLY</b></legend>
+                        <div class="col-lg-8 col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="photo_choice" id="photoHigh"
+                                       value="My child's photo may appear in daily class emails,
+                                       on the website, social media (i.e. Facebook, Instagram), and printed promotional
+                                       purposes">
+                                <label class="form-check-label" for="photoHigh" id="photoHighLabel">
+                                    My child's photo may appear in daily class emails,
+                                    on the website, social media (i.e. Facebook, Instagram), and printed promotional
+                                    purposes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="photo_choice" id="photoMedium"
+                                       value="My child's photo may appear in daily class emails ONLY">
+                                <label class="form-check-label" for="photoMedium" id="photoMediumLabel">
+                                    My child's photo may appear in daily class emails ONLY
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="photo_choice" id="photoLow" checked
+                                       value="Do not include my child in any photographs">
+                                <label class="form-check-label" for="photoLow" id="photoLowLabel">
+                                    Do not include my child in any photographs
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <h4 class="card-title mt-5">DIRECTORY</h4>
 
                 <div class="row">
