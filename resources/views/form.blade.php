@@ -358,7 +358,7 @@
                     </div>
                 </fieldset>
 
-                <h4 class="card-title">Emergency Contacts List At Least 2 Local Names Other Than Parents</h4>
+                <h4 class="card-title mt-5">Emergency Contacts List At Least 2 Local Names Other Than Parents</h4>
 
                 <div>
                     @foreach (range(0,1) as $k)
@@ -457,7 +457,7 @@
                     </div>
                 </div>
 
-                <h4 class="card-title">Physicians</h4>
+                <h4 class="card-title mt-5">Physicians</h4>
 
                 <div>
                     @foreach (range(0,0) as $k)
@@ -514,7 +514,7 @@
                     </div>
                 </div>
 
-                <h4 class="card-title">Additional Individuals That May Pick Up Your Child</h4>
+                <h4 class="card-title mt-5">Additional Individuals That May Pick Up Your Child</h4>
 
                 <div>
                     @foreach (range(0,1) as $k)
@@ -591,6 +591,35 @@
                         </div>
                     </div>
                 </div>
+
+                <h4 class="card-title mt-5">DIRECTORY</h4>
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        The CSH DIRECTORY of all XXX students will be available on the CSH website for the convenience
+                        of our families. THE DIRECTORY IS PASSWORD PROTECTED. Do you give your permission for your
+                        child's name, address, phone numbers, and your email address to appear in the password protected
+                        CSH Directory.
+                    </div>
+                </div>
+
+                <fieldset class="form-group mt-3">
+                    <div class="row">
+                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Please choose <b>ONE OPTION ONLY</b></legend>
+                        <div class="col-lg-8 col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="directory" id="directoryAgree" value="1">
+                                <label class="form-check-label" for="directoryAgree">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="directory" id="directoryDisagree" value="0"
+                                       checked>
+                                <label class="form-check-label" for="directoryDisagree">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <div class="form-group row mt-5">
                     <label class="col-lg-4 col-form-label"></label>
                     <div class="col-lg-8 col-sm-12 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}" ></div>

@@ -245,6 +245,7 @@ class InfoController extends Controller
                 'special_medical_history' => $validated['medical_history'] ?? '',
                 'special_medical_history_describe' => $validated['medical_history_describe'] ?? '',
                 'epi_pen' => $validated['epi_pen'] ?? '',
+                'directory_agree' => $validated['directory'] ?? '',
             ]);
             $info->save();
 

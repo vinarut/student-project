@@ -8,7 +8,7 @@
                 <dl class="row">
                     @foreach($info->getAttributes() as $k => $v)
                         <dt class="col-sm-3">@description($k)</dt>
-                        @if($v === 1)
+                        @if($v === 1 && $k !== 'id')
                             <dd class="col-sm-9">yes</dd>
                             @continue;
                         @endif
