@@ -25,8 +25,8 @@
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('child_name'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('child_name') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('child_name') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -37,8 +37,8 @@
                                name="DOB" autocomplete="off" required>
                         @if ($errors->has('DOB'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('DOB') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('DOB') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -50,8 +50,8 @@
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('street_address'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('street_address') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('street_address') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -63,8 +63,8 @@
                                required>
                         @if ($errors->has('town'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('town') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('town') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -72,12 +72,13 @@
                     <label for="zip" class="col-lg-4 col-sm-2 col-form-label">Zip</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('zip')? "is-invalid": ""}}" id="zip" placeholder="Zip"
-                               name="zip" autocomplete="off"  minlength="3" maxlength="255" required>
+                               name="zip" autocomplete="off"  minlength="5" maxlength="255" pattern="[0-9]{5}" required>
                         @if ($errors->has('zip'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('zip') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('zip') }}</strong>
+                            </span>
                         @endif
+                        <small>Example: 00000</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -88,35 +89,37 @@
                                maxlength="255" required>
                         @if ($errors->has('mother_name'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('mother_name') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('mother_name') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="home_phone" class="col-lg-4 col-sm-2 col-form-label">Home Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('home_phone')? "is-invalid": ""}}" id="home_phone"
-                               placeholder="Home Phone" name="home_phone" autocomplete="off"  minlength="3"
-                               maxlength="255" required>
+                        <input type="tel" class="form-control phone {{$errors->has('home_phone')? "is-invalid": ""}}"
+                               id="home_phone" placeholder="Home Phone" name="home_phone" autocomplete="off"  minlength="3"
+                               maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('home_phone'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('home_phone') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('home_phone') }}</strong>
+                            </span>
                         @endif
+                        <small>Example: 000-000-0000</small>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="mother_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control phone {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
                                id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off"
-                               minlength="3" maxlength="255" required>
+                               minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('mother_cell_phone'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('mother_cell_phone') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('mother_cell_phone') }}</strong>
+                            </span>
                         @endif
+                        <small>Example: 000-000-0000</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -127,8 +130,8 @@
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('mother_employer'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('mother_employer') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('mother_employer') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -139,8 +142,8 @@
                                placeholder="City" name="mother_city" autocomplete="off"  minlength="2" maxlength="255" required>
                         @if ($errors->has('mother_city'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('mother_city') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('mother_city') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -148,26 +151,27 @@
                     <label for="mother_state" class="col-lg-4 col-sm-2 col-form-label">State</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('mother_state')? "is-invalid": ""}}" id="mother_state"
-                               placeholder="State" name="mother_state" autocomplete="off"  minlength="3"
+                               placeholder="State" name="mother_state" autocomplete="off"  minlength="2"
                                maxlength="255" required>
                         @if ($errors->has('mother_state'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('mother_state') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('mother_state') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="mother_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control phone {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
                                id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off"
-                               minlength="3" maxlength="255" required>
+                               minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('mother_work_phone'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('mother_work_phone') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('mother_work_phone') }}</strong>
+                            </span>
                         @endif
+                        <small>Example: 000-000-0000</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -178,22 +182,23 @@
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('father_name'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('father_name') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('father_name') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="father_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control phone {{$errors->has('father_name')? "is-invalid": ""}}"
                                id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off"
-                               minlength="3" maxlength="255" required>
+                               minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('father_name'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('father_name') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('father_name') }}</strong>
+                            </span>
                         @endif
+                        <small>Example: 000-000-0000</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -204,8 +209,8 @@
                                minlength="3" maxlength="255" required>
                         @if ($errors->has('father_employer'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('father_employer') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('father_employer') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -216,8 +221,8 @@
                                placeholder="City" name="father_city" autocomplete="off"  minlength="2" maxlength="255" required>
                         @if ($errors->has('father_city'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('father_city') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('father_city') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -225,25 +230,26 @@
                     <label for="father_state" class="col-lg-4 col-sm-2 col-form-label">State</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('father_state')? "is-invalid": ""}}" id="father_state"
-                               placeholder="State" name="father_state" autocomplete="off"  minlength="3" maxlength="255" required>
+                               placeholder="State" name="father_state" autocomplete="off"  minlength="2" maxlength="255" required>
                         @if ($errors->has('father_state'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('father_state') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('father_state') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="father_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('father_work_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control phone {{$errors->has('father_work_phone')? "is-invalid": ""}}"
                                id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off"
-                               minlength="3" maxlength="255" required>
+                               minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('father_work_phone'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('father_work_phone') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('father_work_phone') }}</strong>
+                            </span>
                         @endif
+                        <small>Example: 000-000-0000</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -254,8 +260,8 @@
                                autocomplete="off"  minlength="3" maxlength="255" required>
                         @if ($errors->has('primary_email_address'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('primary_email_address') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('primary_email_address') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -303,6 +309,29 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <div class="form-group row">
+                    <div class="col-lg-12 col-sm-12">
+                        <p>
+                            I authorize the director or supervising staff person to take whatever measures may be
+                            necessary to obtain medical care if warranted. These steps may include, but are not limited to
+                            the following:</p>
+                        <ul class="font-weight-bold">
+                            <li>Attempt to contact parent or guardian.</li>
+                            <li>Attempt to contact the child’s physician.</li>
+                            <li>Attempt to contact a parent through any of the emergency names listed above.</li>
+                        </ul>
+                        <p>
+                            In the event of a medical emergency as deemed necessary by the director, we will do any or
+                            all of the following o Call another physician or paramedics</p>
+                        <ul class="font-weight-bold">
+                            <li>Call an ambulance.</li>
+                            <li>Have the child taken to an emergency hospital in the company of a staff member.</li>
+                            <li>Any expenses incurred will be the responsibility of the child’s family.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <fieldset class="form-group">
                     <div class="row">
                         <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Epi pen required?</legend>
@@ -341,22 +370,23 @@
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('contact.'.$k.'.name'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('contact.'.$k.'.name') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('contact.'.$k.'.name') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="text" class="form-control {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control phone {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Contact phone" name="contact[{{$k}}][phone]" autocomplete="off"
-                                       minlength="3" maxlength="255" required>
+                                       minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 @if ($errors->has('contact.'.$k.'.phone'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('contact.'.$k.'.phone') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('contact.'.$k.'.phone') }}</strong>
+                                    </span>
                                 @endif
+                                <small>Example: 000-000-0000</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -367,8 +397,21 @@
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('contact.'.$k.'.address'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('contact.'.$k.'.address') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('contact.'.$k.'.address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
+                            <div class="col-lg-8 col-sm-10">
+                                <textarea type="text" class="form-control {{$errors->has('contact.'.$k.'.relation')? "is-invalid": ""}}"
+                                          placeholder="Relationship to сhild" name="contact[{{$k}}][relation]"
+                                          autocomplete="off" maxlength="65535" required></textarea>
+                                @if ($errors->has('contact.'.$k.'.relation'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('contact.'.$k.'.relation') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -388,9 +431,10 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="text" class="form-control"
+                                    <input type="tel" class="form-control phone"
                                            placeholder="Contact phone" name="contact[0][phone]" autocomplete="off"
-                                           minlength="3" maxlength="255" required>
+                                           minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                    <small>Example: 000-000-0000</small>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -399,6 +443,14 @@
                                     <input type="text" class="form-control"
                                            placeholder="First contacts address" name="contact[0][address]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
+                                <div class="col-lg-8 col-sm-10">
+                                    <textarea type="text" class="form-control" placeholder="Relationship to child"
+                                              name="contact[0][relation]" autocomplete="off" maxlength="65535"
+                                              required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -417,22 +469,23 @@
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('physician.'.$k.'.name'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('physician.'.$k.'.name') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('physician.'.$k.'.name') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="text" class="form-control {{$errors->has('physician.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control phone {{$errors->has('physician.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Physician phone" name="physician[{{$k}}][phone]" autocomplete="off"
-                                       minlength="3" maxlength="255" required>
+                                       minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 @if ($errors->has('physician.'.$k.'.phone'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('physician.'.$k.'.phone') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('physician.'.$k.'.phone') }}</strong>
+                                    </span>
                                 @endif
+                                <small>Example: 000-000-0000</small>
                             </div>
                         </div>
                     @endforeach
@@ -451,9 +504,10 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="text" class="form-control"
+                                    <input type="tel" class="form-control"
                                            placeholder="Physician phone" name="physician[0][phone]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
+                                    <small>Example: 000-000-0000</small>
                                 </div>
                             </div>
                         </div>
@@ -472,21 +526,35 @@
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('additional.'.$k.'.name'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('additional.'.$k.'.name') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('additional.'.$k.'.name') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="text" class="form-control {{$errors->has('additional.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control phone {{$errors->has('additional.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Additional phone" name="additional[{{$k}}][phone]" autocomplete="off"
-                                       minlength="3" maxlength="255" required>
+                                       minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 @if ($errors->has('additional.'.$k.'.phone'))
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('additional.'.$k.'.phone') }}</strong>
-                            </span>
+                                        <strong>{{ $errors->first('additional.'.$k.'.phone') }}</strong>
+                                    </span>
+                                @endif
+                                <small>Example: 000-000-0000</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
+                            <div class="col-lg-8 col-sm-10">
+                                <textarea type="text" class="form-control {{$errors->has('additional.'.$k.'.relation')? "is-invalid": ""}}"
+                                          placeholder="Relationship to сhild" name="additional[{{$k}}][relation]"
+                                          autocomplete="off" maxlength="65535" required></textarea>
+                                @if ($errors->has('additional.'.$k.'.relation'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('additional.'.$k.'.relation') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -506,9 +574,18 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="text" class="form-control"
+                                    <input type="tel" class="form-control phone"
                                            placeholder="Additional phone" name="additional[0][phone]" autocomplete="off"
-                                           minlength="3" maxlength="255" required>
+                                           minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                    <small>Example: 000-000-0000</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
+                                <div class="col-lg-8 col-sm-10">
+                                    <textarea type="text" class="form-control" placeholder="Relationship to child"
+                                              name="additional[0][relation]" autocomplete="off" maxlength="65535"
+                                              required></textarea>
                                 </div>
                             </div>
                         </div>

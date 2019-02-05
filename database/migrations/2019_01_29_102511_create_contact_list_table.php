@@ -19,6 +19,7 @@ class CreateContactListTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
+            $table->text('relation')->nullable();
             $table->foreign('info_id')->references('id')->on('info')->onDelete('cascade');
         });
     }

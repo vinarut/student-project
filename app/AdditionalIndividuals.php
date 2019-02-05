@@ -9,7 +9,7 @@ class AdditionalIndividuals extends Model
     protected $table = 'additional_individuals';
 
     protected $fillable = [
-        'child_id', 'name', 'phone'
+        'child_id', 'name', 'phone', 'relation'
     ];
 
     public $timestamps = false;

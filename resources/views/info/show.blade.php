@@ -8,6 +8,14 @@
                 <dl class="row">
                     @foreach($info->getAttributes() as $k => $v)
                         <dt class="col-sm-3">@description($k)</dt>
+                        @if($v === 1)
+                            <dd class="col-sm-9">yes</dd>
+                            @continue;
+                        @endif
+                        @if($v === 0)
+                            <dd class="col-sm-9">no</dd>
+                            @continue;
+                        @endif
                         <dd class="col-sm-9">{{$v}}</dd>
                     @endforeach
                 </dl>

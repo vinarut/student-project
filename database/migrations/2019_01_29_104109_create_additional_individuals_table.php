@@ -18,6 +18,7 @@ class CreateAdditionalIndividualsTable extends Migration
             $table->unsignedBigInteger('info_id');
             $table->string('name');
             $table->string('phone');
+            $table->text('relation')->nullable();
             $table->foreign('info_id')->references('id')->on('info')->onDelete('cascade');
         });
     }
