@@ -39,13 +39,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function login(Request $request)
-    {
-        $token = $request->input('g-recaptcha-response');
-        if ($token)
-            return redirect('/info/create');
-        else
-            return redirect('/login');
-    }
 }

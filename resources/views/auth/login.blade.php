@@ -48,9 +48,7 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                                <div class="mt-2 g-recaptcha" data-sitekey="6LdsII8UAAAAAA4Qh4of29vBnUIp_9Kv_zs74LMb">
 
-                                </div>
                             </div>
                         </div>
 

@@ -205,7 +205,7 @@ class InfoController extends Controller
      */
     public function create()
     {
-		return view('form');
+        return view('form');
     }
 
     /**
@@ -216,7 +216,7 @@ class InfoController extends Controller
      */
     public function store(RegistrationRequest $request)
     {
-		\DB::transaction(function () use ($request) {
+        \DB::transaction(function () use ($request) {
 
             $validated = $request->validated();
 
@@ -259,10 +259,10 @@ class InfoController extends Controller
             $info->physicians()->saveMany($mappedPhysicians);
             $info->contactList()->saveMany($mappedContacts);
             $info->additionalIndividuals()->saveMany($mappedAdditions);
-			flash()->success('Record created successfully');
+            flash()->success('Record created successfully');
         });
 
-		return back()->withInput();
+        return back()->withInput();
     }
 
     /**

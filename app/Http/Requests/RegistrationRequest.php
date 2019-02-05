@@ -61,6 +61,8 @@ class RegistrationRequest extends FormRequest
             'additional' => 'required|array|min:2',
             'additional.*.name' => 'required|string|min:3|max:255',
             'additional.*.phone' => 'required|string|min:3|max:255',
+
+            'g-recaptcha-response' => 'required|captcha'
         ];
     }
 }

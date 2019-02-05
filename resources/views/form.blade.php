@@ -261,7 +261,7 @@
                 </div>
                 <fieldset class="form-group">
                     <div class="row">
-                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Allergies (default "No")</legend>
+                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Allergies</legend>
                         <div class="col-lg-8 col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="allergies" id="yesAllergies" value="1">
@@ -282,7 +282,7 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="row">
-                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Special medical history (default "No")</legend>
+                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Special medical history</legend>
                         <div class="col-lg-8 col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="medical_history" id="yesHistory" value="1">
@@ -305,7 +305,7 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="row">
-                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Epi pen required? (default "No")</legend>
+                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Epi pen required?</legend>
                         <div class="col-lg-8 col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="epi_pen" id="yesEpiPen" value="1">
@@ -314,7 +314,8 @@
                                 </label>
                                 <p id="link">Parent and physician must complete the Food Allergy & Anaphylaxis Emergency Care Plan
                                     Form and return to Compass. Form can be found
-                                    <a href="https://compassschoolhouse.com/wp-content/uploads/2018/08/allergy-emergency-care-form.pdf">
+                                    <a href="https://compassschoolhouse.com/wp-content/uploads/2018/08/allergy-emergency-care-form.pdf"
+                                    target="_blank">
                                         here</a>.
                                 </p>
                             </div>
@@ -513,6 +514,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group row mt-5">
+                    <label class="col-lg-4 col-form-label"></label>
+                    <div class="col-lg-8 col-sm-12 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}" ></div>
+                </div>
+
                 <div class="form-group row">
                     <div class="offset-lg-4 offset-sm-2 col-lg-8 col-sm-10">
                         <button type="submit" class="btn btn-primary">Send</button>
