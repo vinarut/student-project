@@ -34,6 +34,24 @@ $(document).ready(function () {
             elements[index].addClass('d-none');
     });
 
+    let canvas = document.getElementById('canvas');
+    let clear = document.getElementById('clear');
+    let save = document.getElementById('save');
+    let signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgba(255, 255, 255, 0)',
+        penColor: 'rgb(0, 0, 0)'
+    });
+
+    save.addEventListener('click', function (event) {
+        let data = signaturePad.toDataURL('image/png');
+        event.preventDefault();
+        window.open(data);
+    });
+    clear.addEventListener('click', function (event) {
+        signaturePad.clear();
+        event.preventDefault();
+    });
+
     $('#contact-list').czMore();
     $('#physicians').czMore();
     $('#additional-individuals').czMore();
@@ -48,6 +66,9 @@ $(document).ready(function () {
             event.preventDefault();
             alert("Please check the recaptcha");
         }
+        let inputSignature = $('#signature');
+        let data = signaturePad.toDataURL('image/png');
+        inputSignature.attr('value', data);
     });
 });
 

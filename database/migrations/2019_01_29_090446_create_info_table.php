@@ -42,6 +42,7 @@ class CreateInfoTable extends Migration
             $table->boolean('release_form');
             $table->text('photo_choice');
             $table->boolean('directory_agree');
+            $table->text('signature');
             $table->timestamps();
         });
     }

@@ -16,6 +16,13 @@
                             <dd class="col-sm-9">no</dd>
                             @continue;
                         @endif
+                        @if($k === 'signature')
+                            <input id="inputSignature" class="d-none" value="{{$v}}"/>
+                            <dd class="col-sm-9">
+                                <div id="decodeSignature"></div>
+                            </dd>
+                            @continue;
+                        @endif
                         <dd class="col-sm-9">{{$v}}</dd>
                     @endforeach
                 </dl>

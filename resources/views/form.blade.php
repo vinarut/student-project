@@ -421,7 +421,7 @@
                     <div class="first">
                         <div class="recordset">
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Contacts name</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contacts name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
                                            placeholder="Contacts name" name="contact[0][name]" autocomplete="off"
@@ -494,7 +494,7 @@
                     <div class="first">
                         <div class="recordset">
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Physician name</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Physician name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
                                            placeholder="Physician name" name="physician[0][name]" autocomplete="off"
@@ -564,7 +564,7 @@
                     <div class="first">
                         <div class="recordset">
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Additional name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
                                            placeholder="Additional name" name="additional[0][name]" autocomplete="off"
@@ -685,6 +685,19 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label"></label>
+                    <div class="col-lg-8 col-sm-10">
+                        <canvas id="canvas" class="border" width=400 height=200></canvas>
+                        <input id="signature" class="d-none" name="signature" />
+                    </div>
+                    <label class="col-lg-4 col-sm-2 col-form-label mt-2"></label>
+                    <div class="col-lg-8 col-sm-10 mt-2">
+                        <button id="save" class="btn btn-success">Save</button>
+                        <button id="clear" class="btn btn-danger">Clear</button>
+                    </div>
+                </div>
 
                 <div class="form-group row mt-5">
                     <label class="col-lg-4 col-form-label"></label>

@@ -50,8 +50,8 @@ MIT License, https://github.com/cozeit/czMore/blob/master/LICENSE.md
                   'background-image': 'url("/img/add.png")',
                   'background-position': 'center center',
                   'background-repeat': 'no-repeat',
-                  'height': '25px',
-                  'width': '25px',
+                  'height': '20px',
+                  'width': '20px',
                   'cursor': 'pointer',
               });
             }
@@ -118,9 +118,9 @@ MIT License, https://github.com/cozeit/czMore/blob/master/LICENSE.md
                       'background-image': 'url("/img/remove.png")',
                       'background-position': 'center center',
                       'background-repeat': 'no-repeat',
-                      'height': '25px',
-                      'width': '25px',
-                      'cursor': 'poitnter',
+                      'height': '20px',
+                      'width': '20px',
+                      'cursor': 'pointer'
                   });
               }
             }
