@@ -43,6 +43,7 @@ class CreateInfoTable extends Migration
             $table->text('photo_choice');
             $table->boolean('directory_agree');
             $table->text('signature');
+            $table->ipAddress('ip');
             $table->timestamps();
         });
     }

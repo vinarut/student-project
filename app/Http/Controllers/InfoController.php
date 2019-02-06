@@ -249,6 +249,7 @@ class InfoController extends Controller
                 'photo_choice' => $validated['photo_choice'] ?? '',
                 'directory_agree' => $validated['directory'] ?? '',
                 'signature' => $validated['signature'] ?? '',
+                'ip' => $_SERVER['REMOTE_ADDR'],
             ]);
             $info->save();
 
