@@ -97,7 +97,7 @@
                 <div class="form-group row">
                     <label for="home_phone" class="col-lg-4 col-sm-2 col-form-label">Home Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="tel" class="form-control phone {{$errors->has('home_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control {{$errors->has('home_phone')? "is-invalid": ""}}"
                                id="home_phone" placeholder="Home Phone" name="home_phone" autocomplete="off"
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('home_phone'))
@@ -111,7 +111,7 @@
                 <div class="form-group row">
                     <label for="mother_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="tel" class="form-control phone {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
                                id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off"
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('mother_cell_phone'))
@@ -163,7 +163,7 @@
                 <div class="form-group row">
                     <label for="mother_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="tel" class="form-control phone {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
                                id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off"
                                minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('mother_work_phone'))
@@ -190,7 +190,7 @@
                 <div class="form-group row">
                     <label for="father_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="tel" class="form-control phone {{$errors->has('father_name')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}"
                                id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off"
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('father_name'))
@@ -241,7 +241,7 @@
                 <div class="form-group row">
                     <label for="father_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="tel" class="form-control phone {{$errors->has('father_work_phone')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control {{$errors->has('father_work_phone')? "is-invalid": ""}}"
                                id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off"
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         @if ($errors->has('father_work_phone'))
@@ -378,7 +378,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="tel" class="form-control phone {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Contact phone" name="contact[{{$k}}][phone]" autocomplete="off"
                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 @if ($errors->has('contact.'.$k.'.phone'))
@@ -431,7 +431,7 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="tel" class="form-control phone"
+                                    <input type="tel" class="form-control"
                                            placeholder="Contact phone" name="contact[0][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                     <small>Example: 000-000-0000</small>
@@ -477,7 +477,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="tel" class="form-control phone {{$errors->has('physician.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control {{$errors->has('physician.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Physician phone" name="physician[{{$k}}][phone]" autocomplete="off"
                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 @if ($errors->has('physician.'.$k.'.phone'))
@@ -534,7 +534,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="tel" class="form-control phone {{$errors->has('additional.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control {{$errors->has('additional.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Additional phone" name="additional[{{$k}}][phone]" autocomplete="off"
                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 @if ($errors->has('additional.'.$k.'.phone'))
@@ -574,7 +574,7 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="tel" class="form-control phone"
+                                    <input type="tel" class="form-control"
                                            placeholder="Additional phone" name="additional[0][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                     <small>Example: 000-000-0000</small>
