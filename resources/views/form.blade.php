@@ -592,6 +592,29 @@
                     </div>
                 </div>
 
+                <h4 class="card-title mt-5">RELEASE FORM</h4>
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        I have read and understand the information contained in the CSH Family Handbook
+                        (available on the CSH website) which includes the following documents.
+                        <ul class="font-weight-bold">
+                            <li>The Information to Parents Statement</li>
+                            <li>CSH Philosophy of Discipline</li>
+                            <li>CSH Release of Children Policy</li>
+                            <li>CSH Policy on the Expulsion of Children</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">CHECK HERE</label>
+                    <div class="col-lg-1 col-sm-1">
+                        <input type="checkbox" class="form-control" name="release_form" value="1" required/>
+                    </div>
+                    <div class="col-lg-7 col-sm-9"></div>
+                </div>
+
                 <h4 class="card-title mt-5">PHOTO</h4>
 
                 <div class="row">

@@ -48,6 +48,7 @@ class RegistrationRequest extends FormRequest
             'medical_history' => 'required|boolean',
             'medical_history_describe' => 'required_if:medical_history,1|max:65535',
             'epi_pen' => 'required|boolean',
+            'release_form' => 'required|boolean',
             'photo_choice' => 'required',
             'directory' => 'required|boolean',
 
