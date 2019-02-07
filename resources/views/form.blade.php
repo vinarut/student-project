@@ -72,7 +72,7 @@
                     <label for="zip" class="col-lg-4 col-sm-2 col-form-label">Zip</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('zip')? "is-invalid": ""}}" id="zip" placeholder="Zip"
-                               name="zip" autocomplete="off"  minlength="5" maxlength="255" pattern="[0-9]{5}" required>
+                               name="zip" autocomplete="off" pattern="[0-9]{5,}" required>
                         @if ($errors->has('zip'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('zip') }}</strong>
@@ -257,7 +257,7 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="email" class="form-control {{$errors->has('primary_email_address')? "is-invalid": ""}}"
                                id="primary_email_address" placeholder="Primary email address" name="primary_email_address"
-                               autocomplete="off"  minlength="3" maxlength="255" required>
+                               autocomplete="off" maxlength="255" required>
                         @if ($errors->has('primary_email_address'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('primary_email_address') }}</strong>
@@ -608,11 +608,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">CHECK HERE</label>
-                    <div class="col-lg-1 col-sm-1">
-                        <input type="checkbox" class="form-control" name="release_form" value="1" required/>
+                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">CHECK HERE</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="release_form" value="1" required/>
+                        </div>
                     </div>
-                    <div class="col-lg-7 col-sm-9"></div>
                 </div>
 
                 <h4 class="card-title mt-5">PHOTO</h4>
@@ -700,8 +701,8 @@
                 </div>
 
                 <div class="form-group row mt-5">
-                    <label class="col-lg-4 col-form-label"></label>
-                    <div class="col-lg-8 col-sm-12 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}" ></div>
+                    <label class="col-lg-4 col-sm-2 col-form-label"></label>
+                    <div class="col-lg-8 col-sm-10 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}" ></div>
                 </div>
 
                 <div class="form-group row">
