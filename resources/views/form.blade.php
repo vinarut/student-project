@@ -727,7 +727,7 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label"><b>Signature</b></label>
                     <div class="col-lg-8 col-sm-10">
-                        <canvas id="canvas" class="border" width=400 height=200></canvas>
+                        <canvas id="canvas" class="border sign"></canvas>
                         <input id="signature" class="d-none" name="signature" />
                     </div>
                     <label class="col-lg-4 col-sm-2 col-form-label mt-2"></label>

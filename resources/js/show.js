@@ -1,11 +1,9 @@
 $(document).ready(function () {
 
-    let inputSignature = $('#inputSignature');
-    let decodeSignature = $('#decodeSignature');
-    let signature = new Image();
-    signature.src = inputSignature.val();
-    decodeSignature.css('width', signature.naturalWidth);
-    decodeSignature.css('height', signature.naturalHeight);
-    decodeSignature.css('background', 'url(' + signature.src + ')');
+    let img = $('#img').get(0);
+    let decodeSignature = $('#decodeSignature').get(0);
+    $(decodeSignature).css('width', img.naturalWidth);
+    $(decodeSignature).css('height', img.naturalHeight);
+    $(decodeSignature).css('background', 'url(' + img.src + ')');
 
 });

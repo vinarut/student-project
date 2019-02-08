@@ -9,7 +9,7 @@
                     @foreach($info->getAttributes() as $k => $v)
                         <dt class="col-sm-3">@description($k)</dt>
                         @if($k === 'signature')
-                            <input id="inputSignature" class="d-none" value="{{$v}}"/>
+                            <img id="img" class="d-none" src="{{$v}}"/>
                             <dd class="col-sm-9">
                                 <div id="decodeSignature"></div>
                             </dd>
