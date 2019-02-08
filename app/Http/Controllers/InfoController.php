@@ -248,6 +248,8 @@ class InfoController extends Controller
                 'release_form' => ($validated['release_form']) ? 'yes' : 'no',
                 'photo_choice' => $validated['photo_choice'] ?? '',
                 'directory_agree' => ($validated['directory']) ? 'yes' : 'no',
+                'your_name' => $validated['your_name'] ?? '',
+                'date' => $validated['date'] ?? '',
                 'signature' => $validated['signature'] ?? '',
                 'ip' => $_SERVER['REMOTE_ADDR'],
             ]);

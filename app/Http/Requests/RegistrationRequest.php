@@ -51,6 +51,8 @@ class RegistrationRequest extends FormRequest
             'release_form' => 'required|boolean',
             'photo_choice' => 'required',
             'directory' => 'required|boolean',
+            'your_name' => 'required|min:3|max:255',
+            'date' => 'required',
             'signature' => 'required',
 
             'contact' => 'required|array|min:2',

@@ -57,7 +57,7 @@ MIT License, https://github.com/cozeit/czMore/blob/master/LICENSE.md
             }
 
             if (recordset.length) {
-				$(divPlus).click(function () {
+                $(divPlus).click(function () {
                     var i = obj.children(".recordset").length;
                     var item = recordset.clone().html();
                     i++;

@@ -42,6 +42,8 @@ class CreateInfoTable extends Migration
             $table->string('release_form');
             $table->text('photo_choice');
             $table->string('directory_agree');
+            $table->string('your_name');
+            $table->date('date');
             $table->text('signature');
             $table->ipAddress('ip');
             $table->timestamps();

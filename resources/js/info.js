@@ -34,6 +34,38 @@ $(document).ready(function () {
             elements[index].addClass('d-none');
     });
 
+    let radioYes = [
+        $('#yesAllergies').get(0),
+        $('#yesHistory').get(0),
+    ];
+    let radioNo = [
+        $('#noAllergies').get(0),
+        $('#noHistory').get(0),
+    ];
+    let describe = [
+        $('#allergies_describe'),
+        $('#medical_history_describe')
+    ];
+    radioYes.map((item, index) => {
+        $(item).on('click', function () {
+            describe[index].addClass('is-invalid');
+        })
+    });
+    radioNo.map((item, index) => {
+        $(item).on('click', function () {
+            describe[index].removeClass('is-invalid');
+        })
+    });
+    
+    describe.map(item => {
+        item.on('input', function () {
+            if (item.val().length > 0)
+                item.removeClass('is-invalid');
+            else
+                item.addClass('is-invalid');
+        })
+    });
+
     let canvas = $('#canvas').get(0);
     let clear = $('#clear').get(0);
     let save = $('#save').get(0);
@@ -68,14 +100,25 @@ $(document).ready(function () {
     telInputs.map(item => {
         $(item).on('change', function () {
             let result = item.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/i);
-            if (result !== null)
+            if (result !== null) {
+                $(item).removeClass('is-invalid');
                 return;
-            console.log(result);
+            }
+            $(item).addClass('is-invalid');
         })
     });
 
-    let btnPlus = $("div[class='btnPlus']").get();
-    // let arrayPlus = Array.from(btnPlus);
+    let zip = $('#zip').get(0);
+    $(zip).on('change', function () {
+        let result = zip.value.match(/[0-9]{5,}/i);
+        if (result !== null) {
+            $(zip).removeClass('is-invalid');
+            return;
+        }
+        $(zip).addClass('is-invalid');
+    });
+
+    let btnPlus = $('div.btnPlus');
     console.log(btnPlus);
 
     $('#contact-list').czMore();
@@ -95,6 +138,24 @@ $(document).ready(function () {
         let inputSignature = $('#signature');
         let data = signaturePad.toDataURL('image/png');
         inputSignature.attr('value', data);
+
+        let invalidInputs = [
+            $('input.error'),
+            $('input.is-invalid'),
+            $('textarea.error'),
+            $('textarea.is-invalid')
+        ];
+
+        let i = 0;
+        invalidInputs.map(item => {
+            if (item.length > 0) {
+                i++;
+            }
+        });
+        if (i > 0) {
+            event.preventDefault();
+            alert('Please check the fields entered');
+        }
     });
 });
 

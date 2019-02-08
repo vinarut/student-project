@@ -18,7 +18,7 @@
             <form method="post" action="{{ route('info.store') }}" id="infoForm">
                 @csrf
                 <div class="form-group row">
-                    <label for="child_name" class="col-lg-4 col-sm-2 col-form-label">Child’s Name</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Child’s Name</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('child_name')? "is-invalid": ""}}" id="child_name"
                                placeholder="Child’s Name" name="child_name" autofocus autocomplete="off"
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="DOB" class="col-lg-4 col-sm-2 col-form-label">DOB</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">DOB</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="date" class="form-control {{$errors->has('DOB')? "is-invalid": ""}}" id="DOB" placeholder="DOB"
                                name="DOB" autocomplete="off" required>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="street_address" class="col-lg-4 col-sm-2 col-form-label">Street Address</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Street Address</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('street_address')? "is-invalid": ""}}"
                                id="street_address" placeholder="Street Address" name="street_address" autocomplete="off"
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="town" class="col-lg-4 col-sm-2 col-form-label">Town</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Town</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('town')? "is-invalid": ""}}" id="town"
                                placeholder="Town" name="town" autocomplete="off"  minlength="2" maxlength="255"
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="zip" class="col-lg-4 col-sm-2 col-form-label">Zip</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Zip</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('zip')? "is-invalid": ""}}" id="zip" placeholder="Zip"
                                name="zip" autocomplete="off" pattern="[0-9]{5,}" minlength="5" required>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mother_name" class="col-lg-4 col-sm-2 col-form-label">Mother’s Name</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s Name</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('mother_name')? "is-invalid": ""}}" id="mother_name"
                                placeholder="Mother’s Name" name="mother_name" autocomplete="off"  minlength="3"
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="home_phone" class="col-lg-4 col-sm-2 col-form-label">Home Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Home Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('home_phone')? "is-invalid": ""}}"
                                id="home_phone" placeholder="Home Phone" name="home_phone" autocomplete="off"
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mother_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
                                id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off"
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mother_employer" class="col-lg-4 col-sm-2 col-form-label">Mother’s Employer</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s Employer</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('mother_employer')? "is-invalid": ""}}"
                                id="mother_employer" placeholder="Mother’s Employer" name="mother_employer" autocomplete="off"
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mother_city" class="col-lg-4 col-sm-2 col-form-label">City</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">City</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('mother_city')? "is-invalid": ""}}" id="mother_city"
                                placeholder="City" name="mother_city" autocomplete="off"  minlength="2" maxlength="255" required>
@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mother_state" class="col-lg-4 col-sm-2 col-form-label">State</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">State</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('mother_state')? "is-invalid": ""}}" id="mother_state"
                                placeholder="State" name="mother_state" autocomplete="off"  minlength="2"
@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mother_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
                                id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off"
@@ -178,7 +178,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="father_name" class="col-lg-4 col-sm-2 col-form-label">Father’s Name</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Father’s Name</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}" id="father_name"
                                placeholder="Father’s Name" name="father_name" autocomplete="off"
@@ -191,7 +191,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="father_cell_phone" class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}"
                                id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off"
@@ -206,7 +206,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="father_employer" class="col-lg-4 col-sm-2 col-form-label">Father’s Employer</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Father’s Employer</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('father_employer')? "is-invalid": ""}}"
                                id="father_employer" placeholder="Father’s Employer" name="father_employer" autocomplete="off"
@@ -219,7 +219,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="father_city" class="col-lg-4 col-sm-2 col-form-label">City</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">City</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('father_city')? "is-invalid": ""}}" id="father_city"
                                placeholder="City" name="father_city" autocomplete="off"  minlength="2" maxlength="255" required>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="father_state" class="col-lg-4 col-sm-2 col-form-label">State</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">State</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('father_state')? "is-invalid": ""}}" id="father_state"
                                placeholder="State" name="father_state" autocomplete="off"  minlength="2" maxlength="255" required>
@@ -243,7 +243,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="father_work_phone" class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('father_work_phone')? "is-invalid": ""}}"
                                id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off"
@@ -258,7 +258,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="primary_email_address" class="col-lg-4 col-sm-2 col-form-label">Primary email address</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Primary email address</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="email" class="form-control {{$errors->has('primary_email_address')? "is-invalid": ""}}"
                                id="primary_email_address" placeholder="Primary email address" name="primary_email_address"
@@ -696,6 +696,33 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label"><b>Your name</b></label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('your_name')? "is-invalid": ""}}" id="your_name"
+                               placeholder="Your Name" name="your_name" autocomplete="off"
+                               minlength="3" maxlength="255" required>
+                        @if ($errors->has('your_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('your_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label"><b>Date</b></label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="date" class="form-control {{$errors->has('date')? "is-invalid": ""}}" id="date"
+                               placeholder="Date" name="date" autocomplete="off" required>
+                        @if ($errors->has('date'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('date') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label"><b>Signature</b></label>
