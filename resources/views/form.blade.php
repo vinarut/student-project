@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             @endif
-            <h4 class="card-title">Student Information</h4>
+            <h4 class="card-title">STUDENT REGISTRATION 2018-2019</h4>
             <form method="post" action="{{ route('info.store') }}" id="infoForm">
                 @csrf
                 <div class="form-group row">
@@ -72,7 +72,7 @@
                     <label for="zip" class="col-lg-4 col-sm-2 col-form-label">Zip</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="text" class="form-control {{$errors->has('zip')? "is-invalid": ""}}" id="zip" placeholder="Zip"
-                               name="zip" autocomplete="off" pattern="[0-9]{5,}" required>
+                               name="zip" autocomplete="off" pattern="[0-9]{5,}" minlength="5" required>
                         @if ($errors->has('zip'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('zip') }}</strong>
@@ -99,7 +99,8 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('home_phone')? "is-invalid": ""}}"
                                id="home_phone" placeholder="Home Phone" name="home_phone" autocomplete="off"
-                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                               title="Number must be 10 digits" required>
                         @if ($errors->has('home_phone'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('home_phone') }}</strong>
@@ -113,7 +114,8 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
                                id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off"
-                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                               title="Number must be 10 digits" required>
                         @if ($errors->has('mother_cell_phone'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('mother_cell_phone') }}</strong>
@@ -165,7 +167,8 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
                                id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off"
-                               minlength="3" maxlength="255" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                               title="Number must be 10 digits" required>
                         @if ($errors->has('mother_work_phone'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('mother_work_phone') }}</strong>
@@ -192,7 +195,8 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}"
                                id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off"
-                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                               title="Number must be 10 digits" required>
                         @if ($errors->has('father_name'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('father_name') }}</strong>
@@ -243,7 +247,8 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('father_work_phone')? "is-invalid": ""}}"
                                id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off"
-                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                               title="Number must be 10 digits" required>
                         @if ($errors->has('father_work_phone'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('father_work_phone') }}</strong>
@@ -380,7 +385,8 @@
                             <div class="col-lg-8 col-sm-10">
                                 <input type="tel" class="form-control {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Contact phone" name="contact[{{$k}}][phone]" autocomplete="off"
-                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                                       title="Number must be 10 digits" required>
                                 @if ($errors->has('contact.'.$k.'.phone'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('contact.'.$k.'.phone') }}</strong>
@@ -433,7 +439,8 @@
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
                                            placeholder="Contact phone" name="contact[0][phone]" autocomplete="off"
-                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                                           title="Number must be 10 digits" required>
                                     <small>Example: 000-000-0000</small>
                                 </div>
                             </div>
@@ -479,7 +486,8 @@
                             <div class="col-lg-8 col-sm-10">
                                 <input type="tel" class="form-control {{$errors->has('physician.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Physician phone" name="physician[{{$k}}][phone]" autocomplete="off"
-                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                                       title="Number must be 10 digits" required>
                                 @if ($errors->has('physician.'.$k.'.phone'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('physician.'.$k.'.phone') }}</strong>
@@ -504,9 +512,9 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="tel" class="form-control"
-                                           placeholder="Physician phone" name="physician[0][phone]" autocomplete="off"
-                                           required>
+                                    <input type="tel" class="form-control" placeholder="Physician phone"
+                                           name="physician[0][phone]" autocomplete="off" minlength="12" maxlength="12"
+                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Number must be 10 digits" required>
                                     <small>Example: 000-000-0000</small>
                                 </div>
                             </div>
@@ -536,7 +544,8 @@
                             <div class="col-lg-8 col-sm-10">
                                 <input type="tel" class="form-control {{$errors->has('additional.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Additional phone" name="additional[{{$k}}][phone]" autocomplete="off"
-                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                                       title="Number must be 10 digits" required>
                                 @if ($errors->has('additional.'.$k.'.phone'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('additional.'.$k.'.phone') }}</strong>
@@ -576,7 +585,8 @@
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
                                            placeholder="Additional phone" name="additional[0][phone]" autocomplete="off"
-                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
+                                           title="Number must be 10 digits" required>
                                     <small>Example: 000-000-0000</small>
                                 </div>
                             </div>
@@ -596,13 +606,13 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        I have read and understand the information contained in the CSH Family Handbook
-                        (available on the CSH website) which includes the following documents.
+                        I have read and understand the information contained in the Compass Schoolhouse Family Handbook
+                        (available on the Compass Schoolhouse website) which includes the following documents.
                         <ul class="font-weight-bold">
                             <li>The Information to Parents Statement</li>
-                            <li>CSH Philosophy of Discipline</li>
-                            <li>CSH Release of Children Policy</li>
-                            <li>CSH Policy on the Expulsion of Children</li>
+                            <li>Compass Schoolhouse Philosophy of Discipline</li>
+                            <li>Compass Schoolhouse Release of Children Policy</li>
+                            <li>Compass Schoolhouse Policy on the Expulsion of Children</li>
                         </ul>
                     </div>
                 </div>
@@ -620,8 +630,8 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        CSH takes photos and videos at various events for its daily class emails, website, social media,
-                        and printed promotional purposes. CSH policy states that we will not identify children by name
+                        Compass Schoolhouse takes photos and videos at various events for its daily class emails, website, social media,
+                        and printed promotional purposes. Compass Schoolhouse policy states that we will not identify children by name
                         or address in any photographs, videos, or publications unless written permission is obtained from parents.
                     </div>
                 </div>
@@ -663,10 +673,10 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        The CSH DIRECTORY of all XXX students will be available on the CSH website for the convenience
+                        The Compass Schoolhouse DIRECTORY of all XXX students will be available on the Compass Schoolhouse website for the convenience
                         of our families. THE DIRECTORY IS PASSWORD PROTECTED. Do you give your permission for your
                         child's name, address, phone numbers, and your email address to appear in the password protected
-                        CSH Directory.
+                        Compass Schoolhouse Directory.
                     </div>
                 </div>
 

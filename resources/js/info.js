@@ -34,23 +34,49 @@ $(document).ready(function () {
             elements[index].addClass('d-none');
     });
 
-    let canvas = document.getElementById('canvas');
-    let clear = document.getElementById('clear');
-    let save = document.getElementById('save');
+    let canvas = $('#canvas').get(0);
+    let clear = $('#clear').get(0);
+    let save = $('#save').get(0);
     let signaturePad = new SignaturePad(canvas, {
         backgroundColor: 'rgba(255, 255, 255, 0)',
         penColor: 'rgb(0, 0, 0)'
     });
 
-    save.addEventListener('click', function (event) {
+    $(save).on('click', function (event) {
         let data = signaturePad.toDataURL('image/png');
         event.preventDefault();
         window.open(data);
     });
-    clear.addEventListener('click', function (event) {
+    $(clear).on('click', function (event) {
         signaturePad.clear();
         event.preventDefault();
     });
+
+    let telInputs = $("input[type='tel']");
+    telInputs = Array.from(telInputs);
+    telInputs.map(item => {
+        $(item).on('input', function () {
+            $(document).on('keydown', function (event) {
+                if (event.keyCode === 8 || event.keyCode === 46)
+                    return;
+                if ((item.value.length === 3 || item.value.length === 7))
+                    item.value += '-';
+            })
+        })
+    });
+    
+    telInputs.map(item => {
+        $(item).on('change', function () {
+            let result = item.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/i);
+            if (result !== null)
+                return;
+            console.log(result);
+        })
+    });
+
+    let btnPlus = $("div[class='btnPlus']").get();
+    // let arrayPlus = Array.from(btnPlus);
+    console.log(btnPlus);
 
     $('#contact-list').czMore();
     $('#physicians').czMore();
