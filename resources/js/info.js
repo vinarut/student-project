@@ -84,30 +84,6 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    let telInputs = $("input[type='tel']");
-    telInputs = Array.from(telInputs);
-    telInputs.map(item => {
-        $(item).on('input', function () {
-            $(document).on('keydown', function (event) {
-                if (event.keyCode === 8 || event.keyCode === 46)
-                    return;
-                if ((item.value.length === 3 || item.value.length === 7))
-                    item.value += '-';
-            })
-        })
-    });
-    
-    telInputs.map(item => {
-        $(item).on('change', function () {
-            let result = item.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/i);
-            if (result !== null) {
-                $(item).removeClass('is-invalid');
-                return;
-            }
-            $(item).addClass('is-invalid');
-        })
-    });
-
     let zip = $('#zip').get(0);
     $(zip).on('change', function () {
         let result = zip.value.match(/[0-9]{5,}/i);
@@ -118,16 +94,44 @@ $(document).ready(function () {
         $(zip).addClass('is-invalid');
     });
 
-    let btnPlus = $('div.btnPlus');
-    console.log(btnPlus);
-
-    $('#contact-list').czMore();
-    $('#physicians').czMore();
-    $('#additional-individuals').czMore();
+    $('#physicians, #additional-individuals, #contact-list').czMore({
+        onAdd: function(index) {
+            let telInputs = $("input[type='tel']");
+            console.log(telInputs);
+            telInputs = Array.from(telInputs);
+            telInputs.map(item => {
+                $(item).on('input', function () {
+                    $(document).on('keydown', function (event) {
+                        if (event.keyCode === 8 || event.keyCode === 46)
+                            return;
+                        if ((item.value.length === 3 || item.value.length === 7))
+                            item.value += '-';
+                    })
+                })
+            });
+            telInputs.map(item => {
+                $(item).on('change', function () {
+                    let result = item.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/i);
+                    if (result !== null) {
+                        $(item).removeClass('is-invalid');
+                        return;
+                    }
+                    $(item).addClass('is-invalid');
+                })
+            });
+            $('#infoForm').validate();
+        },
+        onLoad: function(index) {
+            $('#infoForm').validate();
+        },
+        onDelete: function(id) {
+            $('#infoForm').validate();
+        }
+    });
 
     $('#infoForm').validate();
 
-    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
     $("#infoForm").submit(function(event) {
         let recaptcha = $("#g-recaptcha-response").val();

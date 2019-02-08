@@ -430,7 +430,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contacts name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="Contacts name" name="contact[0][name]" autocomplete="off"
+                                           placeholder="Contacts name" name="contact[2][name]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
@@ -438,7 +438,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
-                                           placeholder="Contact phone" name="contact[0][phone]" autocomplete="off"
+                                           placeholder="Contact phone" name="contact[2][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                            title="Number must be 10 digits" required>
                                     <small>Example: 000-000-0000</small>
@@ -448,7 +448,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label">Contacts address</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="First contacts address" name="contact[0][address]" autocomplete="off"
+                                           placeholder="First contacts address" name="contact[2][address]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
@@ -505,7 +505,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label pl-0">Physician name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="Physician name" name="physician[0][name]" autocomplete="off"
+                                           placeholder="Physician name" name="physician[1][name]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
@@ -513,7 +513,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label">Physician phone</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control" placeholder="Physician phone"
-                                           name="physician[0][phone]" autocomplete="off" minlength="12" maxlength="12"
+                                           name="physician[1][phone]" autocomplete="off" minlength="12" maxlength="12"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Number must be 10 digits" required>
                                     <small>Example: 000-000-0000</small>
                                 </div>
@@ -576,7 +576,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label pl-0">Additional name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="Additional name" name="additional[0][name]" autocomplete="off"
+                                           placeholder="Additional name" name="additional[2][name]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
@@ -584,7 +584,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
-                                           placeholder="Additional phone" name="additional[0][phone]" autocomplete="off"
+                                           placeholder="Additional phone" name="additional[2][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                            title="Number must be 10 digits" required>
                                     <small>Example: 000-000-0000</small>
@@ -594,7 +594,7 @@
                                 <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <textarea type="text" class="form-control" placeholder="Relationship to child"
-                                              name="additional[0][relation]" autocomplete="off" maxlength="65535"
+                                              name="additional[2][relation]" autocomplete="off" maxlength="65535"
                                               required></textarea>
                                 </div>
                             </div>

@@ -32,7 +32,7 @@ class InfoCreated
         $notify->getMailMessage()
             ->greeting('Hello,')
             ->from(config('mail.from.address'), config('mail.from.name'))
-            ->subject("Some Subject")
+            ->subject("Сompass SchoolHouse")
             ->line("You have a new request");
 
         $attributes = $event->getInfo()->getAttributes();
