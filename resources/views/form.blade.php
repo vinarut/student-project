@@ -673,10 +673,10 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        The Compass Schoolhouse DIRECTORY of all XXX students will be available on the Compass Schoolhouse website for the convenience
-                        of our families. THE DIRECTORY IS PASSWORD PROTECTED. Do you give your permission for your
-                        child's name, address, phone numbers, and your email address to appear in the password protected
-                        Compass Schoolhouse Directory.
+                        The Compass Schoolhouse DIRECTORY of all Compass Schoolhouse students will be available on the
+                        Compass Schoolhouse website for the convenience of our families. THE DIRECTORY IS PASSWORD
+                        PROTECTED. Do you give your permission for your child's name, address, phone numbers, and your
+                        email address to appear in the password protected Compass Schoolhouse Directory.
                     </div>
                 </div>
 
@@ -732,7 +732,6 @@
                     </div>
                     <label class="col-lg-4 col-sm-2 col-form-label mt-2"></label>
                     <div class="col-lg-8 col-sm-10 mt-2">
-                        <button id="save" class="btn btn-success">Save</button>
                         <button id="clear" class="btn btn-danger">Clear</button>
                     </div>
                 </div>

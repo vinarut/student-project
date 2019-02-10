@@ -68,24 +68,19 @@ $(document).ready(function () {
 
     let canvas = $('#canvas').get(0);
     let clear = $('#clear').get(0);
-    let save = $('#save').get(0);
     canvas.height = canvas.offsetHeight;
     canvas.width = canvas.offsetWidth;
     let signaturePad = new SignaturePad(canvas, {
         backgroundColor: 'rgba(255, 255, 255, 0)',
         penColor: 'rgb(0, 0, 0)'
     });
+
     $(window).on('resize', function () {
         canvas.height = canvas.offsetHeight;
         canvas.width = canvas.offsetWidth;
         signaturePad.clear();
     });
 
-    $(save).on('click', function (event) {
-        let data = signaturePad.toDataURL('image/png');
-        event.preventDefault();
-        window.open(data);
-    });
     $(clear).on('click', function (event) {
         signaturePad.clear();
         event.preventDefault();

@@ -24,6 +24,7 @@
     "vue-template-compiler": "^2.5.22"
   },
   "dependencies": {
+    "clipboard": "^2.0.4",
     "jquery-validation": "^1.19.0",
     "signature_pad": "^3.0.0-beta.3"
   }
