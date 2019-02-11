@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('form');
-});
+//Route::resource('info', 'InfoController');
 
-Route::resource('info', 'InfoController');
-Route::get('export', 'InfoController@export')->name('info.export');
-
-//Route::get('info', 'InfoController@index');
-//Route::post('info', 'InfoController@store');
+Route::get('list', 'InfoController@index')->name('info.index');
+Route::get('/{token?}', 'InfoController@create')->name('info.create');
+Route::post('/{token}', 'InfoController@store')->name('info.store');
+Route::get('info/{info}', 'InfoController@show')->name('info.show');
+Route::get('list/export', 'InfoController@export')->name('info.export');
+Route::get('admin/register', 'InfoController@admin')->name('info.admin');
+Route::post('admin/register', 'InfoController@register')->name('info.admin');
+Route::get('admin/list', 'InfoController@getUsersList');
 
 Auth::routes();
 

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\AdditionalIndividuals;
 use App\ContactList;
+use App\Http\Requests\AdminRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Info;
 use App\Physicians;
+use App\Token;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use League\Csv\Writer;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -270,6 +273,44 @@ class InfoController extends Controller
         });
 
         return back()->withInput();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function admin()
+    {
+        return view('auth.admin');
+    }
+
+    /**
+     * @param AdminRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function register(AdminRequest $request)
+    {
+        \DB::transaction(function () use ($request) {
+
+            $validated = $request->validated();
+
+            $token = new Token([
+                'name' => $validated['name'],
+                'surname' => $validated['surname'],
+                'token' => $validated['token'],
+            ]);
+            $token->save();
+
+            flash()->success('Record created successfully');
+        });
+
+        return back()->withInput();
+    }
+
+    public function getUsersList()
+    {
+        $users = Token::all();
+
+        return view('info.users', ['users' => $users]);
     }
 
     /**

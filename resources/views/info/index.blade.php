@@ -9,7 +9,7 @@
                     <a href="{{ route('info.export', request()->query()) }}">
                         <img src="/img/csv.svg" style="width: 40px;" title="CSV Export">
                     </a>
-                    <button class="btn btn-link ml-3" id="clipboard" data-clipboard-action="copy"
+                    <button class="btn btn-link ml-lg-3" id="clipboard" data-clipboard-action="copy"
                             data-clipboard-text="{{route('info.export')}}">
                         Copy link to clipboard
                     </button>

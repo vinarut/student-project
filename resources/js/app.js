@@ -9,6 +9,7 @@ require('./bootstrap');
 require('./info');
 require('./show');
 require('./index');
+require('./admin');
 
 //window.Vue = require('vue');
 
