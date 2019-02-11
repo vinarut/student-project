@@ -43,6 +43,12 @@
                     <ul class="navbar-nav ml-auto">
                         @auth
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('info.admin') }}">{{ __('Register') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.list') }}">{{ __('Users') }}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('info.index') }}">{{ __('List') }}</a>
                             </li>
                             <li class="nav-item dropdown">

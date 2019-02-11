@@ -16,8 +16,7 @@ class CheckToken
      */
     public function handle($request, Closure $next)
     {
-        $token = "111";
-        if (Token::where('token', $token)->exists()) {
+        if (Token::where('token', trim($request->getPathInfo(), '/'))->exists()) {
             return $next($request);
         } else {
             abort(403);

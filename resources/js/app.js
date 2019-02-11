@@ -10,6 +10,7 @@ require('./info');
 require('./show');
 require('./index');
 require('./admin');
+require('./users');
 
 //window.Vue = require('vue');
 

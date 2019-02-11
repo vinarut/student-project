@@ -37,7 +37,7 @@
                     <div class="form-group row">
                         <label class="col-lg-4 col-sm-2 col-form-label">Token</label>
                         <div class="col-lg-8 col-sm-10">
-                            <input type="button" class="btn btn-link mb-2" value="Generate token" id="btnGenerate">
+                            <input type="button" class="btn btn-link mb-2 pl-lg-0" value="Generate token" id="btnGenerate">
                             <textarea type="text" name="token" id="token" required readonly
                                       class="form-control d-none {{$errors->has('token')? "is-invalid": ""}}" ></textarea>
                             @if ($errors->has('token'))

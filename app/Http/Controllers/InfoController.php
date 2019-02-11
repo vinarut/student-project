@@ -208,7 +208,7 @@ class InfoController extends Controller
      */
     public function create()
     {
-        return view('form');
+        return view('form', ['token' => trim($_SERVER['REQUEST_URI'], '/')]);
     }
 
     /**
@@ -306,11 +306,12 @@ class InfoController extends Controller
         return back()->withInput();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getUsersList()
     {
-        $users = Token::all();
-
-        return view('info.users', ['users' => $users]);
+        return view('info.users', ['users' => Token::all()]);
     }
 
     /**

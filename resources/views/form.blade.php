@@ -15,7 +15,7 @@
                 </div>
             @endif
             <h4 class="card-title">STUDENT REGISTRATION 2018-2019</h4>
-            <form method="post" action="{{ route('info.store', ['token'=>'']) }}" id="infoForm">
+            <form method="post" action="{{ route('info.store', ['token'=>$token]) }}" id="infoForm">
                 @csrf
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">Child’s Name</label>
