@@ -16,14 +16,13 @@
 use App\Http\Middleware\CheckToken;
 
 Route::get('list', 'InfoController@index')->name('info.index');
-Route::get('/{token?}', 'InfoController@create')->name('info.create')->middleware(CheckToken::class);
-Route::post('/{token}', 'InfoController@store')->name('info.store')->middleware(CheckToken::class);
-Route::get('info/{info}', 'InfoController@show')->name('info.show');
+Route::get('register/{token?}', 'InfoController@create')->name('info.create')->middleware(CheckToken::class);
+Route::post('register/{token}', 'InfoController@store')->name('info.store')->middleware(CheckToken::class);
+Route::get('show/{info}', 'InfoController@show')->name('info.show');
 Route::get('list/export', 'InfoController@export')->name('info.export');
 Route::get('admin/register', 'InfoController@admin')->name('info.admin');
 Route::post('admin/register', 'InfoController@register')->name('info.admin');
 Route::get('admin/list', 'InfoController@getUsersList')->name('users.list');
-Route::get('admin/login', 'Auth\LoginController@login');
 
 Auth::routes();
 

@@ -22,7 +22,8 @@ class InfoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.basic', ['only' => ['index', 'export', 'show']]);
+        $this->middleware('auth.basic',
+            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getUsersList']]);
     }
 
     /**
@@ -208,7 +209,7 @@ class InfoController extends Controller
      */
     public function create()
     {
-        return view('form', ['token' => trim($_SERVER['REQUEST_URI'], '/')]);
+        return view('form', ['token' => ltrim($_SERVER['REQUEST_URI'], '/register/')]);
     }
 
     /**

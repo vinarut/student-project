@@ -23,7 +23,7 @@
                             <td>{{$user->surname}}</td>
                             <td>{{$user->token}}</td>
                             <td><button class="btn btn-link" data-clipboard-action="copy"
-                                        data-clipboard-text="{{route('info.create').'/'.$user->token}}">
+                                        data-clipboard-text="{{route('info.create', ['token' => $user->token])}}">
                                     Copy URL to clipboard</button></td>
                         </tr>
                     @endforeach
