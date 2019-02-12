@@ -23,7 +23,7 @@ class InfoController extends Controller
     public function __construct()
     {
         $this->middleware('auth.basic',
-            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getUsersList']]);
+            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getSubscribers']]);
     }
 
     /**
@@ -290,19 +290,17 @@ class InfoController extends Controller
      */
     public function register(AdminRequest $request)
     {
-        \DB::transaction(function () use ($request) {
 
-            $validated = $request->validated();
+        $validated = $request->validated();
 
-            $token = new Token([
-                'name' => $validated['name'],
-                'surname' => $validated['surname'],
-                'token' => $validated['token'],
-            ]);
-            $token->save();
+        $token = new Token([
+            'name' => $validated['name'],
+            'surname' => $validated['surname'],
+            'token' => $validated['token'],
+        ]);
+        $token->save();
 
-            flash()->success('Record created successfully');
-        });
+        flash()->success('Record created successfully');
 
         return back()->withInput();
     }
@@ -310,9 +308,9 @@ class InfoController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getUsersList()
+    public function getSubscribers()
     {
-        return view('info.users', ['users' => Token::all()]);
+        return view('info.subscribers', ['subscribers' => Token::all()]);
     }
 
     /**

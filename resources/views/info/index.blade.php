@@ -6,11 +6,11 @@
             <div class="card-body">
                 <h4 class="card-title">List</h4>
                 <div class="mt-2 mb-2">
-                    <a href="{{ route('info.export', request()->query()) }}">
+                    <a href="{{ route('admin.export', request()->query()) }}">
                         <img src="/img/csv.svg" style="width: 40px;" title="CSV Export">
                     </a>
                     <button class="btn btn-link ml-lg-3" id="clipboard" data-clipboard-action="copy"
-                            data-clipboard-text="{{route('info.export')}}">
+                            data-clipboard-text="{{route('admin.export')}}">
                         Copy link to clipboard
                     </button>
                 </div>
@@ -30,7 +30,7 @@
                     @foreach($clients as $client)
                         <tr>
                             <th scope="row">{{$client->id}}</th>
-                            <td><a href="{{route('info.show', ['info' => $client->id])}}">{{$client->childs_name}}</a></td>
+                            <td><a href="{{route('admin.show', ['info' => $client->id])}}">{{$client->childs_name}}</a></td>
                             <td>{{$client->DOB}}</td>
                             <td>{{$client->street_address}}</td>
                             <td>{{$client->town}}</td>

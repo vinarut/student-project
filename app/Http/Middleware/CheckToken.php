@@ -16,7 +16,7 @@ class CheckToken
      */
     public function handle($request, Closure $next)
     {
-        if (Token::where('token', ltrim($request->getPathInfo(), '/register/'))->exists()) {
+        if (Token::where('token', ltrim($request->getRequestUri(), '/register/'))->exists()) {
             return $next($request);
         } else {
             abort(403);

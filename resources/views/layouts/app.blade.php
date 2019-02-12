@@ -43,13 +43,13 @@
                     <ul class="navbar-nav ml-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('info.admin') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.list') }}">{{ __('Users') }}</a>
+                                <a class="nav-link" href="{{ route('admin.subscribers') }}">{{ __('Subscribers') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('info.index') }}">{{ __('List') }}</a>
+                                <a class="nav-link" href="{{ route('admin.list') }}">{{ __('List') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

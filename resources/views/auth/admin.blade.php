@@ -6,7 +6,7 @@
             <div class="card-body">
                 @include('flash::message')
                 <h4 class="card-title">Register</h4>
-                <form method="post" action="{{route('info.admin')}}" id="adminForm">
+                <form method="post" action="{{route('admin.register')}}" id="adminForm">
                     @csrf
                     <div class="form-group row">
                         <label class="col-lg-4 col-sm-2 col-form-label">Name</label>

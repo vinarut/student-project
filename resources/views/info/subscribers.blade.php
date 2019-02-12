@@ -16,14 +16,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($subscribers as $subscriber)
                         <tr>
-                            <th scope="row">{{$user->id}}</th>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->surname}}</td>
-                            <td>{{$user->token}}</td>
+                            <th scope="row">{{$subscriber->id}}</th>
+                            <td>{{$subscriber->name}}</td>
+                            <td>{{$subscriber->surname}}</td>
+                            <td>{{$subscriber->token}}</td>
                             <td><button class="btn btn-link" data-clipboard-action="copy"
-                                        data-clipboard-text="{{route('info.create', ['token' => $user->token])}}">
+                                        data-clipboard-text="{{route('register.create',
+                                        ['token' => $subscriber->token])}}">
                                     Copy URL to clipboard</button></td>
                         </tr>
                     @endforeach
