@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\AdditionalIndividuals;
 use App\ContactList;
+use App\EmailList;
 use App\Http\Requests\AdminRequest;
+use App\Http\Requests\EmailRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Info;
 use App\Physicians;
@@ -23,7 +25,7 @@ class InfoController extends Controller
     public function __construct()
     {
         $this->middleware('auth.basic',
-            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getSubscribers']]);
+            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getSubscribers', 'getEmailList' , 'addEmail']]);
     }
 
     /**
@@ -51,6 +53,8 @@ class InfoController extends Controller
         $sql = "show columns from `info`";
         $stmt = $pdo->query($sql);
         while ($row = $stmt->fetch()) {
+            if (stripos($row['Field'], 'signature') !== false)
+                continue;
             $header[] = $row['Field'];
         }
 
@@ -125,6 +129,9 @@ class InfoController extends Controller
         $csv->insertOne($header);
 
         while ($row = $stmt->fetch()) {
+            unset($row['signature']);
+            $row['photo_choice'] = preg_replace('/\r\n|\r|\n/u', ' ', $row['photo_choice']);
+            $row['photo_choice'] = preg_replace('| +|', ' ', $row['photo_choice']);
             $i = 0;
             $sql = "select `name`, `phone`, `address` from `contact_list` where `info_id`=:info_id";
             $stmt1 = $pdo->prepare($sql);
@@ -290,7 +297,6 @@ class InfoController extends Controller
      */
     public function register(AdminRequest $request)
     {
-
         $validated = $request->validated();
 
         $token = new Token([
@@ -311,6 +317,30 @@ class InfoController extends Controller
     public function getSubscribers()
     {
         return view('info.subscribers', ['subscribers' => Token::all()]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getEmailList()
+    {
+        return view('info.emailList', ['emails' => EmailList::all()]);
+    }
+
+    /**
+     * @param EmailRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addEmail(EmailRequest $request)
+    {
+        $validated = $request->validated();
+
+        $email = new EmailList([
+            'email' => $validated['email']
+        ]);
+        $email->save();
+
+        return back()->withInput();
     }
 
     /**

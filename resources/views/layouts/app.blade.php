@@ -49,6 +49,9 @@
                                 <a class="nav-link" href="{{ route('admin.subscribers') }}">{{ __('Subscribers') }}</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.emails.get') }}">{{ __('E-mail`s') }}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.list') }}">{{ __('List') }}</a>
                             </li>
                             <li class="nav-item dropdown">

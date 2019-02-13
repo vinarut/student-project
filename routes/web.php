@@ -23,6 +23,8 @@ Route::get('admin/list/export', 'InfoController@export')->name('admin.export');
 Route::get('admin/register', 'InfoController@admin')->name('admin.register');
 Route::post('admin/register', 'InfoController@register')->name('admin.register');
 Route::get('admin/subscribers', 'InfoController@getSubscribers')->name('admin.subscribers');
+Route::get('admin/emails', 'InfoController@getEmailList')->name('admin.emails.get');
+Route::post('admin/emails', 'InfoController@addEmail')->name('admin.emails.post');
 
 Auth::routes();
 
