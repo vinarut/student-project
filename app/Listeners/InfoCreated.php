@@ -31,7 +31,7 @@ class InfoCreated
 
         $notify = new \App\Notifications\InfoCreated();
         $notify->getMailMessage()
-            ->greeting('Hello,')
+            ->greeting('Hello')
             ->from(config('mail.from.address'), config('mail.from.name'))
             ->subject("Сompass SchoolHouse")
             ->line("You have a new request");
