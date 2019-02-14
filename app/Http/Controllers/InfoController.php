@@ -25,7 +25,8 @@ class InfoController extends Controller
     public function __construct()
     {
         $this->middleware('auth.basic',
-            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getSubscribers', 'getEmailList' , 'addEmail']]);
+            ['only' => ['index', 'export', 'show', 'admin', 'register', 'getSubscribers', 'getEmailList' , 'addEmail',
+                        'removeEmail']]);
     }
 
     /**
@@ -339,6 +340,13 @@ class InfoController extends Controller
             'email' => $validated['email']
         ]);
         $email->save();
+
+        return back()->withInput();
+    }
+
+    public function removeEmail()
+    {
+        \DB::table('email_lists')->where('email', '=', $_POST['email'])->delete();
 
         return back()->withInput();
     }

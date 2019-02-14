@@ -25,6 +25,7 @@ Route::post('admin/register', 'InfoController@register')->name('admin.register')
 Route::get('admin/subscribers', 'InfoController@getSubscribers')->name('admin.subscribers');
 Route::get('admin/emails', 'InfoController@getEmailList')->name('admin.emails.get');
 Route::post('admin/emails', 'InfoController@addEmail')->name('admin.emails.post');
+Route::delete('admin/emails', 'InfoController@removeEmail')->name('admin.email.delete');
 
 Auth::routes();
 
