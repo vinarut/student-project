@@ -12,7 +12,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Surname</th>
                         <th scope="col">Token</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -22,7 +22,7 @@
                             <td>{{$subscriber->name}}</td>
                             <td>{{$subscriber->surname}}</td>
                             <td>{{$subscriber->token}}</td>
-                            <td><button class="btn btn-link" data-clipboard-action="copy"
+                            <td class="text-center"><button class="btn btn-link" data-clipboard-action="copy"
                                         data-clipboard-text="{{route('register.create',
                                         ['token' => $subscriber->token])}}">
                                     Copy URL to clipboard</button></td>

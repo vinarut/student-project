@@ -344,6 +344,9 @@ class InfoController extends Controller
         return back()->withInput();
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function removeEmail()
     {
         \DB::table('email_lists')->where('email', '=', $_POST['email'])->delete();

@@ -8,7 +8,7 @@
                 <form method="post" action="{{route('admin.emails.post')}}" id="emailForm">
                     @csrf
                     <div class="form-group row">
-                        <div class="col-lg-2 col-sm-2">
+                        <div class="col-lg-2 col-sm-2 mb-2">
                             <button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
                         </div>
                         <div class="col-lg-10 col-sm-10">
