@@ -5,31 +5,33 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">List</h4>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">Token</th>
-                        <th scope="col" class="text-center">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($subscribers as $subscriber)
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                            <th scope="row">{{$subscriber->id}}</th>
-                            <td>{{$subscriber->name}}</td>
-                            <td>{{$subscriber->surname}}</td>
-                            <td>{{$subscriber->token}}</td>
-                            <td class="text-center"><button class="btn btn-link" data-clipboard-action="copy"
-                                        data-clipboard-text="{{route('register.create',
-                                        ['token' => $subscriber->token])}}">
-                                    Copy URL to clipboard</button></td>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Token</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($subscribers as $subscriber)
+                            <tr>
+                                <th scope="row">{{$subscriber->id}}</th>
+                                <td>{{$subscriber->name}}</td>
+                                <td>{{$subscriber->surname}}</td>
+                                <td>{{$subscriber->token}}</td>
+                                <td class="text-center"><button class="btn btn-link" data-clipboard-action="copy"
+                                            data-clipboard-text="{{route('register.create',
+                                            ['token' => $subscriber->token])}}">
+                                        Copy URL to clipboard</button></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

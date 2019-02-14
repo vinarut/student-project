@@ -22,34 +22,36 @@
                         </div>
                     </div>
                 </form>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col" class="text-center">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @php
-                        $i = 1;
-                    @endphp
-                    @foreach($emails as $email)
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                            <th scope="row">{{$i++}}</th>
-                            <td>{{$email->email}}</td>
-                            <td>
-                                <form method="post" action="{{route('admin.email.delete')}}" class="text-center">
-                                    @method('delete')
-                                    @csrf
-                                    <input class="d-none" name="email" value="{{$email->email}}">
-                                    <button type="submit" class="btn btn-danger">delete</button>
-                                </form>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach($emails as $email)
+                            <tr>
+                                <th scope="row">{{$i++}}</th>
+                                <td>{{$email->email}}</td>
+                                <td>
+                                    <form method="post" action="{{route('admin.email.delete')}}" class="text-center">
+                                        @method('delete')
+                                        @csrf
+                                        <input class="d-none" name="email" value="{{$email->email}}">
+                                        <button type="submit" class="btn btn-danger">delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
