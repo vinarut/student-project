@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="#">
                     <img src="/img/compass-logo.png" title="{{ config('app.name', 'Laravel') }}" alt="{{ config('app.name', 'Laravel') }}" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -42,6 +42,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.addUser') }}">{{ __('Add user') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.users') }}">{{ __('Users') }}</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a>
                             </li>
@@ -81,10 +87,10 @@
             @yield('content')
         </main>
     </div>
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            &copy; {{date('Y')}} Compass SchoolHouse | Powered by <a href="http://www.wpbeaverbuilder.com/?utm_medium=bb-pro&utm_source=bb-theme&utm_campaign=theme-footer">Beaver Builder</a>
-        </div>
-    </footer>
+    {{--<footer class="footer mt-auto py-3">--}}
+        {{--<div class="container text-center">--}}
+            {{--&copy; {{date('Y')}} Compass SchoolHouse | Powered by <a href="http://www.wpbeaverbuilder.com/?utm_medium=bb-pro&utm_source=bb-theme&utm_campaign=theme-footer">Beaver Builder</a>--}}
+        {{--</div>--}}
+    {{--</footer>--}}
 </body>
 </html>

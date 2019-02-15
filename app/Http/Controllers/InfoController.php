@@ -8,11 +8,14 @@ use App\EmailList;
 use App\Http\Requests\AdminRequest;
 use App\Http\Requests\EmailRequest;
 use App\Http\Requests\RegistrationRequest;
+use App\Http\Requests\UserRequest;
 use App\Info;
 use App\Physicians;
 use App\Token;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Hash;
 use League\Csv\Writer;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -26,7 +29,7 @@ class InfoController extends Controller
     {
         $this->middleware('auth.basic',
             ['only' => ['index', 'export', 'show', 'admin', 'register', 'getSubscribers', 'getEmailList' , 'addEmail',
-                        'removeEmail']]);
+                        'removeEmail', 'getFormAddUser', 'addUser', 'users', 'removeUser']]);
     }
 
     /**
@@ -350,6 +353,50 @@ class InfoController extends Controller
     public function removeEmail()
     {
         \DB::table('email_lists')->where('email', '=', $_POST['email'])->delete();
+
+        return back()->withInput();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getFormAddUser()
+    {
+        return view('auth.register');
+    }
+
+    /**
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addUser(UserRequest $request)
+    {
+        $validated = $request->validated();
+
+        $user = new User([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+        $user->save();
+
+        return redirect(route('admin.users'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function users()
+    {
+        return view('info.userList', ['users' => User::all()]);
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function removeUser()
+    {
+        \DB::table('users')->where('email', '=', $_POST['email'])->delete();
 
         return back()->withInput();
     }

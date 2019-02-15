@@ -26,6 +26,10 @@ Route::get('admin/subscribers', 'InfoController@getSubscribers')->name('admin.su
 Route::get('admin/emails', 'InfoController@getEmailList')->name('admin.emails.get');
 Route::post('admin/emails', 'InfoController@addEmail')->name('admin.emails.post');
 Route::delete('admin/emails', 'InfoController@removeEmail')->name('admin.email.delete');
+Route::get('admin/addUser', 'InfoController@getFormAddUser')->name('admin.addUser');
+Route::post('admin/addUser', 'InfoController@addUser')->name('admin.addUser');
+Route::get('admin/users', 'InfoController@users')->name('admin.users');
+Route::delete('admin/users', 'InfoController@removeUser')->name('admin.removeUser');
 
 Auth::routes();
 
