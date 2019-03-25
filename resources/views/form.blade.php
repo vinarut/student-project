@@ -15,17 +15,30 @@
                 </div>
             @endif
             <h4 class="card-title">STUDENT REGISTRATION 2018-2019</h4>
-            <form method="post" action="{{ route('register.store', ['token'=>$token]) }}" id="infoForm">
+            <form method="post" action="{{ route('register.store', ['token'=>$token]) }}" id="infoForm" name="clearForm">
                 @csrf
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Child’s Name</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Child’s First Name</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('child_name')? "is-invalid": ""}}" id="child_name"
-                               placeholder="Child’s Name" name="child_name" autofocus autocomplete="off"
-                               minlength="3" maxlength="255" required>
-                        @if ($errors->has('child_name'))
+                        <input type="text" class="form-control {{$errors->has('child_first_name')? "is-invalid": ""}}"
+                               id="child_first_name" placeholder="First Name" name="child_first_name" autofocus
+                               autocomplete="off" minlength="3" maxlength="255" required>
+                        @if ($errors->has('child_first_name'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('child_name') }}</strong>
+                                <strong>{{ $errors->first('child_first_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Child’s Last Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('child_last_name')? "is-invalid": ""}}"
+                               id="child_last_name" placeholder="Last Name" name="child_last_name"
+                               autocomplete="off" minlength="3" maxlength="255" required>
+                        @if ($errors->has('child_last_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('child_last_name') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -82,14 +95,27 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s Name</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s First Name</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('mother_name')? "is-invalid": ""}}" id="mother_name"
-                               placeholder="Mother’s Name" name="mother_name" autocomplete="off"  minlength="3"
-                               maxlength="255" required>
-                        @if ($errors->has('mother_name'))
+                        <input type="text" class="form-control {{$errors->has('mother_first_name')? "is-invalid": ""}}"
+                               id="mother_first_name" placeholder="First Name" name="mother_first_name" autocomplete="off"
+                               minlength="3" maxlength="255" required>
+                        @if ($errors->has('mother_first_name'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('mother_name') }}</strong>
+                                <strong>{{ $errors->first('mother_first_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s Last Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('mother_last_name')? "is-invalid": ""}}"
+                               id="mother_last_name" placeholder="Last Name" name="mother_last_name" autocomplete="off"
+                               minlength="3" maxlength="255" required>
+                        @if ($errors->has('mother_last_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('mother_last_name') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -106,7 +132,7 @@
                                 <strong>{{ $errors->first('home_phone') }}</strong>
                             </span>
                         @endif
-                        <small>Example: 000-000-0000</small>
+                        <small>Number must be 10 digits/NO dashes</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -121,7 +147,7 @@
                                 <strong>{{ $errors->first('mother_cell_phone') }}</strong>
                             </span>
                         @endif
-                        <small>Example: 000-000-0000</small>
+                        <small>Number must be 10 digits/NO dashes</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -174,18 +200,31 @@
                                 <strong>{{ $errors->first('mother_work_phone') }}</strong>
                             </span>
                         @endif
-                        <small>Example: 000-000-0000</small>
+                        <small>Number must be 10 digits/NO dashes</small>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Father’s Name</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Father’s First Name</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}" id="father_name"
-                               placeholder="Father’s Name" name="father_name" autocomplete="off"
+                        <input type="text" class="form-control {{$errors->has('father_first_name')? "is-invalid": ""}}"
+                               id="father_first_name" placeholder="First Name" name="father_first_name" autocomplete="off"
                                minlength="3" maxlength="255" required>
-                        @if ($errors->has('father_name'))
+                        @if ($errors->has('father_first_name'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('father_name') }}</strong>
+                                <strong>{{ $errors->first('father_first_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Father’s Last Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('father_last_name')? "is-invalid": ""}}"
+                               id="father_last_name" placeholder="Last Name" name="father_last_name" autocomplete="off"
+                               minlength="3" maxlength="255" required>
+                        @if ($errors->has('father_last_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('father_last_name') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -193,16 +232,16 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="tel" class="form-control {{$errors->has('father_name')? "is-invalid": ""}}"
+                        <input type="tel" class="form-control {{$errors->has('father_cell_phone')? "is-invalid": ""}}"
                                id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off"
                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                title="Number must be 10 digits" required>
-                        @if ($errors->has('father_name'))
+                        @if ($errors->has('father_cell_phone'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('father_name') }}</strong>
+                                <strong>{{ $errors->first('father_cell_phone') }}</strong>
                             </span>
                         @endif
-                        <small>Example: 000-000-0000</small>
+                        <small>Number must be 10 digits/NO dashes</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -254,7 +293,7 @@
                                 <strong>{{ $errors->first('father_work_phone') }}</strong>
                             </span>
                         @endif
-                        <small>Example: 000-000-0000</small>
+                        <small>Number must be 10 digits/NO dashes</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -283,7 +322,7 @@
                                           placeholder="Allergies Describe" autocomplete="off" maxlength="65535"></textarea>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="allergies" id="noAllergies" value="0" checked>
+                                <input class="form-check-input" type="radio" name="allergies" id="noAllergies" value="0">
                                 <label class="form-check-label" for="noAllergies">
                                     No
                                 </label>
@@ -291,6 +330,33 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Epi pen required?</legend>
+                        <div class="col-lg-8 col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="epi_pen" id="yesEpiPen" value="1">
+                                <label class="form-check-label" for="yesEpiPen">
+                                    Yes
+                                </label>
+                                <p id="link">Parent and physician must complete the Food Allergy & Anaphylaxis Emergency Care Plan
+                                    Form and return to Compass. Form can be found
+                                    <a href="https://compassschoolhouse.com/wp-content/uploads/2018/08/allergy-emergency-care-form.pdf"
+                                       target="_blank">
+                                        here</a>.
+                                </p>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="epi_pen" id="noEpiPen" value="0">
+                                <label class="form-check-label" for="noEpiPen">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <fieldset class="form-group">
                     <div class="row">
                         <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Special medical history</legend>
@@ -305,8 +371,7 @@
                                           maxlength="65535"></textarea>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="medical_history" id="noHistory" value="0"
-                                       checked>
+                                <input class="form-check-input" type="radio" name="medical_history" id="noHistory" value="0">
                                 <label class="form-check-label" for="noHistory">
                                     No
                                 </label>
@@ -328,7 +393,7 @@
                         </ul>
                         <p>
                             In the event of a medical emergency as deemed necessary by the director, we will do any or
-                            all of the following o Call another physician or paramedics</p>
+                            all of the following</p>
                         <ul class="font-weight-bold">
                             <li>Call an ambulance.</li>
                             <li>Have the child taken to an emergency hospital in the company of a staff member.</li>
@@ -337,38 +402,13 @@
                     </div>
                 </div>
 
-                <fieldset class="form-group">
-                    <div class="row">
-                        <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Epi pen required?</legend>
-                        <div class="col-lg-8 col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="epi_pen" id="yesEpiPen" value="1">
-                                <label class="form-check-label" for="yesEpiPen">
-                                    Yes
-                                </label>
-                                <p id="link">Parent and physician must complete the Food Allergy & Anaphylaxis Emergency Care Plan
-                                    Form and return to Compass. Form can be found
-                                    <a href="https://compassschoolhouse.com/wp-content/uploads/2018/08/allergy-emergency-care-form.pdf"
-                                    target="_blank">
-                                        here</a>.
-                                </p>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="epi_pen" id="noEpiPen" value="0" checked>
-                                <label class="form-check-label" for="noEpiPen">
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <h4 class="card-title mt-5">Emergency Contacts List At Least 2 Local Names Other Than Parents</h4>
+                <h4 class="card-title mt-5">Emergency Contacts: List at least 2 local names (within 15 miles) other than
+                    parents</h4>
 
                 <div>
                     @foreach (range(0,1) as $k)
                         <div class="form-group row">
-                            <label class="col-lg-4 col-sm-2 col-form-label">Contacts name</label>
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} name</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="text" class="form-control {{$errors->has('contact.'.$k.'.name')? "is-invalid": ""}}"
                                        placeholder="Contacts name" name="contact[{{$k}}][name]" autocomplete="off"
@@ -381,7 +421,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} phone</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="tel" class="form-control {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
                                        placeholder="Contact phone" name="contact[{{$k}}][phone]" autocomplete="off"
@@ -392,11 +432,11 @@
                                         <strong>{{ $errors->first('contact.'.$k.'.phone') }}</strong>
                                     </span>
                                 @endif
-                                <small>Example: 000-000-0000</small>
+                                <small>Number must be 10 digits/NO dashes</small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-4 col-sm-2 col-form-label">Contacts address</label>
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} address</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="text" class="form-control {{$errors->has('contact.'.$k.'.address')? "is-invalid": ""}}"
                                        placeholder="First contacts address" name="contact[{{$k}}][address]" autocomplete="off"
@@ -441,7 +481,7 @@
                                            placeholder="Contact phone" name="contact[2][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                            title="Number must be 10 digits" required>
-                                    <small>Example: 000-000-0000</small>
+                                    <small>Number must be 10 digits/NO dashes</small>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -464,7 +504,7 @@
                     </div>
                 </div>
 
-                <h4 class="card-title mt-5">Physicians</h4>
+                <h4 class="card-title mt-5">Physician</h4>
 
                 <div>
                     @foreach (range(0,0) as $k)
@@ -493,7 +533,7 @@
                                         <strong>{{ $errors->first('physician.'.$k.'.phone') }}</strong>
                                     </span>
                                 @endif
-                                <small>Example: 000-000-0000</small>
+                                <small>Number must be 10 digits/NO dashes</small>
                             </div>
                         </div>
                     @endforeach
@@ -515,7 +555,7 @@
                                     <input type="tel" class="form-control" placeholder="Physician phone"
                                            name="physician[1][phone]" autocomplete="off" minlength="12" maxlength="12"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Number must be 10 digits" required>
-                                    <small>Example: 000-000-0000</small>
+                                    <small>Number must be 10 digits/NO dashes</small>
                                 </div>
                             </div>
                         </div>
@@ -529,42 +569,42 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="text" class="form-control {{$errors->has('additional.'.$k.'.name')? "is-invalid": ""}}"
+                                <input type="text" class="form-control"
                                        placeholder="Additional name" name="additional[{{$k}}][name]" autocomplete="off"
-                                       minlength="3" maxlength="255" required>
-                                @if ($errors->has('additional.'.$k.'.name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('additional.'.$k.'.name') }}</strong>
-                                    </span>
-                                @endif
+                                       minlength="3" maxlength="255">
+                                {{--@if ($errors->has('additional.'.$k.'.name'))--}}
+                                    {{--<span class="invalid-feedback" role="alert">--}}
+                                        {{--<strong>{{ $errors->first('additional.'.$k.'.name') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="tel" class="form-control {{$errors->has('additional.'.$k.'.phone')? "is-invalid": ""}}"
+                                <input type="tel" class="form-control"
                                        placeholder="Additional phone" name="additional[{{$k}}][phone]" autocomplete="off"
                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
-                                       title="Number must be 10 digits" required>
-                                @if ($errors->has('additional.'.$k.'.phone'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('additional.'.$k.'.phone') }}</strong>
-                                    </span>
-                                @endif
-                                <small>Example: 000-000-0000</small>
+                                       title="Number must be 10 digits">
+                                {{--@if ($errors->has('additional.'.$k.'.phone'))--}}
+                                    {{--<span class="invalid-feedback" role="alert">--}}
+                                        {{--<strong>{{ $errors->first('additional.'.$k.'.phone') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
+                                <small>Number must be 10 digits/NO dashes</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
                             <div class="col-lg-8 col-sm-10">
-                                <textarea type="text" class="form-control {{$errors->has('additional.'.$k.'.relation')? "is-invalid": ""}}"
+                                <textarea type="text" class="form-control"
                                           placeholder="Relationship to сhild" name="additional[{{$k}}][relation]"
-                                          autocomplete="off" maxlength="65535" required></textarea>
-                                @if ($errors->has('additional.'.$k.'.relation'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('additional.'.$k.'.relation') }}</strong>
-                                    </span>
-                                @endif
+                                          autocomplete="off" maxlength="65535"></textarea>
+                                {{--@if ($errors->has('additional.'.$k.'.relation'))--}}
+                                    {{--<span class="invalid-feedback" role="alert">--}}
+                                        {{--<strong>{{ $errors->first('additional.'.$k.'.relation') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
                     @endforeach
@@ -575,9 +615,8 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label pl-0">Additional name</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <input type="text" class="form-control"
-                                           placeholder="Additional name" name="additional[2][name]" autocomplete="off"
-                                           minlength="3" maxlength="255" required>
+                                    <input type="text" class="form-control" placeholder="Additional name"
+                                           name="additional[2][name]" autocomplete="off" minlength="3" maxlength="255">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -585,17 +624,16 @@
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
                                            placeholder="Additional phone" name="additional[2][phone]" autocomplete="off"
-                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
-                                           title="Number must be 10 digits" required>
-                                    <small>Example: 000-000-0000</small>
+                                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Number must be 10 digits"
+                                           minlength="12" maxlength="12">
+                                    <small>Number must be 10 digits/NO dashes</small>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <textarea type="text" class="form-control" placeholder="Relationship to child"
-                                              name="additional[2][relation]" autocomplete="off" maxlength="65535"
-                                              required></textarea>
+                                              name="additional[2][relation]" autocomplete="off" maxlength="65535"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -618,7 +656,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">CHECK HERE</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label pt-0 font-weight-bold">CHECK HERE</label>
                     <div class="col-lg-8 col-sm-10">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" name="release_form" value="1" required/>
@@ -659,7 +697,7 @@
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="photo_choice" id="photoLow" checked
+                                <input class="form-check-input" type="radio" name="photo_choice" id="photoLow"
                                        value="Do not include my child in any photographs">
                                 <label class="form-check-label" for="photoLow" id="photoLowLabel">
                                     Do not include my child in any photographs
@@ -685,12 +723,13 @@
                         <legend class="col-form-label col-lg-4 col-sm-2 pt-0">Please choose <b>ONE OPTION ONLY</b></legend>
                         <div class="col-lg-8 col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="directory" id="directoryAgree" value="1">
+                                <input class="form-check-input" type="radio" name="directory" id="directoryAgree"
+                                       value="1">
                                 <label class="form-check-label" for="directoryAgree">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="directory" id="directoryDisagree" value="0"
-                                       checked>
+                                <input class="form-check-input" type="radio" name="directory" id="directoryDisagree"
+                                       value="0">
                                 <label class="form-check-label" for="directoryDisagree">No</label>
                             </div>
                         </div>
@@ -716,6 +755,7 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="date" class="form-control {{$errors->has('date')? "is-invalid": ""}}" id="date"
                                placeholder="Date" name="date" autocomplete="off" required>
+                        <small>i.e. 03/14/19</small>
                         @if ($errors->has('date'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('date') }}</strong>
@@ -725,7 +765,8 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label"><b>Signature</b></label>
+                    <label class="col-lg-4 col-sm-2 col-form-label"><b>Signature</b> (Please sign your name in the box to
+                        the right)</label>
                     <div class="col-lg-8 col-sm-10">
                         <canvas id="canvas" class="border sign"></canvas>
                         <input id="signature" class="d-none" name="signature" />

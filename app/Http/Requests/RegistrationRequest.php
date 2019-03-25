@@ -24,19 +24,22 @@ class RegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'child_name' => 'required|min:3|max:255',
+            'child_first_name' => 'required|min:3|max:255',
+            'child_last_name' => 'required|min:3|max:255',
             'DOB' => 'required',
             'street_address' => 'required|min:3|max:255',
             'town' => 'required|min:2|max:255',
             'zip' => 'required|regex:/[0-9]{5,}/',
-            'mother_name' => 'required|min:3|max:255',
+            'mother_first_name' => 'required|min:3|max:255',
+            'mother_last_name' => 'required|min:3|max:255',
             'home_phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
             'mother_cell_phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
             'mother_employer' => 'required|min:3|max:255',
             'mother_city' => 'required|min:2|max:255',
             'mother_state' => 'required|min:2|max:255',
             'mother_work_phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
-            'father_name' => 'required|min:3|max:255',
+            'father_first_name' => 'required|min:3|max:255',
+            'father_last_name' => 'required|min:3|max:255',
             'father_cell_phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
             'father_employer' => 'required|min:3|max:255',
             'father_city' => 'required|min:2|max:255',
@@ -65,10 +68,10 @@ class RegistrationRequest extends FormRequest
             'physician.*.name' => 'required|string|min:3|max:255',
             'physician.*.phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
 
-            'additional' => 'required|array|min:2',
-            'additional.*.name' => 'required|string|min:3|max:255',
-            'additional.*.phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
-            'additional.*.relation' => 'required|max:65535',
+            'additional' => 'nullable|array|min:2',
+            'additional.*.name' => 'nullable|string|min:3|max:255',
+            'additional.*.phone' => 'nullable|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
+            'additional.*.relation' => 'nullable|max:65535',
 
             'g-recaptcha-response' => 'required|captcha'
         ];

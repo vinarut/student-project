@@ -21,9 +21,9 @@
                         @endphp
                         @foreach($users as $user)
                             <tr>
-                                <th scope="row">{{$i++}}</th>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
+                                <th scope="row" class="align-middle">{{$i++}}</th>
+                                <td class="align-middle">{{$user->name}}</td>
+                                <td class="align-middle">{{$user->email}}</td>
                                 <td>
                                     <form method="post" action="{{route('admin.removeUser')}}" class="text-center">
                                         @method('delete')

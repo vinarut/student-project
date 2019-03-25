@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    //reset all fields in form (radio)
+    clearForm.reset();
+
+    let infoForm = $('#infoForm');
+
     let elements = [
         $('#allergies_describe'),
         $('#medical_history_describe'),
@@ -120,26 +125,38 @@ $(document).ready(function () {
                     $(item).addClass('is-invalid');
                 })
             });
-            $('#infoForm').validate();
+            infoForm.validate();
         },
         onLoad: function(index) {
-            $('#infoForm').validate();
+            infoForm.validate();
         },
         onDelete: function(id) {
-            $('#infoForm').validate();
+            infoForm.validate();
         }
     });
 
-    $('#infoForm').validate();
+    infoForm.validate();
 
     $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
-    $("#infoForm").submit(function(event) {
+    infoForm.submit(function(event) {
+        let radioBtn = $("input[type='radio']");
+        let checkedRadioBtn = 0;
+        for (let radio of radioBtn)
+            if (radio.checked)
+                checkedRadioBtn++;
+
+        if (checkedRadioBtn < 5) {
+            event.preventDefault();
+            alert('Please check all switches, maybe you forgot to make a choice.');
+        }
+
         let recaptcha = $("#g-recaptcha-response").val();
         if (recaptcha === "") {
             event.preventDefault();
-            alert("Please check the recaptcha");
+            alert('Please check the recaptcha.');
         }
+
         let inputSignature = $('#signature');
         let data = signaturePad.toDataURL('image/png');
         inputSignature.attr('value', data);
@@ -159,7 +176,7 @@ $(document).ready(function () {
         });
         if (i > 0) {
             event.preventDefault();
-            alert('Please check the fields entered');
+            alert('Please check the fields entered.');
         }
     });
 });

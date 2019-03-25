@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use League\Csv\Writer;
+use function Sodium\add;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -236,19 +237,19 @@ class InfoController extends Controller
             $validated = $request->validated();
 
             $info = new Info([
-                'childs_name' => $validated['child_name'] ?? '',
+                'childs_name' => $validated['child_first_name'] . ' ' . $validated['child_last_name'] ?? '',
                 'DOB' => $validated['DOB'] ?? '',
                 'street_address' => $validated['street_address'] ?? '',
                 'town' => $validated['town'] ?? '',
                 'zip' => $validated['zip'] ?? '',
-                'mothers_name' => $validated['mother_name'] ?? '',
+                'mothers_name' => $validated['mother_first_name'] . ' ' . $validated['mother_last_name'] ?? '',
                 'home_phone' => $validated['home_phone'] ?? '',
                 'mothers_cell_phone' => $validated['mother_cell_phone'] ?? '',
                 'mothers_employer' => $validated['mother_employer'] ?? '',
                 'mothers_city' => $validated['mother_city'] ?? '',
                 'mothers_state' => $validated['mother_state'] ?? '',
                 'mothers_work_phone' => $validated['mother_work_phone'] ?? '',
-                'fathers_name' => $validated['father_name'] ?? '',
+                'fathers_name' => $validated['father_first_name'] . ' ' . $validated['father_last_name'] ?? '',
                 'fathers_cell_phone' => $validated['father_cell_phone'] ?? '',
                 'fathers_employer' => $validated['father_employer'] ?? '',
                 'fathers_city' => $validated['father_city'] ?? '',
@@ -273,14 +274,21 @@ class InfoController extends Controller
             $physicians = $validated['physician'];
             $contacts = $validated['contact'];
             $additions = $validated['additional'];
+            $additions = array_filter($additions, function ($addition) use ($additions) {
+                return isset($addition['name'], $addition['phone'], $addition['relation']);
+            });
 
             $mappedPhysicians = collect($physicians)->mapInto(Physicians::class);
             $mappedContacts = collect($contacts)->mapInto(ContactList::class);
-            $mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
 
             $info->physicians()->saveMany($mappedPhysicians);
             $info->contactList()->saveMany($mappedContacts);
-            $info->additionalIndividuals()->saveMany($mappedAdditions);
+
+            if (count($additions))
+            {
+                $mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
+                $info->additionalIndividuals()->saveMany($mappedAdditions);
+            }
             flash()->success('Record created successfully');
         });
 

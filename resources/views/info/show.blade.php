@@ -51,6 +51,7 @@
                     </dl>
                 @endforeach
             </div>
+            @if(count($info->additionalIndividuals()->get()))
             <div class="card-body">
                 <h5 class="card-title">Additional Individuals That May Pick Up Your Child</h5>
                 @foreach($info->additionalIndividuals()->get() as $additionalIndividual)
@@ -67,6 +68,7 @@
                     </dl>
                 @endforeach
             </div>
+            @endif
         </div>
     </div>
 

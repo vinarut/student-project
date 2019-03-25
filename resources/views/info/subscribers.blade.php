@@ -19,10 +19,10 @@
                         <tbody>
                         @foreach($subscribers as $subscriber)
                             <tr>
-                                <th scope="row">{{$subscriber->id}}</th>
-                                <td>{{$subscriber->name}}</td>
-                                <td>{{$subscriber->surname}}</td>
-                                <td>{{$subscriber->token}}</td>
+                                <th scope="row" class="align-middle">{{$subscriber->id}}</th>
+                                <td class="align-middle">{{$subscriber->name}}</td>
+                                <td class="align-middle">{{$subscriber->surname}}</td>
+                                <td class="align-middle">{{$subscriber->token}}</td>
                                 <td class="text-center"><button class="btn btn-link" data-clipboard-action="copy"
                                             data-clipboard-text="{{route('register.create',
                                             ['token' => $subscriber->token])}}">

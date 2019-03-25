@@ -30,13 +30,17 @@
                         <tbody>
                         @foreach($clients as $client)
                             <tr>
-                                <th scope="row">{{$client->id}}</th>
-                                <td><a href="{{route('admin.show', ['info' => $client->id])}}">{{$client->childs_name}}</a></td>
-                                <td>{{$client->DOB}}</td>
-                                <td>{{$client->street_address}}</td>
-                                <td>{{$client->town}}</td>
-                                <td>{{$client->zip}}</td>
-                                <td>{{$client->primary_email_address}}</td>
+                                <th scope="row" class="align-middle">{{$client->id}}</th>
+                                <td>
+                                    <a href="{{route('admin.show', ['info' => $client->id])}}">
+                                        {{$client->childs_name}}
+                                    </a>
+                                </td>
+                                <td class="align-middle">{{$client->DOB}}</td>
+                                <td class="align-middle">{{$client->street_address}}</td>
+                                <td class="align-middle">{{$client->town}}</td>
+                                <td class="align-middle">{{$client->zip}}</td>
+                                <td class="align-middle">{{$client->primary_email_address}}</td>
                             </tr>
                         @endforeach
                         </tbody>
