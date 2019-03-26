@@ -4,6 +4,12 @@ $(document).ready(function () {
 
     let infoForm = $('#infoForm');
 
+    let anotherChild = $('#another_child');
+    let twoChildInputs = $('#two_child_inputs');
+    anotherChild.on('change', function () {
+        twoChildInputs.toggleClass('d-none');
+    });
+
     let elements = [
         $('#allergies_describe'),
         $('#medical_history_describe'),
@@ -14,7 +20,7 @@ $(document).ready(function () {
         $('#yesAllergies'),
         $('#yesHistory'),
         $('#yesEpiPen')
-    ].map((item, index) => {
+    ].forEach((item, index) => {
         item.click(function () {
             elements[index].removeClass('d-none');
         })
@@ -24,7 +30,7 @@ $(document).ready(function () {
         $('#noAllergies'),
         $('#noHistory'),
         $('#noEpiPen')
-    ].map((item, index) => {
+    ].forEach((item, index) => {
         item.click(function () {
             elements[index].addClass('d-none')
         })
@@ -34,7 +40,7 @@ $(document).ready(function () {
         $('#noAllergies:checked').val(),
         $('#noHistory:checked').val(),
         $('#noEpiPen:checked').val()
-    ].map((item, index) => {
+    ].forEach((item, index) => {
         if (item === '0')
             elements[index].addClass('d-none');
     });
@@ -51,20 +57,20 @@ $(document).ready(function () {
         $('#allergies_describe'),
         $('#medical_history_describe')
     ];
-    radioYes.map((item, index) => {
+    radioYes.forEach((item, index) => {
         $(item).on('click', function () {
             describe[index].addClass('is-invalid');
         })
     });
-    radioNo.map((item, index) => {
+    radioNo.forEach((item, index) => {
         $(item).on('click', function () {
             describe[index].removeClass('is-invalid');
         })
     });
     
-    describe.map(item => {
+    describe.forEach(item => {
         item.on('input', function () {
-            if (item.val().length > 0)
+            if (item.val() !== '')
                 item.removeClass('is-invalid');
             else
                 item.addClass('is-invalid');
@@ -104,27 +110,27 @@ $(document).ready(function () {
     $('#physicians, #additional-individuals, #contact-list').czMore({
         onAdd: function(index) {
             let telInputs = $("input[type='tel']");
-            telInputs = Array.from(telInputs);
-            telInputs.map(item => {
-                $(item).on('input', function () {
+
+            for (let tel of telInputs) {
+                $(tel).on('input', function () {
                     $(document).on('keydown', function (event) {
                         if (event.keyCode === 8 || event.keyCode === 46)
                             return;
-                        if ((item.value.length === 3 || item.value.length === 7))
-                            item.value += '-';
+                        if ((tel.value.length === 3 || tel.value.length === 7))
+                            tel.value += '-';
                     })
-                })
-            });
-            telInputs.map(item => {
-                $(item).on('change', function () {
-                    let result = item.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/i);
+                });
+
+                $(tel).on('change', function () {
+                    let result = tel.value.match(/[0-9]{3}-[0-9]{3}-[0-9]{4}/i);
                     if (result !== null) {
-                        $(item).removeClass('is-invalid');
+                        $(tel).removeClass('is-invalid');
                         return;
                     }
-                    $(item).addClass('is-invalid');
+                    $(tel).addClass('is-invalid');
                 })
-            });
+            }
+
             infoForm.validate();
         },
         onLoad: function(index) {
@@ -137,7 +143,7 @@ $(document).ready(function () {
 
     infoForm.validate();
 
-    $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
+    $('div.alert').not('.alert-important').delay(7000).fadeOut(350);
 
     infoForm.submit(function(event) {
         let radioBtn = $("input[type='radio']");
@@ -168,13 +174,11 @@ $(document).ready(function () {
             $('textarea.is-invalid')
         ];
 
-        let i = 0;
-        invalidInputs.map(item => {
-            if (item.length > 0) {
-                i++;
-            }
+        let isInvalid = invalidInputs.some(item => {
+            return item.length > 0;
         });
-        if (i > 0) {
+
+        if (isInvalid) {
             event.preventDefault();
             alert('Please check the fields entered.');
         }

@@ -24,9 +24,10 @@ class RegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'child_first_name' => 'required|min:3|max:255',
-            'child_last_name' => 'required|min:3|max:255',
-            'DOB' => 'required',
+            'childs' => 'nullable|array|min:1',
+            'childs.*.firstname' => 'nullable|string|min:3|max:255',
+            'childs.*.lastname' => 'nullable|string|min:3|max:255',
+            'childs.*.DOB' => 'nullable|string',
             'street_address' => 'required|min:3|max:255',
             'town' => 'required|min:2|max:255',
             'zip' => 'required|regex:/[0-9]{5,}/',

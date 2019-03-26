@@ -20,12 +20,12 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">Child’s First Name</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('child_first_name')? "is-invalid": ""}}"
-                               id="child_first_name" placeholder="First Name" name="child_first_name" autofocus
+                        <input type="text" class="form-control {{$errors->has('childs.0.firstname')? "is-invalid": ""}}"
+                               placeholder="First Name" name="childs[{{0}}][firstname]" autofocus
                                autocomplete="off" minlength="3" maxlength="255" required>
-                        @if ($errors->has('child_first_name'))
+                        @if ($errors->has('childs.0.firstname'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('child_first_name') }}</strong>
+                                <strong>{{ $errors->first('childs.0.firstname') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -33,12 +33,12 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">Child’s Last Name</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('child_last_name')? "is-invalid": ""}}"
-                               id="child_last_name" placeholder="Last Name" name="child_last_name"
+                        <input type="text" class="form-control {{$errors->has('childs.0.lastname')? "is-invalid": ""}}"
+                               placeholder="Last Name" name="childs[{{0}}][lastname]"
                                autocomplete="off" minlength="3" maxlength="255" required>
-                        @if ($errors->has('child_last_name'))
+                        @if ($errors->has('childs.0.lastname'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('child_last_name') }}</strong>
+                                <strong>{{ $errors->first('childs.0.lastname') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -46,15 +46,54 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">DOB</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="date" class="form-control {{$errors->has('DOB')? "is-invalid": ""}}" id="DOB" placeholder="DOB"
-                               name="DOB" autocomplete="off" required>
-                        @if ($errors->has('DOB'))
+                        <input type="date" class="form-control {{$errors->has('childs.0.DOB')? "is-invalid": ""}}"
+                               placeholder="DOB" name="childs[{{0}}][DOB]" autocomplete="off" required>
+                        @if ($errors->has('childs.0.DOB'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('DOB') }}</strong>
+                                <strong>{{ $errors->first('childs.0.DOB') }}</strong>
                             </span>
                         @endif
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">
+                        Do you have another child enrolled at Compass?
+                    </label>
+                    <div class="col-lg-8 col-sm-10 form-group">
+                        <div class="form-check col-lg-2">
+                            <input type="checkbox" class="form-check-input" id="another_child"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="two_child_inputs" class="d-none">
+                @foreach (range(1, 1) as $k)
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">Child’s First Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control" placeholder="First Name" name="childs[{{$k}}][firstname]"
+                               autocomplete="off" minlength="3" maxlength="255">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">Child’s Last Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control" autocomplete="off" minlength="3" maxlength="255"
+                               placeholder="Last Name" name="childs[{{$k}}][lastname]">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">DOB</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="date" class="form-control" placeholder="DOB" name="childs[{{$k}}][DOB]"
+                                autocomplete="off">
+                    </div>
+                </div>
+                @endforeach
+                </div>
+
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">Street Address</label>
                     <div class="col-lg-8 col-sm-10">
@@ -569,42 +608,24 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Additional name</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="text" class="form-control"
-                                       placeholder="Additional name" name="additional[{{$k}}][name]" autocomplete="off"
-                                       minlength="3" maxlength="255">
-                                {{--@if ($errors->has('additional.'.$k.'.name'))--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $errors->first('additional.'.$k.'.name') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
+                                <input type="text" class="form-control" minlength="3" maxlength="255"
+                                       placeholder="Additional name" name="additional[{{$k}}][name]" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Additional phone</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="tel" class="form-control"
+                                <input type="tel" class="form-control" title="Number must be 10 digits"
                                        placeholder="Additional phone" name="additional[{{$k}}][phone]" autocomplete="off"
-                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
-                                       title="Number must be 10 digits">
-                                {{--@if ($errors->has('additional.'.$k.'.phone'))--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $errors->first('additional.'.$k.'.phone') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
+                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12">
                                 <small>Number must be 10 digits/NO dashes</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
                             <div class="col-lg-8 col-sm-10">
-                                <textarea type="text" class="form-control"
-                                          placeholder="Relationship to сhild" name="additional[{{$k}}][relation]"
-                                          autocomplete="off" maxlength="65535"></textarea>
-                                {{--@if ($errors->has('additional.'.$k.'.relation'))--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                        {{--<strong>{{ $errors->first('additional.'.$k.'.relation') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
+                                <textarea type="text" class="form-control" autocomplete="off" maxlength="65535"
+                                          placeholder="Relationship to сhild" name="additional[{{$k}}][relation]"></textarea>
                             </div>
                         </div>
                     @endforeach
@@ -787,6 +808,7 @@
                         <button type="submit" class="btn btn-primary">Send</button>
                     </div>
                 </div>
+                
             </form>
         </div>
     </div>

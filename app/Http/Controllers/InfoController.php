@@ -236,60 +236,70 @@ class InfoController extends Controller
 
             $validated = $request->validated();
 
-            $info = new Info([
-                'childs_name' => $validated['child_first_name'] . ' ' . $validated['child_last_name'] ?? '',
-                'DOB' => $validated['DOB'] ?? '',
-                'street_address' => $validated['street_address'] ?? '',
-                'town' => $validated['town'] ?? '',
-                'zip' => $validated['zip'] ?? '',
-                'mothers_name' => $validated['mother_first_name'] . ' ' . $validated['mother_last_name'] ?? '',
-                'home_phone' => $validated['home_phone'] ?? '',
-                'mothers_cell_phone' => $validated['mother_cell_phone'] ?? '',
-                'mothers_employer' => $validated['mother_employer'] ?? '',
-                'mothers_city' => $validated['mother_city'] ?? '',
-                'mothers_state' => $validated['mother_state'] ?? '',
-                'mothers_work_phone' => $validated['mother_work_phone'] ?? '',
-                'fathers_name' => $validated['father_first_name'] . ' ' . $validated['father_last_name'] ?? '',
-                'fathers_cell_phone' => $validated['father_cell_phone'] ?? '',
-                'fathers_employer' => $validated['father_employer'] ?? '',
-                'fathers_city' => $validated['father_city'] ?? '',
-                'fathers_state' => $validated['father_state'] ?? '',
-                'fathers_work_phone' => $validated['father_work_phone'] ?? '',
-                'primary_email_address' => $validated['primary_email_address'] ?? '',
-                'allergies' => ($validated['allergies']) ? 'yes' : 'no',
-                'allergies_describe' => $validated['allergies_describe'] ?? '',
-                'special_medical_history' => ($validated['medical_history']) ? 'yes' : 'no',
-                'special_medical_history_describe' => $validated['medical_history_describe'] ?? '',
-                'epi_pen' => ($validated['epi_pen']) ? 'yes' : 'no',
-                'release_form' => ($validated['release_form']) ? 'yes' : 'no',
-                'photo_choice' => $validated['photo_choice'] ?? '',
-                'directory_agree' => ($validated['directory']) ? 'yes' : 'no',
-                'your_name' => $validated['your_name'] ?? '',
-                'date' => $validated['date'] ?? '',
-                'signature' => $validated['signature'] ?? '',
-                'ip' => $_SERVER['REMOTE_ADDR'],
-            ]);
-            $info->save();
-
+            $childs = $validated['childs'];
             $physicians = $validated['physician'];
             $contacts = $validated['contact'];
             $additions = $validated['additional'];
+
+            $childs = array_filter($childs, function ($child) use ($childs) {
+                return isset($child['firstname'], $child['lastname'], $child['DOB']);
+            });
+
             $additions = array_filter($additions, function ($addition) use ($additions) {
                 return isset($addition['name'], $addition['phone'], $addition['relation']);
             });
 
-            $mappedPhysicians = collect($physicians)->mapInto(Physicians::class);
-            $mappedContacts = collect($contacts)->mapInto(ContactList::class);
-
-            $info->physicians()->saveMany($mappedPhysicians);
-            $info->contactList()->saveMany($mappedContacts);
-
-            if (count($additions))
+            foreach ($childs as $child)
             {
-                $mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
-                $info->additionalIndividuals()->saveMany($mappedAdditions);
+                $info = new Info([
+                    'childs_name' => $child['firstname'] . ' ' . $child['lastname'] ?? '',
+                    'DOB' => $child['DOB'] ?? '',
+                    'street_address' => $validated['street_address'] ?? '',
+                    'town' => $validated['town'] ?? '',
+                    'zip' => $validated['zip'] ?? '',
+                    'mothers_name' => $validated['mother_first_name'] . ' ' . $validated['mother_last_name'] ?? '',
+                    'home_phone' => $validated['home_phone'] ?? '',
+                    'mothers_cell_phone' => $validated['mother_cell_phone'] ?? '',
+                    'mothers_employer' => $validated['mother_employer'] ?? '',
+                    'mothers_city' => $validated['mother_city'] ?? '',
+                    'mothers_state' => $validated['mother_state'] ?? '',
+                    'mothers_work_phone' => $validated['mother_work_phone'] ?? '',
+                    'fathers_name' => $validated['father_first_name'] . ' ' . $validated['father_last_name'] ?? '',
+                    'fathers_cell_phone' => $validated['father_cell_phone'] ?? '',
+                    'fathers_employer' => $validated['father_employer'] ?? '',
+                    'fathers_city' => $validated['father_city'] ?? '',
+                    'fathers_state' => $validated['father_state'] ?? '',
+                    'fathers_work_phone' => $validated['father_work_phone'] ?? '',
+                    'primary_email_address' => $validated['primary_email_address'] ?? '',
+                    'allergies' => ($validated['allergies']) ? 'yes' : 'no',
+                    'allergies_describe' => $validated['allergies_describe'] ?? '',
+                    'special_medical_history' => ($validated['medical_history']) ? 'yes' : 'no',
+                    'special_medical_history_describe' => $validated['medical_history_describe'] ?? '',
+                    'epi_pen' => ($validated['epi_pen']) ? 'yes' : 'no',
+                    'release_form' => ($validated['release_form']) ? 'yes' : 'no',
+                    'photo_choice' => $validated['photo_choice'] ?? '',
+                    'directory_agree' => ($validated['directory']) ? 'yes' : 'no',
+                    'your_name' => $validated['your_name'] ?? '',
+                    'date' => $validated['date'] ?? '',
+                    'signature' => $validated['signature'] ?? '',
+                    'ip' => $_SERVER['REMOTE_ADDR'],
+                ]);
+                $info->save();
+
+                $mappedPhysicians = collect($physicians)->mapInto(Physicians::class);
+                $mappedContacts = collect($contacts)->mapInto(ContactList::class);
+
+                $info->physicians()->saveMany($mappedPhysicians);
+                $info->contactList()->saveMany($mappedContacts);
+
+                if (count($additions))
+                {
+                    $mappedAdditions = collect($additions)->mapInto(AdditionalIndividuals::class);
+                    $info->additionalIndividuals()->saveMany($mappedAdditions);
+                }
             }
-            flash()->success('Record created successfully');
+
+            flash()->success('Your Student information has been submitted – Thank you');
         });
 
         return back()->withInput();
