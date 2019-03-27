@@ -15,19 +15,22 @@ class CreateInfoTable extends Migration
     {
         Schema::create('info', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('childs_name');
+            $table->string('childs_first_name');
+            $table->string('childs_last_name');
             $table->date('DOB');
             $table->string('street_address');
             $table->string('town');
             $table->string('zip');
-            $table->string('mothers_name');
+            $table->string('mothers_first_name');
+            $table->string('mothers_last_name');
             $table->string('home_phone');
             $table->string('mothers_cell_phone');
             $table->string('mothers_employer');
             $table->string('mothers_city');
             $table->string('mothers_state');
             $table->string('mothers_work_phone');
-            $table->string('fathers_name');
+            $table->string('fathers_first_name');
+            $table->string('fathers_last_name');
             $table->string('fathers_cell_phone');
             $table->string('fathers_employer');
             $table->string('fathers_city');

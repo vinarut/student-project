@@ -776,7 +776,7 @@
                     <div class="col-lg-8 col-sm-10">
                         <input type="date" class="form-control {{$errors->has('date')? "is-invalid": ""}}" id="date"
                                placeholder="Date" name="date" autocomplete="off" required>
-                        <small>i.e. 03/14/19</small>
+                        <small>i.e. 03/14/2019</small>
                         @if ($errors->has('date'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('date') }}</strong>

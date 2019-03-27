@@ -33,7 +33,7 @@
                                 <th scope="row" class="align-middle">{{$client->id}}</th>
                                 <td>
                                     <a href="{{route('admin.show', ['info' => $client->id])}}">
-                                        {{$client->childs_name}}
+                                        {{$client->childs_first_name .' '. $client->childs_last_name}}
                                     </a>
                                 </td>
                                 <td class="align-middle">{{$client->DOB}}</td>
