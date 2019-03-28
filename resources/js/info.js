@@ -1,82 +1,83 @@
 $(document).ready(function () {
-    //reset all fields in form (radio)
+    //очищаем все поля формы + чекбоксы + радиобаттоны
     clearForm.reset();
 
-    let infoForm = $('#infoForm');
-
-    let anotherChild = $('#another_child');
-
+    //инициализация календаря
     initializeDatepicker();
 
-    let elements = [
-        $('#allergies_describe'),
-        $('#medical_history_describe'),
-        $('#link')
-    ];
+    //все необходимые элементы
+    let infoForm = $('#infoForm');
+    let allergiesDescribe = $('#allergies_describe');
+    let medicalHistoryDescribe = $('#medical_history_describe');
+    let link = $('#link');
+    let yesAllergies = $('#yesAllergies');
+    let yesHistory = $('#yesHistory');
+    let yesEpiPen = $('#yesEpiPen');
+    let noAllergies = $('#noAllergies');
+    let noHistory = $('#noHistory');
+    let noEpiPen = $('#noEpiPen');
 
-    [
-        $('#yesAllergies'),
-        $('#yesHistory'),
-        $('#yesEpiPen')
-    ].forEach((item, index) => {
+    let physicians = $('#physicians');
+    let additionalIndividuals = $('#additional-individuals');
+    let contactList = $('#contact-list');
+
+    //канвас
+    let canvas = $('#canvas').get(0);
+    let clear = $('#clear');
+
+    let zip = $('#zip').get(0);
+
+    //массив элементов для радиобаттонов "Yes"
+    let elementsForYesRadioBtn = [allergiesDescribe, medicalHistoryDescribe, link];
+
+    //массив пложительных переключателей
+    let yesRadioBtn = [yesAllergies, yesHistory, yesEpiPen];
+
+    //для каждого элемента удаляем класс d-none, если не выбран положительный переключатель
+    yesRadioBtn.forEach((item, index) => {
         item.click(function () {
-            elements[index].removeClass('d-none');
+            elementsForYesRadioBtn[index].removeClass('d-none');
         })
     });
 
-    [
-        $('#noAllergies'),
-        $('#noHistory'),
-        $('#noEpiPen')
-    ].forEach((item, index) => {
+    //массив отрицательных переключателей
+    let noRadioBtn = [noAllergies, noHistory, noEpiPen];
+
+    //навешиваем клас d-none, если поле пустое
+    noRadioBtn.forEach((item, index) => {
         item.click(function () {
-            elements[index].addClass('d-none')
+            elementsForYesRadioBtn[index].addClass('d-none')
         })
     });
 
-    [
-        $('#noAllergies:checked').val(),
-        $('#noHistory:checked').val(),
-        $('#noEpiPen:checked').val()
-    ].forEach((item, index) => {
-        if (item === '0')
-            elements[index].addClass('d-none');
-    });
-
-    let radioYes = [
-        $('#yesAllergies').get(0),
-        $('#yesHistory').get(0),
-    ];
-    let radioNo = [
-        $('#noAllergies').get(0),
-        $('#noHistory').get(0),
-    ];
-    let describe = [
-        $('#allergies_describe'),
-        $('#medical_history_describe')
-    ];
-    radioYes.forEach((item, index) => {
+    //по клику на положительный радиобаттон навешиваем класс is-invalid на текстарею
+    //возможно стоит пересмотреть
+    [yesAllergies, yesHistory].forEach((item, index) => {
         $(item).on('click', function () {
             describe[index].addClass('is-invalid');
         })
     });
-    radioNo.forEach((item, index) => {
-        $(item).on('click', function () {
+
+    //текстареи
+    let describe = [allergiesDescribe, medicalHistoryDescribe];
+
+    //по клику на отрицательный радиобаттон убираем класс is-invalid с текстареи
+    [noAllergies, noHistory].forEach((item, index) => {
+        item.on('click', function () {
             describe[index].removeClass('is-invalid');
         })
     });
-    
-    describe.forEach(item => {
+
+    for (let item of describe) {
         item.on('input', function () {
             if (item.val() !== '')
                 item.removeClass('is-invalid');
             else
                 item.addClass('is-invalid');
         })
-    });
+    }
 
-    let canvas = $('#canvas').get(0);
-    let clear = $('#clear').get(0);
+    //инициализация панели
     canvas.height = canvas.offsetHeight;
     canvas.width = canvas.offsetWidth;
     let signaturePad = new SignaturePad(canvas, {
@@ -84,18 +85,18 @@ $(document).ready(function () {
         penColor: 'rgb(0, 0, 0)'
     });
 
+    //очистка панели при изменении размера экрана
     $(window).on('resize', function () {
         canvas.height = canvas.offsetHeight;
         canvas.width = canvas.offsetWidth;
         signaturePad.clear();
     });
 
-    $(clear).on('click', function (event) {
+    clear.on('click', function (event) {
         signaturePad.clear();
         event.preventDefault();
     });
 
-    let zip = $('#zip').get(0);
     $(zip).on('change', function () {
         let result = zip.value.match(/[0-9]{5,}/i);
         if (result !== null) {
@@ -105,7 +106,7 @@ $(document).ready(function () {
         $(zip).addClass('is-invalid');
     });
 
-    $('#physicians, #additional-individuals, #contact-list').czMore({
+    $(physicians,additionalIndividuals, contactList).czMore({
         onAdd: function(index) {
             let telInputs = $("input[type='tel']");
 
@@ -144,19 +145,17 @@ $(document).ready(function () {
     $('div.alert').not('.alert-important').delay(7000).fadeOut(350);
 
     infoForm.submit(function(event) {
-        let radioBtn = $("input[type='radio']");
-        let checkedRadioBtn = 0;
-        for (let radio of radioBtn)
-            if (radio.checked)
-                checkedRadioBtn++;
+        if (checkInvalidInputs()) {
+            event.preventDefault();
+            alert('Please check the fields entered.');
+        }
 
-        if (checkedRadioBtn < 5) {
+        if (checkRadioBtn()) {
             event.preventDefault();
             alert('Please check all switches, maybe you forgot to make a choice.');
         }
 
-        let recaptcha = $("#g-recaptcha-response").val();
-        if (recaptcha === "") {
+        if (checkReCaptcha()) {
             event.preventDefault();
             alert('Please check the recaptcha.');
         }
@@ -164,22 +163,6 @@ $(document).ready(function () {
         let inputSignature = $('#signature');
         let data = signaturePad.toDataURL('image/png');
         inputSignature.attr('value', data);
-
-        let invalidInputs = [
-            $('input.error'),
-            $('input.is-invalid'),
-            $('textarea.error'),
-            $('textarea.is-invalid')
-        ];
-
-        let isInvalid = invalidInputs.some(item => {
-            return item.length > 0;
-        });
-
-        if (isInvalid) {
-            event.preventDefault();
-            alert('Please check the fields entered.');
-        }
     });
 });
 
@@ -189,4 +172,24 @@ function initializeDatepicker() {
         todayBtn: "linked",
         clearBtn: true
     });
+}
+
+function checkRadioBtn() {
+    let radioBtn = $("input[type='radio']");
+    let checkedRadioBtn = 0;
+    for (let radio of radioBtn)
+        if (radio.checked)
+            checkedRadioBtn++;
+
+    return checkedRadioBtn < 5;
+}
+
+function checkInvalidInputs() {
+    return [$('input.error'), $('input.is-invalid'), $('textarea.error'), $('textarea.is-invalid')].some(item => {
+        return item.length > 0;
+    });
+}
+
+function checkReCaptcha() {
+    return $("#g-recaptcha-response").val() === "";
 }
