@@ -5,10 +5,8 @@ $(document).ready(function () {
     let infoForm = $('#infoForm');
 
     let anotherChild = $('#another_child');
-    let twoChildInputs = $('#two_child_inputs');
-    anotherChild.on('change', function () {
-        twoChildInputs.toggleClass('d-none');
-    });
+
+    initializeDatepicker();
 
     let elements = [
         $('#allergies_describe'),
@@ -185,3 +183,10 @@ $(document).ready(function () {
     });
 });
 
+function initializeDatepicker() {
+    $('.dob, .date').datepicker({
+        startView: 2,
+        todayBtn: "linked",
+        clearBtn: true
+    });
+}

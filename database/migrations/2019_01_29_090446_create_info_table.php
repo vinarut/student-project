@@ -17,7 +17,7 @@ class CreateInfoTable extends Migration
             $table->bigIncrements('id');
             $table->string('childs_first_name');
             $table->string('childs_last_name');
-            $table->date('DOB');
+            $table->string('DOB');
             $table->string('street_address');
             $table->string('town');
             $table->string('zip');
@@ -46,7 +46,7 @@ class CreateInfoTable extends Migration
             $table->text('photo_choice');
             $table->string('directory_agree');
             $table->string('your_name');
-            $table->date('date');
+            $table->string('date');
             $table->text('signature');
             $table->ipAddress('ip');
             $table->timestamps();

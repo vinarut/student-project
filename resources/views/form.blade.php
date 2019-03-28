@@ -46,7 +46,7 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">DOB</label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="date" class="form-control {{$errors->has('childs.0.DOB')? "is-invalid": ""}}"
+                        <input type="text" class="form-control dob {{$errors->has('childs.0.DOB')? "is-invalid": ""}}"
                                placeholder="DOB" name="childs[{{0}}][DOB]" autocomplete="off" required>
                         @if ($errors->has('childs.0.DOB'))
                             <span class="invalid-feedback" role="alert">
@@ -65,33 +65,6 @@
                             <input type="checkbox" class="form-check-input" id="another_child"/>
                         </div>
                     </div>
-                </div>
-
-                <div id="two_child_inputs" class="d-none">
-                @foreach (range(1, 1) as $k)
-                <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">Child’s First Name</label>
-                    <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control" placeholder="First Name" name="childs[{{$k}}][firstname]"
-                               autocomplete="off" minlength="3" maxlength="255">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">Child’s Last Name</label>
-                    <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control" autocomplete="off" minlength="3" maxlength="255"
-                               placeholder="Last Name" name="childs[{{$k}}][lastname]">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">DOB</label>
-                    <div class="col-lg-8 col-sm-10">
-                        <input type="date" class="form-control" placeholder="DOB" name="childs[{{$k}}][DOB]"
-                                autocomplete="off">
-                    </div>
-                </div>
-                @endforeach
                 </div>
 
                 <div class="form-group row">
@@ -133,32 +106,7 @@
                         <small>Example: 00000</small>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s First Name</label>
-                    <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('mother_first_name')? "is-invalid": ""}}"
-                               id="mother_first_name" placeholder="First Name" name="mother_first_name" autocomplete="off"
-                               minlength="3" maxlength="255" required>
-                        @if ($errors->has('mother_first_name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('mother_first_name') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s Last Name</label>
-                    <div class="col-lg-8 col-sm-10">
-                        <input type="text" class="form-control {{$errors->has('mother_last_name')? "is-invalid": ""}}"
-                               id="mother_last_name" placeholder="Last Name" name="mother_last_name" autocomplete="off"
-                               minlength="3" maxlength="255" required>
-                        @if ($errors->has('mother_last_name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('mother_last_name') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label">Home Phone</label>
                     <div class="col-lg-8 col-sm-10">
@@ -174,8 +122,37 @@
                         <small>Number must be 10 digits/NO dashes</small>
                     </div>
                 </div>
+
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s First Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('mother_first_name')? "is-invalid": ""}}"
+                               id="mother_first_name" placeholder="First Name" name="mother_first_name" autocomplete="off"
+                               minlength="3" maxlength="255" required>
+                        @if ($errors->has('mother_first_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('mother_first_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mother’s Last Name</label>
+                    <div class="col-lg-8 col-sm-10">
+                        <input type="text" class="form-control {{$errors->has('mother_last_name')? "is-invalid": ""}}"
+                               id="mother_last_name" placeholder="Last Name" name="mother_last_name" autocomplete="off"
+                               minlength="3" maxlength="255" required>
+                        @if ($errors->has('mother_last_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('mother_last_name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mothers Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('mother_cell_phone')? "is-invalid": ""}}"
                                id="mother_cell_phone" placeholder="Cell Phone" name="mother_cell_phone" autocomplete="off"
@@ -228,7 +205,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Mothers Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('mother_work_phone')? "is-invalid": ""}}"
                                id="mother_work_phone" placeholder="Work Phone" name="mother_work_phone" autocomplete="off"
@@ -269,7 +246,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Cell Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Fathers Cell Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('father_cell_phone')? "is-invalid": ""}}"
                                id="father_cell_phone" placeholder="Cell Phone" name="father_cell_phone" autocomplete="off"
@@ -321,7 +298,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label">Work Phone</label>
+                    <label class="col-lg-4 col-sm-2 col-form-label">Fathers Work Phone</label>
                     <div class="col-lg-8 col-sm-10">
                         <input type="tel" class="form-control {{$errors->has('father_work_phone')? "is-invalid": ""}}"
                                id="father_work_phone" placeholder="Work Phone" name="father_work_phone" autocomplete="off"
@@ -450,7 +427,7 @@
                             <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} name</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="text" class="form-control {{$errors->has('contact.'.$k.'.name')? "is-invalid": ""}}"
-                                       placeholder="Contacts name" name="contact[{{$k}}][name]" autocomplete="off"
+                                       placeholder="Contact's name" name="contact[{{$k}}][name]" autocomplete="off"
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('contact.'.$k.'.name'))
                                     <span class="invalid-feedback" role="alert">
@@ -463,7 +440,7 @@
                             <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} phone</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="tel" class="form-control {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
-                                       placeholder="Contact phone" name="contact[{{$k}}][phone]" autocomplete="off"
+                                       placeholder="Contact's phone" name="contact[{{$k}}][phone]" autocomplete="off"
                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                        title="Number must be 10 digits" required>
                                 @if ($errors->has('contact.'.$k.'.phone'))
@@ -478,7 +455,7 @@
                             <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} address</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="text" class="form-control {{$errors->has('contact.'.$k.'.address')? "is-invalid": ""}}"
-                                       placeholder="First contacts address" name="contact[{{$k}}][address]" autocomplete="off"
+                                       placeholder="First contact's address" name="contact[{{$k}}][address]" autocomplete="off"
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('contact.'.$k.'.address'))
                                     <span class="invalid-feedback" role="alert">
@@ -506,28 +483,28 @@
                     <div class="first">
                         <div class="recordset">
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contacts name</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contact name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="Contacts name" name="contact[2][name]" autocomplete="off"
+                                           placeholder="Contact's name" name="contact[2][name]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Contacts phone</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label">Contact phone</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
-                                           placeholder="Contact phone" name="contact[2][phone]" autocomplete="off"
+                                           placeholder="Contact's phone" name="contact[2][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                            title="Number must be 10 digits" required>
                                     <small>Number must be 10 digits/NO dashes</small>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Contacts address</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label">Contact address</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="First contacts address" name="contact[2][address]" autocomplete="off"
+                                           placeholder="First contact's address" name="contact[2][address]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
@@ -601,7 +578,7 @@
                     </div>
                 </div>
 
-                <h4 class="card-title mt-5">Additional Individuals That May Pick Up Your Child</h4>
+                <h4 class="card-title mt-5">Additional Individuals That May Pick Up Your Child (Not Required)</h4>
 
                 <div>
                     @foreach (range(0,1) as $k)
@@ -735,7 +712,7 @@
                         The Compass Schoolhouse DIRECTORY of all Compass Schoolhouse students will be available on the
                         Compass Schoolhouse website for the convenience of our families. THE DIRECTORY IS PASSWORD
                         PROTECTED. Do you give your permission for your child's name, address, phone numbers, and your
-                        email address to appear in the password protected Compass Schoolhouse Directory.
+                        email address to appear in the password protected Compass Schoolhouse Directory?
                     </div>
                 </div>
 
@@ -774,7 +751,7 @@
                 <div class="form-group row">
                     <label class="col-lg-4 col-sm-2 col-form-label"><b>Date</b></label>
                     <div class="col-lg-8 col-sm-10">
-                        <input type="date" class="form-control {{$errors->has('date')? "is-invalid": ""}}" id="date"
+                        <input type="text" class="form-control date {{$errors->has('date')? "is-invalid": ""}}"
                                placeholder="Date" name="date" autocomplete="off" required>
                         <small>i.e. 03/14/2019</small>
                         @if ($errors->has('date'))
