@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            @include('flash::message')
+            {{--@include('flash::message')--}}
             @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
                     <ul class="list-unstyled">
@@ -53,17 +53,6 @@
                                 <strong>{{ $errors->first('childs.0.DOB') }}</strong>
                             </span>
                         @endif
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label pt-0">
-                        Do you have another child enrolled at Compass?
-                    </label>
-                    <div class="col-lg-8 col-sm-10 form-group">
-                        <div class="form-check col-lg-2">
-                            <input type="checkbox" class="form-check-input" id="another_child"/>
-                        </div>
                     </div>
                 </div>
 

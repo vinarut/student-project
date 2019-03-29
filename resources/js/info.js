@@ -17,10 +17,6 @@ $(document).ready(function () {
     let noHistory = $('#noHistory');
     let noEpiPen = $('#noEpiPen');
 
-    let physicians = $('#physicians');
-    let additionalIndividuals = $('#additional-individuals');
-    let contactList = $('#contact-list');
-
     //канвас
     let canvas = $('#canvas').get(0);
     let clear = $('#clear');
@@ -51,10 +47,10 @@ $(document).ready(function () {
     });
 
     //по клику на положительный радиобаттон навешиваем класс is-invalid на текстарею
-    //возможно стоит пересмотреть
     [yesAllergies, yesHistory].forEach((item, index) => {
         $(item).on('click', function () {
-            describe[index].addClass('is-invalid');
+            if (describe[index].val() === '')
+                describe[index].addClass('is-invalid');
         })
     });
 
@@ -106,7 +102,7 @@ $(document).ready(function () {
         $(zip).addClass('is-invalid');
     });
 
-    $(physicians,additionalIndividuals, contactList).czMore({
+    $('#physicians, #additional-individuals, #contact-list').czMore({
         onAdd: function(index) {
             let telInputs = $("input[type='tel']");
 
@@ -145,24 +141,42 @@ $(document).ready(function () {
     $('div.alert').not('.alert-important').delay(7000).fadeOut(350);
 
     infoForm.submit(function(event) {
+        event.preventDefault();
+
         if (checkInvalidInputs()) {
-            event.preventDefault();
             alert('Please check the fields entered.');
+            return;
         }
 
         if (checkRadioBtn()) {
-            event.preventDefault();
             alert('Please check all switches, maybe you forgot to make a choice.');
+            return;
         }
 
         if (checkReCaptcha()) {
-            event.preventDefault();
             alert('Please check the recaptcha.');
+            return;
         }
 
         let inputSignature = $('#signature');
         let data = signaturePad.toDataURL('image/png');
         inputSignature.attr('value', data);
+
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            cache: false,
+            success: function () {
+                if (!confirm('Form submitted, thank you!\nAdd an additional child?')) {
+                    window.location.replace(`http://${document.domain}`);
+                    return;
+                }
+
+                clearFormInputs();
+            },
+        });
+
     });
 });
 
@@ -192,4 +206,26 @@ function checkInvalidInputs() {
 
 function checkReCaptcha() {
     return $("#g-recaptcha-response").val() === "";
+}
+
+function clearFormInputs() {
+    let inputsToClear = [
+        $("input[name='childs[0][firstname]']"),
+        $("input[name='childs[0][lastname]']"),
+        $("input[name='childs[0][DOB]']"),
+        $("textarea[name='allergies_describe']"),
+        $("textarea[name='medical_history_describe']"),
+    ];
+
+    let radioToClear = [
+        $("input[name='allergies']"),
+        $("input[name='epi_pen']"),
+        $("input[name='medical_history']"),
+    ];
+
+    for (let item of inputsToClear)
+        item.val('');
+
+    for (let item of radioToClear)
+        item.attr('checked', false);
 }
