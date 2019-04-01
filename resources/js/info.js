@@ -144,7 +144,6 @@ $(document).ready(function () {
         event.preventDefault();
 
         if (checkInvalidInputs()) {
-            alert('Please check the fields entered.');
             return;
         }
 
