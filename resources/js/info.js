@@ -6,6 +6,7 @@ $(document).ready(function () {
     initializeDatepicker();
 
     //все необходимые элементы
+    let page = $('html, body');
     let infoForm = $('#infoForm');
     let allergiesDescribe = $('#allergies_describe');
     let medicalHistoryDescribe = $('#medical_history_describe');
@@ -21,6 +22,7 @@ $(document).ready(function () {
     let choice = $('#choice');
     let close = $('#close');
     let addMore = $('#addMore');
+    let thanks = $('#thanks');
 
     //канвас
     let canvas = $('#canvas').get(0);
@@ -80,12 +82,20 @@ $(document).ready(function () {
 
     //действия по клику на кнопки модального окна
     close.on('click', function () {
-        window.location.replace(`http://${document.domain}`);
+        choice.modal('hide');
+        thanks.modal('show');
     });
 
     addMore.on('click', function () {
         clearFormInputs();
         choice.modal('hide');
+        page.animate({scrollTop: 0}, 1000);
+    });
+
+    thanks.on('shown.bs.modal', function () {
+        setTimeout(function () {
+            window.location.replace(`http://${document.domain}`);
+        }, 3000);
     });
 
     //инициализация панели

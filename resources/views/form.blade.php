@@ -780,22 +780,33 @@
     </div>
 </div>
 
-<div class="modal fade" id="choice" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+<div class="modal fade" id="choice" tabindex="-1" role="dialog" aria-labelledby="titleModalChoice" aria-hidden="true"
+     data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titleModal">Congratulations</h5>
+                <h5 class="modal-title" id="titleModalChoice">Congratulations</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Form submitted, thank you!
-                Add an additional child?
+                Form submitted, thank you! Add an additional child?
             </div>
             <div class="modal-footer">
                 <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button id="addMore" type="button" class="btn btn-primary">Add more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="thanks" tabindex="-1" role="dialog" aria-labelledby="titleModalThanks" aria-hidden="true"
+     data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="titleModalThanks">Thank You!</h3>
             </div>
         </div>
     </div>
