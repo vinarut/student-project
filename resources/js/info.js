@@ -17,6 +17,11 @@ $(document).ready(function () {
     let noHistory = $('#noHistory');
     let noEpiPen = $('#noEpiPen');
 
+    //элементы модального окна
+    let choice = $('#choice');
+    let close = $('#close');
+    let addMore = $('#addMore');
+
     //канвас
     let canvas = $('#canvas').get(0);
     let clear = $('#clear');
@@ -72,6 +77,16 @@ $(document).ready(function () {
                 item.addClass('is-invalid');
         })
     }
+
+    //действия по клику на кнопки модального окна
+    close.on('click', function () {
+        window.location.replace(`http://${document.domain}`);
+    });
+
+    addMore.on('click', function () {
+        clearFormInputs();
+        choice.modal('hide');
+    });
 
     //инициализация панели
     canvas.height = canvas.offsetHeight;
@@ -167,12 +182,7 @@ $(document).ready(function () {
             data: $(this).serialize(),
             cache: false,
             success: function () {
-                if (!confirm('Form submitted, thank you!\nAdd an additional child?')) {
-                    window.location.replace(`http://${document.domain}`);
-                    return;
-                }
-
-                clearFormInputs();
+                choice.modal('show');
             },
         });
 
