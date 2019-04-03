@@ -7,6 +7,7 @@
                 <h5 class="card-title">Student Information</h5>
                 <dl class="row">
                     @foreach($info->getAttributes() as $k => $v)
+                        @if($v !== '')
                         <dt class="col-sm-3">@description($k)</dt>
                         @if($k === 'signature')
                             <img id="img" class="d-none" src="{{$v}}"/>
@@ -16,6 +17,7 @@
                             @continue;
                         @endif
                         <dd class="col-sm-9">{{$v}}</dd>
+                        @endif
                     @endforeach
                 </dl>
             </div>

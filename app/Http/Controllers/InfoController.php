@@ -275,9 +275,10 @@ class InfoController extends Controller
                     'fathers_work_phone' => $validated['father_work_phone'] ?? '',
                     'primary_email_address' => $validated['primary_email_address'] ?? '',
                     'allergies' => ($validated['allergies']) ? 'yes' : 'no',
-                    'allergies_describe' => $validated['allergies_describe'] ?? '',
+                    'allergies_describe' => ($validated['allergies']) ? $validated['allergies_describe'] : '',
                     'special_medical_history' => ($validated['medical_history']) ? 'yes' : 'no',
-                    'special_medical_history_describe' => $validated['medical_history_describe'] ?? '',
+                    'special_medical_history_describe' => ($validated['medical_history']) ?
+                        $validated['medical_history_describe'] : '',
                     'epi_pen' => ($validated['epi_pen']) ? 'yes' : 'no',
                     'release_form' => ($validated['release_form']) ? 'yes' : 'no',
                     'photo_choice' => $validated['photo_choice'] ?? '',
