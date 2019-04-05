@@ -94,7 +94,7 @@ $(document).ready(function () {
 
     thanks.on('shown.bs.modal', function () {
         setTimeout(function () {
-            window.location.replace(`http://${document.domain}`);
+            window.location.replace(`https://compassschoolhouse.com/`);
         }, 3000);
     });
 
