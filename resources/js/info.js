@@ -242,9 +242,18 @@ function clearFormInputs() {
         $("input[name='medical_history']"),
     ];
 
+    let elementsForYesRadioBtn = [
+        $('#allergies_describe'),
+        $('#medical_history_describe'),
+        $('#link')
+    ];
+
     for (let item of inputsToClear)
         item.val('');
 
     for (let item of radioToClear)
-        item.attr('checked', false);
+        item.prop('checked', false);
+
+    for (let item of elementsForYesRadioBtn)
+        item.addClass('d-none');
 }
