@@ -60,7 +60,8 @@ class RegistrationRequest extends FormRequest
             'signature' => 'required',
 
             'contact' => 'required|array|min:2',
-            'contact.*.name' => 'required|string|min:3|max:255',
+            'contact.*.first_name' => 'required|string|min:3|max:255',
+            'contact.*.last_name' => 'required|string|min:3|max:255',
             'contact.*.phone' => 'required|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
             'contact.*.address' => 'required|string|min:3|max:255',
             'contact.*.relation' => 'required|max:65535',

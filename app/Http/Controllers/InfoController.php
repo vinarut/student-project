@@ -71,7 +71,7 @@ class InfoController extends Controller
         if (isset($row['cnt']) && $row['cnt'] > $maxContacts) {
             $maxContacts = $row['cnt'];
         }
-        $collContacts = $collContacts->pad($maxContacts, ['name', 'phone', 'address'])->map(function ($item, $key) {
+        $collContacts = $collContacts->pad($maxContacts, ['first_name', 'last_name', 'phone', 'address'])->map(function ($item, $key) {
             array_walk($item, function (& $i) use ($key) {
                 $i = 'contact_'.$i.'_'.($key + 1);
             });
@@ -138,7 +138,7 @@ class InfoController extends Controller
             $row['photo_choice'] = preg_replace('/\r\n|\r|\n/u', ' ', $row['photo_choice']);
             $row['photo_choice'] = preg_replace('| +|', ' ', $row['photo_choice']);
             $i = 0;
-            $sql = "select `name`, `phone`, `address` from `contact_list` where `info_id`=:info_id";
+            $sql = "select `first_name`, `last_name`, `phone`, `address` from `contact_list` where `info_id`=:info_id";
             $stmt1 = $pdo->prepare($sql);
             $stmt1->bindValue(":info_id", $row['id'], \PDO::PARAM_INT);
             $stmt1->execute();

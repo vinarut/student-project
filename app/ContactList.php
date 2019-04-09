@@ -9,7 +9,7 @@ class ContactList extends Model
     protected $table = 'contact_list';
 
     protected $fillable = [
-        'child_id', 'name', 'phone', 'address', 'relation'
+        'child_id', 'first_name', 'last_name', 'phone', 'address', 'relation'
     ];
 
     public $timestamps = false;

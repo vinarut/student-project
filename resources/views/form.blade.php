@@ -413,23 +413,36 @@
                 <div>
                     @foreach (range(0,1) as $k)
                         <div class="form-group row">
-                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} name</label>
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} First Name</label>
                             <div class="col-lg-8 col-sm-10">
-                                <input type="text" class="form-control {{$errors->has('contact.'.$k.'.name')? "is-invalid": ""}}"
-                                       placeholder="Contact's name" name="contact[{{$k}}][name]" autocomplete="off"
+                                <input type="text" class="form-control {{$errors->has('contact.'.$k.'.first_name')? "is-invalid": ""}}"
+                                       placeholder="Contact's First Name" name="contact[{{$k}}][first_name]" autocomplete="off"
                                        minlength="3" maxlength="255" required>
-                                @if ($errors->has('contact.'.$k.'.name'))
+                                @if ($errors->has('contact.'.$k.'.first_name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('contact.'.$k.'.name') }}</strong>
+                                        <strong>{{ $errors->first('contact.'.$k.'.first_name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} phone</label>
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} Last Name</label>
+                            <div class="col-lg-8 col-sm-10">
+                                <input type="text" class="form-control {{$errors->has('contact.'.$k.'.last_name')? "is-invalid": ""}}"
+                                       placeholder="Contact's Last Name" name="contact[{{$k}}][last_name]" autocomplete="off"
+                                       minlength="3" maxlength="255" required>
+                                @if ($errors->has('contact.'.$k.'.last_name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('contact.'.$k.'.last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} Phone</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="tel" class="form-control {{$errors->has('contact.'.$k.'.phone')? "is-invalid": ""}}"
-                                       placeholder="Contact's phone" name="contact[{{$k}}][phone]" autocomplete="off"
+                                       placeholder="Contact's Phone" name="contact[{{$k}}][phone]" autocomplete="off"
                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                        title="Number must be 10 digits" required>
                                 @if ($errors->has('contact.'.$k.'.phone'))
@@ -441,10 +454,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} address</label>
+                            <label class="col-lg-4 col-sm-2 col-form-label">Contact #{{$k + 1}} Address</label>
                             <div class="col-lg-8 col-sm-10">
                                 <input type="text" class="form-control {{$errors->has('contact.'.$k.'.address')? "is-invalid": ""}}"
-                                       placeholder="First contact's address" name="contact[{{$k}}][address]" autocomplete="off"
+                                       placeholder="First contact's Address" name="contact[{{$k}}][address]" autocomplete="off"
                                        minlength="3" maxlength="255" required>
                                 @if ($errors->has('contact.'.$k.'.address'))
                                     <span class="invalid-feedback" role="alert">
@@ -457,7 +470,7 @@
                             <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
                             <div class="col-lg-8 col-sm-10">
                                 <textarea type="text" class="form-control {{$errors->has('contact.'.$k.'.relation')? "is-invalid": ""}}"
-                                          placeholder="Relationship to сhild" name="contact[{{$k}}][relation]"
+                                          placeholder="Relationship to Child" name="contact[{{$k}}][relation]"
                                           autocomplete="off" maxlength="65535" required></textarea>
                                 @if ($errors->has('contact.'.$k.'.relation'))
                                     <span class="invalid-feedback" role="alert">
@@ -472,35 +485,43 @@
                     <div class="first">
                         <div class="recordset">
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contact name</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contact First name</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="Contact's name" name="contact[2][name]" autocomplete="off"
+                                           placeholder="Contact's First Name" name="contact[2][first_name]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Contact phone</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label pl-0">Contact Last Name</label>
+                                <div class="col-lg-8 col-sm-10">
+                                    <input type="text" class="form-control"
+                                           placeholder="Contact's Last Name" name="contact[2][last_name]" autocomplete="off"
+                                           minlength="3" maxlength="255" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-sm-2 col-form-label">Contact Phone</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="tel" class="form-control"
-                                           placeholder="Contact's phone" name="contact[2][phone]" autocomplete="off"
+                                           placeholder="Contact's Phone" name="contact[2][phone]" autocomplete="off"
                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12"
                                            title="Number must be 10 digits" required>
                                     <small>Number must be 10 digits/NO dashes</small>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-sm-2 col-form-label">Contact address</label>
+                                <label class="col-lg-4 col-sm-2 col-form-label">Contact Address</label>
                                 <div class="col-lg-8 col-sm-10">
                                     <input type="text" class="form-control"
-                                           placeholder="First contact's address" name="contact[2][address]" autocomplete="off"
+                                           placeholder="First Contact's Address" name="contact[2][address]" autocomplete="off"
                                            minlength="3" maxlength="255" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-sm-2 col-form-label">Relationship to Child</label>
                                 <div class="col-lg-8 col-sm-10">
-                                    <textarea type="text" class="form-control" placeholder="Relationship to child"
+                                    <textarea type="text" class="form-control" placeholder="Relationship to Child"
                                               name="contact[0][relation]" autocomplete="off" maxlength="65535"
                                               required></textarea>
                                 </div>
@@ -631,19 +652,19 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        I have read and understand the information contained in the Compass Schoolhouse Family Handbook
-                        (available on the Compass Schoolhouse website) which includes the following documents.
+                        I have read and understand the information contained in the Compass SchoolHouse Family Handbook
+                        (available on the Compass SchoolHouse website) which includes the following documents.
                         <ul class="font-weight-bold">
                             <li>The Information to Parents Statement</li>
-                            <li>Compass Schoolhouse Philosophy of Discipline</li>
-                            <li>Compass Schoolhouse Release of Children Policy</li>
-                            <li>Compass Schoolhouse Policy on the Expulsion of Children</li>
+                            <li>Compass SchoolHouse Philosophy of Discipline</li>
+                            <li>Compass SchoolHouse Release of Children Policy</li>
+                            <li>Compass SchoolHouse Policy on the Expulsion of Children</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-lg-4 col-sm-2 col-form-label pt-0 font-weight-bold">CHECK HERE</label>
+                    <h4 class="col-lg-4 col-sm-2 pt-0 font-weight-bold">CHECK HERE</h4>
                     <div class="col-lg-8 col-sm-10">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" name="release_form" value="1" required/>
@@ -655,8 +676,8 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        Compass Schoolhouse takes photos and videos at various events for its daily class emails, website, social media,
-                        and printed promotional purposes. Compass Schoolhouse policy states that we will not identify children by name
+                        Compass SchoolHouse takes photos and videos at various events for its daily class emails, website, social media,
+                        and printed promotional purposes. Compass SchoolHouse policy states that we will not identify children by name
                         or address in any photographs, videos, or publications unless written permission is obtained from parents.
                     </div>
                 </div>
@@ -698,10 +719,10 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
-                        The Compass Schoolhouse DIRECTORY of all Compass Schoolhouse students will be available on the
-                        Compass Schoolhouse website for the convenience of our families. THE DIRECTORY IS PASSWORD
+                        The Compass SchoolHouse DIRECTORY of all Compass SchoolHouse students will be available on the
+                        Compass SchoolHouse website for the convenience of our families. THE DIRECTORY IS PASSWORD
                         PROTECTED. Do you give your permission for your child's name, address, phone numbers, and your
-                        email address to appear in the password protected Compass Schoolhouse Directory?
+                        email address to appear in the password protected Compass SchoolHouse Directory?
                     </div>
                 </div>
 
