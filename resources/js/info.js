@@ -246,5 +246,5 @@ function clearFormInputs() {
         item.val('');
 
     for (let item of radioToClear)
-        item.attr('checked', false);
+        item.prop('checked', false);
 }
