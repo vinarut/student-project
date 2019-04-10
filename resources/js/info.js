@@ -17,6 +17,7 @@ $(document).ready(function () {
     let noAllergies = $('#noAllergies');
     let noHistory = $('#noHistory');
     let noEpiPen = $('#noEpiPen');
+    let captchaHint = $('.captcha-hint');
 
     //элементы модального окна
     let choice = $('#choice');
@@ -90,6 +91,9 @@ $(document).ready(function () {
         clearFormInputs();
         choice.modal('hide');
         page.animate({scrollTop: 0}, 1000);
+
+        if (captchaHint.hasClass('d-none'))
+            captchaHint.removeClass('d-none');
     });
 
     thanks.on('shown.bs.modal', function () {

@@ -787,7 +787,12 @@
 
                 <div class="form-group row mt-5">
                     <label class="col-lg-4 col-sm-2 col-form-label"></label>
-                    <div class="col-lg-8 col-sm-10 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}" ></div>
+                    <div class="col-lg-8 col-sm-10 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}"></div>
+                </div>
+
+                <div class="form-group row captcha-hint d-none">
+                    <label class="col-lg-4 col-sm-2 col-form-label"></label>
+                    <label class="col-lg-8 col-sm-10 col-form-label">Please wait until the captcha is updated</label>
                 </div>
 
                 <div class="form-group row">
