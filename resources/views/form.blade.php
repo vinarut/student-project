@@ -787,7 +787,12 @@
 
                 <div class="form-group row mt-5">
                     <label class="col-lg-4 col-sm-2 col-form-label"></label>
-                    <div class="col-lg-8 col-sm-10 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}" ></div>
+                    <div class="col-lg-8 col-sm-10 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}"></div>
+                </div>
+
+                <div class="form-group row captcha-hint d-none">
+                    <label class="col-lg-4 col-sm-2 col-form-label"></label>
+                    <label class="col-lg-8 col-sm-10 col-form-label">Please wait until the captcha is updated</label>
                 </div>
 
                 <div class="form-group row">
@@ -807,9 +812,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titleModalChoice">Congratulations</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 Form submitted, thank you! Add an additional child?

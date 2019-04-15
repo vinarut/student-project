@@ -17,6 +17,7 @@ $(document).ready(function () {
     let noAllergies = $('#noAllergies');
     let noHistory = $('#noHistory');
     let noEpiPen = $('#noEpiPen');
+    let captchaHint = $('.captcha-hint');
 
     //элементы модального окна
     let choice = $('#choice');
@@ -90,6 +91,9 @@ $(document).ready(function () {
         clearFormInputs();
         choice.modal('hide');
         page.animate({scrollTop: 0}, 1000);
+
+        if (captchaHint.hasClass('d-none'))
+            captchaHint.removeClass('d-none');
     });
 
     thanks.on('shown.bs.modal', function () {
@@ -242,9 +246,18 @@ function clearFormInputs() {
         $("input[name='medical_history']"),
     ];
 
+    let elementsForYesRadioBtn = [
+        $('#allergies_describe'),
+        $('#medical_history_describe'),
+        $('#link')
+    ];
+
     for (let item of inputsToClear)
         item.val('');
 
     for (let item of radioToClear)
         item.prop('checked', false);
+
+    for (let item of elementsForYesRadioBtn)
+        item.addClass('d-none');
 }
