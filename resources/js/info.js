@@ -17,7 +17,7 @@ $(document).ready(function () {
     let noAllergies = $('#noAllergies');
     let noHistory = $('#noHistory');
     let noEpiPen = $('#noEpiPen');
-    let captchaHint = $('.captcha-hint');
+    let sendButtons = [$('#send'), $('#sending')];
 
     //элементы модального окна
     let choice = $('#choice');
@@ -89,11 +89,10 @@ $(document).ready(function () {
 
     addMore.on('click', function () {
         clearFormInputs();
+        grecaptcha.reset();
+
         choice.modal('hide');
         page.animate({scrollTop: 0}, 1000);
-
-        if (captchaHint.hasClass('d-none'))
-            captchaHint.removeClass('d-none');
     });
 
     thanks.on('shown.bs.modal', function () {
@@ -186,6 +185,8 @@ $(document).ready(function () {
             return;
         }
 
+        sendButtons.forEach(button => button.toggleClass('d-none'));
+
         let inputSignature = $('#signature');
         let data = signaturePad.toDataURL('image/png');
         inputSignature.attr('value', data);
@@ -197,6 +198,7 @@ $(document).ready(function () {
             cache: false,
             success: function () {
                 choice.modal('show');
+                sendButtons.forEach(button => button.toggleClass('d-none'));
             },
         });
 

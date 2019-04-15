@@ -790,14 +790,14 @@
                     <div class="col-lg-8 col-sm-10 g-recaptcha" data-sitekey="{{env('CAPTCHA_SITEKEY')}}"></div>
                 </div>
 
-                <div class="form-group row captcha-hint d-none">
-                    <label class="col-lg-4 col-sm-2 col-form-label"></label>
-                    <label class="col-lg-8 col-sm-10 col-form-label">Please wait until the captcha is updated</label>
-                </div>
-
                 <div class="form-group row">
                     <div class="offset-lg-4 offset-sm-2 col-lg-8 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button id="send" type="submit" class="btn btn-primary">Send</button>
+
+                        <button id="sending" class="btn btn-primary d-none" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Sending...
+                        </button>
                     </div>
                 </div>
                 
