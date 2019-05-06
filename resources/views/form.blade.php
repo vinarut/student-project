@@ -14,7 +14,13 @@
                     </ul>
                 </div>
             @endif
-            <h4 class="card-title">STUDENT REGISTRATION 2018-2019</h4>
+            <h4 class="card-title">
+                STUDENT REGISTRATION
+                @php
+                    $year = \Carbon\Carbon::now()->year;
+                    echo $year.'-'.($year + 1)
+                @endphp
+            </h4>
             <form method="post" action="{{ route('register.store', ['token'=>$token]) }}" id="infoForm" name="clearForm">
                 @csrf
                 <div class="form-group row">

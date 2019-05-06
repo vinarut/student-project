@@ -196,11 +196,9 @@ $(document).ready(function () {
             url: $(this).attr('action'),
             data: $(this).serialize(),
             cache: false,
-            success: function () {
-                choice.modal('show');
-                sendButtons.forEach(button => button.toggleClass('d-none'));
-            },
-        });
+        }).done(() => choice.modal('show'))
+            .fail(() => alert('Something went wrong'))
+            .always(() => sendButtons.forEach(button => button.toggleClass('d-none')));
 
     });
 });
